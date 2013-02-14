@@ -1,0 +1,18 @@
+#ifndef LIMIT_SPEED_V_H
+#define LIMIT_SPEED_V_H
+
+#define GUI_ID_BUTTON_PARM_SET  GUI_ID_BUTTON7
+#define GUI_ID_BUTTON_PRINT 	GUI_ID_BUTTON6
+#define GUI_ID_BUTTON_SAVE      GUI_ID_BUTTON5
+#define GUI_ID_BUTTON_CR		GUI_ID_BUTTON0
+#define GUI_ID_BUTTON_STOP      GUI_ID_BUTTON2
+#define GUI_ID_BUTTON_START     GUI_ID_BUTTON1
+#define GUI_ID_CHECKBOX_MULT    GUI_ID_CHECK0
+#define GUI_ID_BUTTON_DELET		GUI_ID_CHECK3
+#define GUI_ID_BUTTON_DATA      GUI_ID_CHECK4
+
+
+void add_value_graph(int loc , signed short data );
+
+
+#endif
