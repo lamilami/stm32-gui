@@ -1,0 +1,500 @@
+; /*********************************************************************
+; *                SEGGER MICROCONTROLLER SYSTEME GmbH                 *
+; *        Solutions for real time microcontroller applications        *
+; **********************************************************************
+; *                                                                    *
+; *           (C) 1996    SEGGER Microcontroller Systeme GmbH          *
+; *                                                                    *
+; *        Internet: www.segger.com    Support:  support@segger.com    *
+; *                                                                    *
+; **********************************************************************
+; 
+; **** emWin/GSC Grafical user interface for embedded applications ****
+; emWin is protected by international copyright laws. Knowledge of the
+; source code may not be used to write a similar product. This file may
+; only be used in accordance with a license and should not be re-
+; distributed in any way. We appreciate your understanding and fairness.
+; ----------------------------------------------------------------------
+; File        : LCD_ISR.s34
+; Purpose     : Interrupt service routine for 1/4/8-bit LCDs
+; ----------------------------------------------------------------------
+; Version-Date---Author-Explanation
+; ----------------------------------------------------------------------
+; 1.00.02 020821 JE   a) Changed to work with configurable ports
+; 1.00.00 010417 JE   a) First release
+; ----------------------------------------------------------------------
+; Known problems or limitations with current version:
+; None.
+; ----------------------------------------------------------------------
+; Items for future improvement:
+; ---------------------------END-OF-HEADER------------------------------
+; 
+
+.include LCD_ISR.inc
+
+; *********************************************************
+; *
+; *    Externals
+; *
+; *********************************************************
+
+.glb   _ISRTimerA1
+.glb   _LCD_X_Off
+.glb   _LCD_X_On
+
+.glb   _LCD__apVRam
+.glb   _LCD__aTimerReload
+.glb   _LCD__BitsPerPixel
+
+.FB    0
+
+; *********************************************************
+; *
+; *    Data
+; *
+; *********************************************************
+
+.section data_SE,DATA
+
+Line:
+  .BLKB	2
+FrameCnt:
+  .BLKB	1
+GrayCnt:
+  .BLKB	1
+IntCnt:
+  .BLKB	1
+MCnt:
+  .BLKB	1
+  .BLKB	1
+pData:
+	.BLKB	4
+
+; *********************************************************
+; *
+; *    Defines for special function registers
+; *
+; *********************************************************
+
+TA1IC  .equ  56h
+TA1    .equ 388h
+TA1MR  .equ 397h
+TA2    .equ 38ah
+TA2MR  .equ 398h
+TABSR  .equ 380h
+
+;P0     .equ 3e0h
+;P7     .equ 3edh
+;P8     .equ 3f0h
+;P7D    .equ 1007
+;P8D    .equ 1010
+
+DM0SL  .equ 3b8h
+DM0CON .equ  2ch
+SAR0   .equ  20h
+DAR0   .equ  24h
+TCR0   .equ  28h
+
+; *********************************************************
+; *
+; *    Config defaults
+; *
+; *********************************************************
+
+;PORT_DATA .equ P7
+;PORT_CTRL .equ P8
+
+MASK_M   .equ (1<<0)
+MASK_FLM .equ (1<<1)
+MASK_CL1 .equ (1<<2)
+MASK_DON .equ (1<<3)
+MASK_CL2 .equ (1<<4)
+
+; *********************************************************
+; *
+; *    Data transfer macros (used in ISR)
+; *
+; *********************************************************
+
+.if LCD_USEDMA
+WRITEDATA2LCD  .MACRO Off
+   .ENDM
+
+.elif LCD_INTERFACEBITS == 8
+WRITEDATA2LCD  .MACRO Off
+        MOV.W   Off[FB], R0
+; 1. byte
+        MOV.B   R1H, [A1]
+        MOV.B   R0L, [A0]
+        MOV.B   R1L, [A1]
+; 2.byte
+        MOV.B   R1H, [A1]
+        MOV.B   R0H, [A0]
+        MOV.B   R1L, [A1]
+   .ENDM
+
+.elif LCD_INTERFACEBITS == 4
+WRITEDATA2LCD  .MACRO Off
+        MOV.W   Off[FB], R0
+; 1. nibble
+        MOV.B   R1H, [A1]
+        MOVHL   R0L, [A0]
+        MOV.B   R1L, [A1]
+; 2. nibble
+        MOV.B   R1H, [A1]
+        MOV.B   R0L, [A0]
+        MOV.B   R1L, [A1]
+; 3. nibble
+        MOV.B   R0H, R0L
+        SHL.B   #-4,R0L
+        MOV.B   R1H, [A1]
+        MOV.B   R0L, [A0]
+        MOV.B   R1L, [A1]
+; 4. nibble
+        MOV.B   R1H, [A1]
+        MOV.B   R0H, [A0]
+        MOV.B   R1L, [A1]
+   .ENDM
+
+.elif LCD_INTERFACEBITS == 1
+WRITEDATA2LCD  .MACRO Off
+        MOV.B   Off[A0], R0L
+        MOV.B   R1H, [A1]
+        ROT.B   #1,R0L
+        MOV.B   R0L, LCD_PORT_DATA
+        MOV.B   R1L, [A1]
+        MOV.B   R1H, [A1]
+        ROT.B   #1,R0L
+        MOV.B   R0L, LCD_PORT_DATA
+        MOV.B   R1L, [A1]
+        MOV.B   R1H, [A1]
+        ROT.B   #1,R0L
+        MOV.B   R0L, LCD_PORT_DATA
+        MOV.B   R1L, [A1]
+        MOV.B   R1H, [A1]
+        ROT.B   #1,R0L
+        MOV.B   R0L, LCD_PORT_DATA
+        MOV.B   R1L, [A1]
+        MOV.B   R1H, [A1]
+        ROT.B   #1,R0L
+        MOV.B   R0L, LCD_PORT_DATA
+        MOV.B   R1L, [A1]
+        MOV.B   R1H, [A1]
+        ROT.B   #1,R0L
+        MOV.B   R0L, LCD_PORT_DATA
+        MOV.B   R1L, [A1]
+        MOV.B   R1H, [A1]
+        ROT.B   #1,R0L
+        MOV.B   R0L, LCD_PORT_DATA
+        MOV.B   R1L, [A1]
+        MOV.B   R1H, [A1]
+        ROT.B   #1,R0L
+        MOV.B   R0L, LCD_PORT_DATA
+        MOV.B   R1L, [A1]
+   .ENDM
+.endif
+
+; *********************************************************
+; *
+; *                   ISR
+; *
+; *********************************************************
+
+.section program
+
+_ISRTimerA1:
+        FSET    B
+        pushm   FB   ; not needed with IAR
+; *** Output next line / first line signals
+        MOV.W   #LCD_PORT_CTRL, A1
+        CMP.W   #LCD_YSIZE,Line
+        JNE     ISR_NextLine
+        INC.B   FrameCnt
+        OR.B    #MASK_FLM, [A1]
+        OR.B    #MASK_CL1, [A1]
+        AND.B   #~MASK_CL1,[A1]
+        AND.B   #~MASK_FLM,[A1]
+        JMP.B   NLDone
+ISR_NextLine:
+        OR.B    #MASK_CL1,  [A1]
+        AND.B   #~MASK_CL1, [A1]
+NLDone:
+; *** Check if M has to be inverted
+        DEC.B   MCnt
+        JNE     M_Done
+        MOV.B   #7,MCnt
+        XOR.B   #MASK_M, [A1]
+M_Done:
+;
+; Start processing the new line
+;
+; *** Last line ?      if (--Line<0) {
+        ADD.W   #-1,Line
+        JPZ      ManageDone
+        MOV.W   #LCD_YSIZE,Line
+; *** Handle GrayCnt
+        MOV.B   GrayCnt, R0L
+        DEC.B   R0L
+        MOV.B   R0L, GrayCnt
+        JPZ     GrayCntDone
+        LDE.B   _LCD__BitsPerPixel, R0L
+        DEC.B   R0L
+        MOV.B   R0L, GrayCnt
+GrayCntDone:
+        ADD.B   R0L, R0L  ; *2 for U16 array
+        MOV.B   R0L, A0
+        LDE.W   _LCD__aTimerReload[A0], A1
+        MOV.W   A1,TA1
+        ADD.B   R0L, R0L  ; *4 for far pointer array
+        MOV.B   R0L, A0
+        LDE.W   _LCD__apVRam[A0], A1
+        STE.W   A1, pData
+        LDE.W   2+_LCD__apVRam[A0], A1
+        STE.W   A1, pData+2
+ManageDone:
+.if     LCD_USEDMA
+; *** Program DMA Destination: 8-bit latch
+        MOV.W   pData, SAR0
+        MOV.B   pData+2, SAR0+2  
+        MOV.B   #19h, DM0CON    ; 8 bits, source increments		  
+        MOV.W   #LCD_BYTESPERLINE, TCR0
+.else
+        MOV.W   #LCD_PORT_CTRL, A1
+        MOV.W   #LCD_PORT_DATA, A0
+        MOV.B   [A1], R1L
+        MOV.B   R1L, R1H
+        OR.B    #MASK_CL2, R1H
+        AND.B   #255-MASK_CL2, R1L
+        LDC     pData, FB
+.endif
+
+    WRITEDATA2LCD 0
+.if LCD_BYTESPERLINE > 2
+    WRITEDATA2LCD 2
+.endif
+.if LCD_BYTESPERLINE > 4
+    WRITEDATA2LCD 4
+.endif
+.if LCD_BYTESPERLINE > 6
+    WRITEDATA2LCD 6
+.endif
+.if LCD_BYTESPERLINE > 8
+    WRITEDATA2LCD 8
+.endif
+.if LCD_BYTESPERLINE > 10
+    WRITEDATA2LCD 10
+.endif
+.if LCD_BYTESPERLINE > 12
+    WRITEDATA2LCD 12
+.endif
+.if LCD_BYTESPERLINE > 14
+    WRITEDATA2LCD 14
+.endif
+.if LCD_BYTESPERLINE > 16
+    WRITEDATA2LCD 16
+.endif
+.if LCD_BYTESPERLINE > 18
+    WRITEDATA2LCD 18
+.endif
+.if LCD_BYTESPERLINE > 20
+    WRITEDATA2LCD 20
+.endif
+.if LCD_BYTESPERLINE > 22
+    WRITEDATA2LCD 22
+.endif
+.if LCD_BYTESPERLINE > 24
+    WRITEDATA2LCD 24
+.endif
+.if LCD_BYTESPERLINE > 26
+    WRITEDATA2LCD 26
+.endif
+.if LCD_BYTESPERLINE > 28
+    WRITEDATA2LCD 28
+.endif
+.if LCD_BYTESPERLINE > 30
+    WRITEDATA2LCD 30
+.endif
+.if LCD_BYTESPERLINE > 32
+    WRITEDATA2LCD 32
+.endif
+.if LCD_BYTESPERLINE > 34
+    WRITEDATA2LCD 34
+.endif
+.if LCD_BYTESPERLINE > 36
+    WRITEDATA2LCD 36
+.endif
+.if LCD_BYTESPERLINE > 38
+    WRITEDATA2LCD 38
+.endif
+.if LCD_BYTESPERLINE > 40
+    WRITEDATA2LCD 40
+.endif
+.if LCD_BYTESPERLINE > 42
+    WRITEDATA2LCD 42
+.endif
+.if LCD_BYTESPERLINE > 44
+    WRITEDATA2LCD 44
+.endif
+.if LCD_BYTESPERLINE > 46
+    WRITEDATA2LCD 46
+.endif
+.if LCD_BYTESPERLINE > 48
+    WRITEDATA2LCD 48
+.endif
+.if LCD_BYTESPERLINE > 50
+    WRITEDATA2LCD 50
+.endif
+.if LCD_BYTESPERLINE > 52
+    WRITEDATA2LCD 52
+.endif
+.if LCD_BYTESPERLINE > 54
+    WRITEDATA2LCD 54
+.endif
+.if LCD_BYTESPERLINE > 56
+    WRITEDATA2LCD 56
+.endif
+.if LCD_BYTESPERLINE > 58
+    WRITEDATA2LCD 58
+.endif
+.if LCD_BYTESPERLINE > 60
+    WRITEDATA2LCD  60
+.endif
+.if LCD_BYTESPERLINE > 62
+    WRITEDATA2LCD  62
+.endif
+.if LCD_BYTESPERLINE > 64
+    WRITEDATA2LCD  64
+.endif
+.if LCD_BYTESPERLINE > 66
+    WRITEDATA2LCD  66
+.endif
+.if LCD_BYTESPERLINE > 68
+    WRITEDATA2LCD  68
+.endif
+.if LCD_BYTESPERLINE > 70
+    WRITEDATA2LCD  70
+.endif
+.if LCD_BYTESPERLINE > 72
+    WRITEDATA2LCD  72
+.endif
+.if LCD_BYTESPERLINE > 74
+    WRITEDATA2LCD  74
+.endif
+.if LCD_BYTESPERLINE > 76
+    WRITEDATA2LCD  76
+.endif
+.if LCD_BYTESPERLINE > 78
+    WRITEDATA2LCD  78
+.endif
+.if LCD_BYTESPERLINE > 80
+    WRITEDATA2LCD  80
+.endif
+.if LCD_BYTESPERLINE > 82
+    WRITEDATA2LCD  82
+.endif
+.if LCD_BYTESPERLINE > 84
+    WRITEDATA2LCD  84
+.endif
+.if LCD_BYTESPERLINE > 86
+    WRITEDATA2LCD  86
+.endif
+.if LCD_BYTESPERLINE > 88
+    WRITEDATA2LCD  88
+.endif
+.if LCD_BYTESPERLINE > 90
+    WRITEDATA2LCD  90
+.endif
+.if LCD_BYTESPERLINE > 92
+    WRITEDATA2LCD  92
+.endif
+.if LCD_BYTESPERLINE > 94
+    WRITEDATA2LCD  94
+.endif
+.if LCD_BYTESPERLINE > 96
+    WRITEDATA2LCD  96
+.endif
+.if LCD_BYTESPERLINE > 98
+    WRITEDATA2LCD  98
+.endif
+.if LCD_BYTESPERLINE > 100
+    WRITEDATA2LCD  100
+.endif
+.if LCD_BYTESPERLINE > 102
+    WRITEDATA2LCD  102
+.endif
+.if LCD_BYTESPERLINE > 104
+    WRITEDATA2LCD  104
+.endif
+.if LCD_BYTESPERLINE > 106
+    WRITEDATA2LCD  106
+.endif
+.if LCD_BYTESPERLINE > 108
+    WRITEDATA2LCD  108
+.endif
+.if LCD_BYTESPERLINE > 110
+    WRITEDATA2LCD  110
+.endif
+.if LCD_BYTESPERLINE > 112
+    WRITEDATA2LCD  112
+.endif
+.if LCD_BYTESPERLINE > 114
+    WRITEDATA2LCD  114
+.endif
+.if LCD_BYTESPERLINE > 116
+    WRITEDATA2LCD  116
+.endif
+.if LCD_BYTESPERLINE > 118
+    WRITEDATA2LCD  118
+.endif
+
+        ADD.W   #LCD_BYTESPERLINE,pData
+        POPM    FB      ; this instruction is not needed with IAR since FB is not used
+        REIT    
+
+; *********************************************************
+; *
+; *                   LCD_On
+; *
+; *********************************************************
+
+_LCD_X_On:
+        PUSHM   R0
+;        MOV.B   #0ffh, P7D
+;        MOV.B   #0ffh, P8D
+        LDE.W   _LCD__apVRam,R0
+        STE.W   R0,pData
+        LDE.W   2+_LCD__apVRam,R0
+        STE.W   R0,pData+2
+        LDE.W   _LCD__aTimerReload, R0 ;
+; *** Line refresh: TA1
+        MOV.W   R0,TA1
+        MOV.B   #0,TA1MR ; Timer mode register
+        MOV.B  #7,TA1IC  ; Timer interrupt register, high prio
+.if LCD_USEDMA
+; *** Program DMA Destination: 8-bit latch
+        MOV.W   #(LCD_DMADEST & 0ffffh), DAR0
+        MOV.B   #((LCD_DMADEST >> 016) & 0ffh), DAR0+2
+        MOV.B   #4, DM0SL       ; USE Timer A2 as trigger
+        MOV.B   #19h, DM0CON    ; 8 bits, source increments		  
+; *** Shift timer: TA2
+        MOV.W   #8,TA2
+        MOV.B   #0,TA2MR ; Timer mode register
+        or.B   #(1<<2),TABSR
+.endif
+        OR.B    #(1<<1),TABSR
+        OR.B    #(1<<3),LCD_PORT_CTRL
+        POPM    R0
+        RTS     
+
+; *********************************************************
+; *
+; *                   LCD_Off
+; *
+; *********************************************************
+
+_LCD_X_Off:
+        AND.B   #253, TABSR       ; Start timer : TABSR &= ~(1<<1)
+        AND.B   #~(1<<3),LCD_PORT_CTRL
+        RTS     
+
+.end
