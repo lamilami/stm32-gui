@@ -2,9 +2,9 @@
 #include"gui_app.h"
 
 #define DEVICE_ADD	  0x70
-#define IIC_CTPM_SDA  PCout(4) 	
-#define IIC_CTPM_SCL  PAout(5)
-#define READ_CTPM_SDA PCin(4)
+#define IIC_CTPM_SDA  PBout(7)  	
+#define IIC_CTPM_SCL  PBout(6) 
+#define READ_CTPM_SDA PBin(7)
 
 
 void IIC_CTPM_Start (void);

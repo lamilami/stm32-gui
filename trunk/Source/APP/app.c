@@ -169,7 +169,7 @@ static  void  AppTaskCreate(void)
                     OS_TASK_OPT_STK_CHK|OS_TASK_OPT_STK_CLR);
 
 #if (OS_TASK_NAME_SIZE > 8)
-  OSTaskNameSet(APP_TASK_KBD_PRIO, "Keyboard", &err);
+  OSTaskNameSet(APP_TASK_KBD_PRIO, "Keyboard", &err)
 #endif
 }
 
