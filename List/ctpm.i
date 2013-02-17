@@ -32405,24 +32405,24 @@ unsigned char IIC_CTPM_WriteByte (unsigned char txByte);
 
 void IIC_CTPM_Start (void)
 {
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=HIGH;
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=HIGH;
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=HIGH;
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=HIGH;
 	delay_asm1(6*2);
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=LOW;
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=LOW;
 	delay_asm1(6*2);
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=LOW;
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=LOW;
 	delay_asm1(6);
 }
 
 
 void IIC_CTPM_Stop(void){
 
-  	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=LOW;
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=LOW;
+  	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=LOW;
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=LOW;
 	delay_asm1(6*2);
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=HIGH;
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=HIGH;
 	delay_asm1(6*2);
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=HIGH;
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=HIGH;
 	delay_asm1(6*4);
 
 }
@@ -32433,19 +32433,19 @@ u8 IIC_CTPM_WriteByte (u8 txByte){
 	    u8 mask,erro=0;
     for (mask=0x80; mask>0; mask>>=1) 
     { 
-	    if ((mask & txByte) == 0) *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=LOW;
-		else *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=HIGH;
+	    if ((mask & txByte) == 0) *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=LOW;
+		else *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=HIGH;
 		delay_asm1(6);
-		*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=HIGH; 
+		*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=HIGH; 
 		delay_asm1(6*3);
-		*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=LOW;
+		*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=LOW;
 		delay_asm1(6*3);
     }
-    *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=HIGH; 
-    *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=HIGH; 
+    *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=HIGH; 
+    *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=HIGH; 
     delay_asm1(6*3);
-	if(*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+8) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+8) &0xFFFFF)<<5)+(4<<2))))==HIGH) erro=ACK_ERROR;
-    *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=LOW;
+	if(*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+8) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+8) &0xFFFFF)<<5)+(7<<2))))==HIGH) erro=ACK_ERROR;
+    *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=LOW;
 	delay_asm1(6*3);
     return erro; 
 }
@@ -32454,22 +32454,22 @@ u8 IIC_CTPM_WriteByte (u8 txByte){
 u8 IIC_CTPM_ReadByte (etI2cAck ack){
 
    	u8 mask,rxByte=0;
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=HIGH; 
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=HIGH; 
 	delay_asm1(6);
 	for (mask=0x80; mask>0; mask>>=1) 
 	{ 
-	    *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=HIGH; 
+	    *((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=HIGH; 
 		delay_asm1(6*3);
-		if(*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+8) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+8) &0xFFFFF)<<5)+(4<<2))))==1) rxByte=(rxByte | mask); 
-		*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=LOW;
+		if(*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+8) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+8) &0xFFFFF)<<5)+(7<<2))))==1) rxByte=(rxByte | mask); 
+		*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=LOW;
 		delay_asm1(6*3);
 	}
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=ack; 
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=ack; 
 	delay_asm1(6);
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=HIGH; 
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=HIGH; 
 	delay_asm1(6*3);
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0800)+12) &0xFFFFF)<<5)+(5<<2))))=LOW;
-	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x1000)+12) &0xFFFFF)<<5)+(4<<2))))=HIGH;
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(6<<2))))=LOW;
+	*((volatile unsigned long *)((((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) & 0xF0000000)+0x2000000+(((((((uint32_t)0x40000000) + 0x10000) + 0x0C00)+12) &0xFFFFF)<<5)+(7<<2))))=HIGH;
 	delay_asm1(6*3);
 	return rxByte; 
 }
