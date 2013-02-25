@@ -22551,6 +22551,9 @@ extern __declspec(__nothrow) void _membitmovewb(void *  , const void *  , int  ,
 
 
 
+
+
+
 typedef struct{
 int x;
 int y;
@@ -22631,6 +22634,12 @@ void draw_exp(TDraw* draw);
 void draw_clear(TDraw* draw);
 
 unsigned int data_zip(int* data,unsigned int in_size,int out_size,EZip ezip);
+
+void draw_line_at(TPoint ps,TPoint pe,unsigned char line_style);
+
+void get_loc(int *y,int scale_mid,float CM_S,char zero_up_down);
+
+
 #line 64 "Source\\gui_app\\gui_app.h"
 #line 1 "Source\\gui_app\\XYZ.h"
 #line 1 "Source\\gui_app\\MMA8452Q.h"
@@ -22786,6 +22795,8 @@ typedef  struct
 
 	unsigned int acc_x_pose;
 	unsigned int acc_y_pose;
+	
+	float v_max;
 
 }MMA845X_struct;
 
@@ -22795,7 +22806,7 @@ extern MMA845X_struct Z_acc;
 extern MMA845X_struct X_acc;
 extern MMA845X_struct Y_acc;
 
-extern 
+
 
 
 
@@ -22897,94 +22908,12 @@ enum
  
 
 
-#line 208 "Source\\gui_app\\MMA8452Q.h"
+#line 210 "Source\\gui_app\\MMA8452Q.h"
 
 
 
  
-#line 218 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
- 
-
-
-
-
-
-
-
- 
-
-
-#line 242 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 258 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
- 
-
-
-#line 286 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 300 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-#line 338 "Source\\gui_app\\MMA8452Q.h"
+#line 220 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -23000,19 +22929,101 @@ enum
  
 
 
-
-
- 
-
-
-#line 365 "Source\\gui_app\\MMA8452Q.h"
+#line 244 "Source\\gui_app\\MMA8452Q.h"
 
 
 
  
 
 
-#line 381 "Source\\gui_app\\MMA8452Q.h"
+#line 260 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 288 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 302 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 340 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+#line 367 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 383 "Source\\gui_app\\MMA8452Q.h"
 
   
 
@@ -23034,7 +23045,7 @@ enum
 
 
 
-#line 409 "Source\\gui_app\\MMA8452Q.h"
+#line 411 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -23045,7 +23056,7 @@ enum
 
 
 
-#line 428 "Source\\gui_app\\MMA8452Q.h"
+#line 430 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -23058,45 +23069,6 @@ enum
  
 
 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-#line 460 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-
- 
-
-
-
-#line 480 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-#line 495 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
 
 
 
@@ -23110,7 +23082,36 @@ enum
 
 
 
+#line 462 "Source\\gui_app\\MMA8452Q.h"
+
+
+
  
+
+
+
+
+ 
+
+
+
+#line 482 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+#line 497 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
 
 
 
@@ -23128,43 +23129,6 @@ enum
  
 
 
-#line 540 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
-
-
-#line 554 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 569 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 583 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 597 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 611 "Source\\gui_app\\MMA8452Q.h"
-
 
 
  
@@ -23172,8 +23136,55 @@ enum
 
 
 
+ 
 
-#line 632 "Source\\gui_app\\MMA8452Q.h"
+
+#line 542 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+
+
+#line 556 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 571 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 585 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 599 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 613 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
+
+#line 634 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -31103,6 +31114,21 @@ void xyz_pars_save(void);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 typedef enum{
 ONE_AXLE,
 TOW_AXLE
@@ -31160,7 +31186,6 @@ X = 0,
 Y = 1,
 Z = 2
 
-
 }EXYZ;
 
 
@@ -31180,6 +31205,12 @@ Z = 2
    signed short res1;	
    signed short res2;
    signed short res3;
+
+   signed short za_ave_base;
+   signed short xa_ave_base;
+   signed short ya_ave_base;
+   unsigned int ave_times_ms;
+
  }TXYZ_Result;
 
 
@@ -31191,6 +31222,10 @@ typedef struct
 	tim            xyz_tim; 
 	unsigned int   fragment_start;
 }T_XYZ_FILE_struct;
+
+
+
+
 
 extern 	 T_XYZ_FILE_struct xyz_file;
 
@@ -31224,7 +31259,7 @@ int save_xyz(void);
 
 void xyz_file_save_end(void);
 
-void draw_dot_line(void);
+void draw_cm_s2(int z_judge_cm_s2,int xy_judge_cm_s2);
 
 extern XYZ_ACC_SAMPLE_STATUS    sample_status;
 extern Dispaly_Acc_struct   tdisp_acc_struct;

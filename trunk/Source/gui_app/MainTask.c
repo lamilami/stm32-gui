@@ -82,12 +82,16 @@ void MainTask(void)
 	float last_frequence,get_the_frequence;
     EMotWorkState mot_state;
 	WM_HWIN  hGraph = 0;
+
+	int y;
+
 	div = 0;
 
 	disp_mult = 0;
 	i = 0;
 
 	mot_t_cal.cal_flag  = 0;
+
 
 #ifndef WIN_SIM
     sd_init();
@@ -100,7 +104,6 @@ void MainTask(void)
 	h_home= NULL;
 	h_pars = NULL;
 	h_cus =NULL;
-
 	flag_paint =0;
 
 #if 0
@@ -110,8 +113,7 @@ void MainTask(void)
 	reg_get = IIC_CTPM_RegRead(0x00);
 	OSTimeDlyHMSM(0,0,0,100);
 #endif
-	}
-
+  }
 #endif
 
 
@@ -127,7 +129,6 @@ void MainTask(void)
 #endif
 
 	}
-
 
 #endif
 
@@ -152,7 +153,7 @@ void MainTask(void)
 	{
 	   GPIO_WriteBit(GPIOB, GPIO_Pin_7,1);
 	   GPIO_WriteBit(GPIOB, GPIO_Pin_6,1);
-OSTimeDlyHMSM(0,0,0,10);
+	   OSTimeDlyHMSM(0,0,0,10);
 
 	   GPIO_WriteBit(GPIOB, GPIO_Pin_7,0);
 	   GPIO_WriteBit(GPIOB, GPIO_Pin_6,0);
@@ -392,6 +393,7 @@ home(0);
 			xyz_paint_flag =1;
 			disp_titles();
 			disp_mode();
+			draw_cm_s2(4900,900);
 			}
 		  if(sample_status == START)
 		  {
@@ -412,7 +414,6 @@ home(0);
 			xyz_value_dir_to_graph(&X_acc,GUI_BLUE,X);
 			xyz_value_dir_to_graph(&Y_acc,GUI_RED,Y);
 			disp_caculate();
-
 		  }
 		}
 		
@@ -469,6 +470,7 @@ home(0);
 			draw_xy_t();
 			flag_paint =1;
 			}
+
 		    //get_result();
 		}
 

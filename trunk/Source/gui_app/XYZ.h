@@ -6,14 +6,18 @@
 #ifndef _XYZ_H
 #define _XYZ_H
 
-#define FFT_LENTH     1024
+#define G			980			//9.8m/s2  980cm/s2
+#define G_D_DIV		0.239258		// 2G - 2(13) G - 2(12)
+#define GET_ACC(n)  (G_D_DIV*n)    
 
-#define FIR_BLOCK_SIZE  32
-#define FIR_TAPS         8
+#define FFT_LENTH			1024
+
+#define FIR_BLOCK_SIZE		 32
+#define FIR_TAPS			 8
 
 #define XYZ_SCALE_X_START    20
 #define XYZ_SCALE_X_SIZE     600
-#define XYZ_SCALE_X_END      (XYZ_SCALE_X_START+XYZ_SCALE_X_SIZE)
+#define XYZ_SCALE_X_END     (XYZ_SCALE_X_START+XYZ_SCALE_X_SIZE)
 
 #define XYZ_SCALE_Y_START    23
 #define XYZ_SCALE_Y_SIZE     352
@@ -61,7 +65,18 @@
 
 #define MMA845X_XYZ_FILTER_BUF    1024
 
-#define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+#define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
+
+
+
+#define STOP_START_SPEED  150
+
+#define STOP_START_SPEED_END  STOP_START_SPEED*GET_DATA_RATE_HZ
+
+#define STOP_CONTINUE_TIME_S  2
+
+#define STOP_GET_TIMES     STOP_CONTINUE_TIME_S*GET_DATA_RATE_HZ
+
 
 typedef enum{
 ONE_AXLE,
@@ -120,7 +135,6 @@ X = 0,
 Y = 1,
 Z = 2
 
-
 }EXYZ;
 
 
@@ -140,6 +154,12 @@ Z = 2
    signed short res1;	// 保留
    signed short res2;
    signed short res3;
+
+   signed short za_ave_base;
+   signed short xa_ave_base;
+   signed short ya_ave_base;
+   unsigned int ave_times_ms;
+
  }TXYZ_Result;
 
 
@@ -151,6 +171,10 @@ typedef struct
 	tim            xyz_tim; 
 	unsigned int   fragment_start;
 }T_XYZ_FILE_struct;
+
+
+
+
 
 extern 	 T_XYZ_FILE_struct xyz_file;
 
@@ -184,7 +208,7 @@ int save_xyz(void);
 
 void xyz_file_save_end(void);
 
-void draw_dot_line(void);
+void draw_cm_s2(int z_judge_cm_s2,int xy_judge_cm_s2);
 
 extern XYZ_ACC_SAMPLE_STATUS    sample_status;
 extern Dispaly_Acc_struct   tdisp_acc_struct;

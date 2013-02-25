@@ -86,6 +86,8 @@ typedef  struct
 
 	unsigned int acc_x_pose;
 	unsigned int acc_y_pose;
+	
+	float v_max;
 
 }MMA845X_struct;
 
@@ -95,7 +97,7 @@ extern MMA845X_struct Z_acc;
 extern MMA845X_struct X_acc;
 extern MMA845X_struct Y_acc;
 
-extern 
+
 
 #ifndef WIN_SIM
 

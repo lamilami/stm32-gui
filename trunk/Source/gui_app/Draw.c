@@ -396,3 +396,31 @@ while(1)
 
 }
 
+
+
+void draw_line_at(TPoint ps,TPoint pe,unsigned char line_style)
+{
+	unsigned char get_line_style;
+	get_line_style = GUI_GetLineStyle();
+	GUI_SetLineStyle(GUI_LS_DASH);
+
+	GUI_DrawLine(ps.x,ps.y,pe.x,pe.y);
+	GUI_SetLineStyle(get_line_style);
+}
+
+
+void get_loc(int *y,int scale_mid,float CM_S,char zero_up_down)
+{
+	float rate ,g,get,half_scale;
+	g = 9.8*1000;
+	half_scale = SCALE_Y_SIZE/4;
+	rate = half_scale/g;
+	get = rate*CM_S;
+	if(zero_up_down > 0)
+	{
+		*y = scale_mid - get;
+	}else{
+		*y = scale_mid + get;
+	}
+}
+

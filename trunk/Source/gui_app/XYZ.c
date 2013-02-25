@@ -56,6 +56,7 @@ Dispaly_Acc_struct   tdisp_acc_struct;
 TMMA845xFilterResult tfilter_result;
 
 char in_fft;// 0 - in fft state, 1 - in comm state
+char get_ave;//0 - not get ave , 1 - already get ave
 
 q15_t FIR_State[FIR_BLOCK_SIZE+FIR_TAPS-1];
 arm_fir_instance_q15 FIR_S;
@@ -469,6 +470,8 @@ void xyz_acc_home(WM_MESSAGE *pMsg)
 	X_acc.acc_time = 1;
 	Y_acc.acc_time = 1;
 
+	
+
 #ifndef WIN_SIM
 	MMA845X_TIM6_interrupt_conf(DISABLE);//除能采样中断
 #endif
@@ -491,21 +494,25 @@ void OnButtonStartClicked(WM_MESSAGE * pMsg)
 {
 	Z_acc.got_acc_num = 0;
 	Z_acc.used_acc_num = 0;
+	Z_acc.v_max = 0;
+    
+
 	X_acc.got_acc_num = 0;
 	X_acc.used_acc_num = 0;
 	Y_acc.got_acc_num = 0;
 	Y_acc.used_acc_num = 0;
-
+	
 	xyz_paint_flag = 0; 
 	sample_status = START;
 
 	xyz_head_save();
 	xyz_pars_save();
+	
 
 	GUI_ClearRect(0,XYZ_SCALE_Y_START,XYZ_FFT_X_SIZE,YXZ_FFT_Y_SIZE);
 
 #ifndef WIN_SIM
-	  MMA845X_TIM6_interrupt_conf(ENABLE);//使能采样中断
+	MMA845X_TIM6_interrupt_conf(ENABLE);//使能采样中断
 #endif
 
 }
@@ -872,17 +879,14 @@ void xyz_value_dir_to_graph(MMA845X_struct* _acc,GUI_COLOR col,EXYZ xyz)
 				_acc->used_acc_num++;
 			}
 			//acc_buf[acc_nums+1] = (temp - MMA845X_Z_DEFAULT)/128;  //acc的范围是 -8192 —— +8191(2^13) 使用128个点表示 -2g —— +2g
-			//(temp&0x8000) - 符号位
+			
 			// 0 - xxx - Y轴 
-			// temp>>2 - 实际的范围
+			// temp>>2 - 实际的范围 
 			// temp>>7 - 使用128个点表示 -2g —— +2g
-
-			// 问题 temp >> 2 ,符号位 仍然存在
 			
 			mid = temp>>9;  //acc的范围是 -8192 —— +8191(2^13) 使用128个点表示 -2g —— +2g
 			acc_buf[acc_nums+1] = 0-mid;
-			//acc_buf[acc_nums+1] = (temp>>9);  //acc的范围是 -8192 —— +8191(2^13) 使用128个点表示 -2g —— +2g
-			//acc_buf[acc_nums+1] = 0-((temp&0x8000)|((temp)>>9));  //acc的范围是 -8192 —— +8191(2^13) 使用128个点表示 -2g —— +2g
+
 			acc_nums++;
 		}
 		
@@ -1039,7 +1043,7 @@ void disp_titles(void)
 
 	GUI_SetColor(GUI_WHITE);
 	GUI_SetFont(&GUI_Font8x16);
-
+	
 	GUI_DispStringAt("Za(Max)_m2/s|", x+det*0,y);
 	GUI_DispStringAt("Za(AVE)_m2/s|", x+det*1,y);
 	GUI_DispStringAt("Za(TIME)_s|", x+det*2,y);
@@ -1060,13 +1064,12 @@ void disp_caculate(void)
 	int x,y,det;
 	float mid;
 	GUI_COLOR color;
- const	GUI_FONT *pfont;
+	const	GUI_FONT *pfont;
 	color = GUI_GetColor();
 	x = 10;
 	y = 440-96;
 	det = 78*1.5;
 
-	
 	pfont = GUI_GetFont();
 
 	GUI_SetFont(&GUI_Font8x16);
@@ -1077,40 +1080,43 @@ void disp_caculate(void)
 	// ---> 2 -- 4095*2
 	// ---> 1 -- 4096
 	//.4096 --> >> 12
-	mid = Z_acc.acc_max>>14;
-	GUI_DispFloat(mid,5);
+	
+	mid = GET_ACC(Z_acc.acc_max);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*1,y);
-    mid = Z_acc.acc_ave_add >> 14;
+	mid = GET_ACC(Z_acc.acc_ave_add);
 	mid = mid/Z_acc.acc_time;
-	GUI_DispFloat(mid,5);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*2,y);
 	GUI_DispFloat((float)(Z_acc.acc_time*0.00125),5);
 
 	GUI_GotoXY(x+det*3,y);
-	mid = ((Z_acc.dec_max)&(0x7FFF))>> 14;
-	GUI_DispFloat(-mid,5);
 
-
+	mid = GET_ACC(Z_acc.dec_max);
+	GUI_DispFloat(mid/100,5);
+	
+	
 	GUI_GotoXY(x+det*4,y);
-	mid = (((Z_acc.dec_max)&(0x7FFF))>> 14)/Z_acc.acc_time;
-	GUI_DispFloat(-mid,5);
+	mid = GET_ACC((Z_acc.dec_max))/Z_acc.acc_time;
+
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*0,y+64);
 	GUI_DispFloat((float)(Z_acc.dec_time*0.00125),5);
 
 	GUI_GotoXY(x+det*1,y+64);
-	mid = Z_acc.acc_dec_abs_max >> 14;
-	GUI_DispFloat(mid,5);
+	mid = GET_ACC(Z_acc.acc_dec_abs_max);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*2,y+64);
-	mid = X_acc.acc_dec_abs_max >> 14;
-	GUI_DispFloat(mid,5);
+	mid = GET_ACC(X_acc.acc_dec_abs_max);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*3,y+64);
-	mid = Y_acc.acc_dec_abs_max >> 14;
-	GUI_DispFloat(mid,5);
+	mid = GET_ACC(Y_acc.acc_dec_abs_max);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_SetColor(color);
 	GUI_SetFont(pfont);
@@ -1293,7 +1299,7 @@ int save_xyz(void)
 		 i++;
 		 xyz_data[i] =  X_acc.acc_buf[X_acc.used_acc_num & (MMA845X_X_ACC_BUF - 1)+i];
 		 i--;
-
+		 
 		 xyz_data[i] =  Y_acc.acc_buf[Y_acc.used_acc_num & (MMA845X_Y_ACC_BUF - 1)+i];
 		 i++;
 
@@ -1347,6 +1353,55 @@ int save_xyz(void)
 		}
 	}
 	xyz_file_data_save(xyz_data, tdisp_acc_struct.acc_nums_of_one_pixel);
+}
+
+void draw_cm_s2(int z_judge_cm_s2,int xy_judge_cm_s2)
+{
+	int zy1,zy2,xy_y1,xy_y2;
+	TPoint z1_ps,xy1_ps,z1_pe,xy1_pe,z2_ps,xy2_ps,z2_pe,xy2_pe;
+
+	get_loc(&zy1,SCALE_Z_ACC_MIDDLE,z_judge_cm_s2,1);
+	get_loc(&zy2,SCALE_Z_ACC_MIDDLE,z_judge_cm_s2,-1);
+	
+	get_loc(&xy_y1,SCALE_X_ACC_MIDDLE,xy_judge_cm_s2,1);
+	get_loc(&xy_y2,SCALE_X_ACC_MIDDLE,xy_judge_cm_s2,-1);
+	
+	z1_ps.x = SCALE_X_START;
+	z1_ps.y = zy1;
+
+	z1_pe.x = SCALE_X_END;
+	z1_pe.y = zy1;
+	
+	z2_ps.x = SCALE_X_START;
+	z2_ps.y = zy2;
+
+	z2_pe.x = SCALE_X_END;
+	z2_pe.y = zy2;
+
+	xy1_ps.x = SCALE_X_START;
+	xy1_ps.y = xy_y1;
+
+	xy1_pe.x = SCALE_X_END;
+	xy1_pe.y = xy_y1;
+
+	xy2_ps.x = SCALE_X_START;
+    xy2_ps.y = xy_y2;
+
+	xy2_pe.x = SCALE_X_END;
+	xy2_pe.y = xy_y2;
+
+	draw_line_at(z1_ps,z1_pe,GUI_LS_DASH);
+	draw_line_at(z2_ps,z2_pe,GUI_LS_DASH);
+
+	draw_line_at(xy1_ps,xy1_pe,GUI_LS_DASH);
+	draw_line_at(xy2_ps,xy2_pe,GUI_LS_DASH);
+
+}
+
+void get_base_ave(TXYZ_Result* xyz_res)
+{
+	
+
 }
 
 

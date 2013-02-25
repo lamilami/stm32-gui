@@ -22547,6 +22547,9 @@ extern __declspec(__nothrow) int __C_library_version_number(void);
 
 
 
+
+
+
 typedef struct{
 int x;
 int y;
@@ -22627,6 +22630,12 @@ void draw_exp(TDraw* draw);
 void draw_clear(TDraw* draw);
 
 unsigned int data_zip(int* data,unsigned int in_size,int out_size,EZip ezip);
+
+void draw_line_at(TPoint ps,TPoint pe,unsigned char line_style);
+
+void get_loc(int *y,int scale_mid,float CM_S,char zero_up_down);
+
+
 #line 64 "Source\\gui_app\\gui_app.h"
 #line 1 "Source\\gui_app\\XYZ.h"
 #line 1 "Source\\gui_app\\MMA8452Q.h"
@@ -22782,6 +22791,8 @@ typedef  struct
 
 	unsigned int acc_x_pose;
 	unsigned int acc_y_pose;
+	
+	float v_max;
 
 }MMA845X_struct;
 
@@ -22791,7 +22802,7 @@ extern MMA845X_struct Z_acc;
 extern MMA845X_struct X_acc;
 extern MMA845X_struct Y_acc;
 
-extern 
+
 
 
 
@@ -22893,94 +22904,12 @@ enum
  
 
 
-#line 208 "Source\\gui_app\\MMA8452Q.h"
+#line 210 "Source\\gui_app\\MMA8452Q.h"
 
 
 
  
-#line 218 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
- 
-
-
-
-
-
-
-
- 
-
-
-#line 242 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 258 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
- 
-
-
-#line 286 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 300 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-#line 338 "Source\\gui_app\\MMA8452Q.h"
+#line 220 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -22996,19 +22925,101 @@ enum
  
 
 
-
-
- 
-
-
-#line 365 "Source\\gui_app\\MMA8452Q.h"
+#line 244 "Source\\gui_app\\MMA8452Q.h"
 
 
 
  
 
 
-#line 381 "Source\\gui_app\\MMA8452Q.h"
+#line 260 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 288 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 302 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 340 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+#line 367 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 383 "Source\\gui_app\\MMA8452Q.h"
 
   
 
@@ -23030,7 +23041,7 @@ enum
 
 
 
-#line 409 "Source\\gui_app\\MMA8452Q.h"
+#line 411 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -23041,7 +23052,7 @@ enum
 
 
 
-#line 428 "Source\\gui_app\\MMA8452Q.h"
+#line 430 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -23054,45 +23065,6 @@ enum
  
 
 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-#line 460 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-
- 
-
-
-
-#line 480 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-#line 495 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
 
 
 
@@ -23106,7 +23078,36 @@ enum
 
 
 
+#line 462 "Source\\gui_app\\MMA8452Q.h"
+
+
+
  
+
+
+
+
+ 
+
+
+
+#line 482 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+#line 497 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
 
 
 
@@ -23124,43 +23125,6 @@ enum
  
 
 
-#line 540 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
-
-
-#line 554 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 569 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 583 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 597 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 611 "Source\\gui_app\\MMA8452Q.h"
-
 
 
  
@@ -23168,8 +23132,55 @@ enum
 
 
 
+ 
 
-#line 632 "Source\\gui_app\\MMA8452Q.h"
+
+#line 542 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+
+
+#line 556 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 571 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 585 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 599 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 613 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
+
+#line 634 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -31099,6 +31110,21 @@ void xyz_pars_save(void);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 typedef enum{
 ONE_AXLE,
 TOW_AXLE
@@ -31156,7 +31182,6 @@ X = 0,
 Y = 1,
 Z = 2
 
-
 }EXYZ;
 
 
@@ -31176,6 +31201,12 @@ Z = 2
    signed short res1;	
    signed short res2;
    signed short res3;
+
+   signed short za_ave_base;
+   signed short xa_ave_base;
+   signed short ya_ave_base;
+   unsigned int ave_times_ms;
+
  }TXYZ_Result;
 
 
@@ -31187,6 +31218,10 @@ typedef struct
 	tim            xyz_tim; 
 	unsigned int   fragment_start;
 }T_XYZ_FILE_struct;
+
+
+
+
 
 extern 	 T_XYZ_FILE_struct xyz_file;
 
@@ -31220,7 +31255,7 @@ int save_xyz(void);
 
 void xyz_file_save_end(void);
 
-void draw_dot_line(void);
+void draw_cm_s2(int z_judge_cm_s2,int xy_judge_cm_s2);
 
 extern XYZ_ACC_SAMPLE_STATUS    sample_status;
 extern Dispaly_Acc_struct   tdisp_acc_struct;
@@ -33324,6 +33359,7 @@ Dispaly_Acc_struct   tdisp_acc_struct;
 TMMA845xFilterResult tfilter_result;
 
 char in_fft;
+char get_ave;
 
 q15_t FIR_State[32+8-1];
 arm_fir_instance_q15 FIR_S;
@@ -33437,7 +33473,7 @@ void OnButton_SetParaClicked(WM_MESSAGE * pMsg);
 
  
 
-#line 184 "Source\\gui_app\\XYZ.c"
+#line 185 "Source\\gui_app\\XYZ.c"
 
 
 
@@ -33726,6 +33762,8 @@ void xyz_acc_home(WM_MESSAGE *pMsg)
 	X_acc.acc_time = 1;
 	Y_acc.acc_time = 1;
 
+	
+
 
 	MMA845X_TIM6_interrupt_conf(DISABLE);
 
@@ -33748,21 +33786,25 @@ void OnButtonStartClicked(WM_MESSAGE * pMsg)
 {
 	Z_acc.got_acc_num = 0;
 	Z_acc.used_acc_num = 0;
+	Z_acc.v_max = 0;
+    
+
 	X_acc.got_acc_num = 0;
 	X_acc.used_acc_num = 0;
 	Y_acc.got_acc_num = 0;
 	Y_acc.used_acc_num = 0;
-
+	
 	xyz_paint_flag = 0; 
 	sample_status = START;
 
 	xyz_head_save();
 	xyz_pars_save();
+	
 
 	GUI_ClearRect(0,23,685,402 - 23);
 
 
-	  MMA845X_TIM6_interrupt_conf(ENABLE);
+	MMA845X_TIM6_interrupt_conf(ENABLE);
 
 
 }
@@ -34133,13 +34175,10 @@ void xyz_value_dir_to_graph(MMA845X_struct* _acc,GUI_COLOR col,EXYZ xyz)
 			
 			
 			
-
-			
 			
 			mid = temp>>9;  
 			acc_buf[acc_nums+1] = 0-mid;
-			
-			
+
 			acc_nums++;
 		}
 		
@@ -34296,7 +34335,7 @@ void disp_titles(void)
 
 	GUI_SetColor(0xFFFFFF);
 	GUI_SetFont(&GUI_Font8x16);
-
+	
 	GUI_DispStringAt("Za(Max)_m2/s|", x+det*0,y);
 	GUI_DispStringAt("Za(AVE)_m2/s|", x+det*1,y);
 	GUI_DispStringAt("Za(TIME)_s|", x+det*2,y);
@@ -34317,13 +34356,12 @@ void disp_caculate(void)
 	int x,y,det;
 	float mid;
 	GUI_COLOR color;
- const	GUI_FONT *pfont;
+	const	GUI_FONT *pfont;
 	color = GUI_GetColor();
 	x = 10;
 	y = 440-96;
 	det = 78*1.5;
 
-	
 	pfont = GUI_GetFont();
 
 	GUI_SetFont(&GUI_Font8x16);
@@ -34334,40 +34372,43 @@ void disp_caculate(void)
 	
 	
 	
-	mid = Z_acc.acc_max>>14;
-	GUI_DispFloat(mid,5);
+	
+	mid = (0.239258*Z_acc . acc_max);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*1,y);
-    mid = Z_acc.acc_ave_add >> 14;
+	mid = (0.239258*Z_acc . acc_ave_add);
 	mid = mid/Z_acc.acc_time;
-	GUI_DispFloat(mid,5);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*2,y);
 	GUI_DispFloat((float)(Z_acc.acc_time*0.00125),5);
 
 	GUI_GotoXY(x+det*3,y);
-	mid = ((Z_acc.dec_max)&(0x7FFF))>> 14;
-	GUI_DispFloat(-mid,5);
 
-
+	mid = (0.239258*Z_acc . dec_max);
+	GUI_DispFloat(mid/100,5);
+	
+	
 	GUI_GotoXY(x+det*4,y);
-	mid = (((Z_acc.dec_max)&(0x7FFF))>> 14)/Z_acc.acc_time;
-	GUI_DispFloat(-mid,5);
+	mid = (0.239258*(Z_acc . dec_max))/Z_acc.acc_time;
+
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*0,y+64);
 	GUI_DispFloat((float)(Z_acc.dec_time*0.00125),5);
 
 	GUI_GotoXY(x+det*1,y+64);
-	mid = Z_acc.acc_dec_abs_max >> 14;
-	GUI_DispFloat(mid,5);
+	mid = (0.239258*Z_acc . acc_dec_abs_max);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*2,y+64);
-	mid = X_acc.acc_dec_abs_max >> 14;
-	GUI_DispFloat(mid,5);
+	mid = (0.239258*X_acc . acc_dec_abs_max);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_GotoXY(x+det*3,y+64);
-	mid = Y_acc.acc_dec_abs_max >> 14;
-	GUI_DispFloat(mid,5);
+	mid = (0.239258*Y_acc . acc_dec_abs_max);
+	GUI_DispFloat(mid/100,5);
 
 	GUI_SetColor(color);
 	GUI_SetFont(pfont);
@@ -34550,7 +34591,7 @@ int save_xyz(void)
 		 i++;
 		 xyz_data[i] =  X_acc.acc_buf[X_acc.used_acc_num & (1024 - 1)+i];
 		 i--;
-
+		 
 		 xyz_data[i] =  Y_acc.acc_buf[Y_acc.used_acc_num & (1024 - 1)+i];
 		 i++;
 
@@ -34604,6 +34645,55 @@ int save_xyz(void)
 		}
 	}
 	xyz_file_data_save(xyz_data, tdisp_acc_struct.acc_nums_of_one_pixel);
+}
+
+void draw_cm_s2(int z_judge_cm_s2,int xy_judge_cm_s2)
+{
+	int zy1,zy2,xy_y1,xy_y2;
+	TPoint z1_ps,xy1_ps,z1_pe,xy1_pe,z2_ps,xy2_ps,z2_pe,xy2_pe;
+
+	get_loc(&zy1,(23+128/2),z_judge_cm_s2,1);
+	get_loc(&zy2,(23+128/2),z_judge_cm_s2,-1);
+	
+	get_loc(&xy_y1,(23+128+128/2),xy_judge_cm_s2,1);
+	get_loc(&xy_y2,(23+128+128/2),xy_judge_cm_s2,-1);
+	
+	z1_ps.x = 20;
+	z1_ps.y = zy1;
+
+	z1_pe.x = (20+600);
+	z1_pe.y = zy1;
+	
+	z2_ps.x = 20;
+	z2_ps.y = zy2;
+
+	z2_pe.x = (20+600);
+	z2_pe.y = zy2;
+
+	xy1_ps.x = 20;
+	xy1_ps.y = xy_y1;
+
+	xy1_pe.x = (20+600);
+	xy1_pe.y = xy_y1;
+
+	xy2_ps.x = 20;
+    xy2_ps.y = xy_y2;
+
+	xy2_pe.x = (20+600);
+	xy2_pe.y = xy_y2;
+
+	draw_line_at(z1_ps,z1_pe,(1));
+	draw_line_at(z2_ps,z2_pe,(1));
+
+	draw_line_at(xy1_ps,xy1_pe,(1));
+	draw_line_at(xy2_ps,xy2_pe,(1));
+
+}
+
+void get_base_ave(TXYZ_Result* xyz_res)
+{
+	
+
 }
 
 

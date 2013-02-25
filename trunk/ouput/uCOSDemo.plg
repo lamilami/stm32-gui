@@ -4,7 +4,7 @@
 <h1>礦ision Build Log</h1>
 <h2>Project:</h2>
 E:\Proj\STM32\uCOS+uCGUI0920\uCOS+uCGUI\uCOS ucgui_lib.uvproj
-Project File Date:  02/14/2013
+Project File Date:  02/18/2013
 
 <h2>Output:</h2>
 Build target '7tftlcd'
@@ -12,7 +12,7 @@ creating preprocessor file for app.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -45,10 +45,10 @@ creating preprocessor file for app.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -77,7 +77,7 @@ compiling app.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -110,10 +110,10 @@ compiling app.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -148,7 +148,7 @@ creating preprocessor file for stm32f10x_it.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -181,10 +181,10 @@ creating preprocessor file for stm32f10x_it.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -213,7 +213,7 @@ compiling stm32f10x_it.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -246,10 +246,10 @@ compiling stm32f10x_it.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -284,7 +284,7 @@ creating preprocessor file for home.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -317,10 +317,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -349,7 +349,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -382,10 +382,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -423,7 +423,7 @@ creating preprocessor file for MainTask.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -456,10 +456,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -483,7 +483,7 @@ Source\gui_app\BalancePars.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
@@ -497,7 +497,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -530,10 +530,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -557,25 +557,25 @@ Source\gui_app\BalancePars.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\MainTask.c(182): warning:  #223-D: function "read_custormer" declared implicitly
+Source\gui_app\MainTask.c(183): warning:  #223-D: function "read_custormer" declared implicitly
 Source\gui_app\MainTask.c:              read_custormer();
 Source\gui_app\MainTask.c:              ^
-Source\gui_app\MainTask.c(406): warning:  #223-D: function "xyz_value_fir_to_graph" declared implicitly
+Source\gui_app\MainTask.c(408): warning:  #223-D: function "xyz_value_fir_to_graph" declared implicitly
 Source\gui_app\MainTask.c:                      xyz_value_fir_to_graph();
 Source\gui_app\MainTask.c:                      ^
-Source\gui_app\MainTask.c(410): warning:  #223-D: function "xyz_value_dir_to_graph" declared implicitly
+Source\gui_app\MainTask.c(412): warning:  #223-D: function "xyz_value_dir_to_graph" declared implicitly
 Source\gui_app\MainTask.c:                      xyz_value_dir_to_graph(&Z_acc,GUI_GREEN,Z);
 Source\gui_app\MainTask.c:                      ^
-Source\gui_app\MainTask.c(412): warning:  #223-D: function "xyz_value_dir_to_graph" declared implicitly
+Source\gui_app\MainTask.c(414): warning:  #223-D: function "xyz_value_dir_to_graph" declared implicitly
 Source\gui_app\MainTask.c:                      xyz_value_dir_to_graph(&X_acc,GUI_BLUE,X);
 Source\gui_app\MainTask.c:                      ^
-Source\gui_app\MainTask.c(476): warning:  #223-D: function "OSTimeDlyHMSM" declared implicitly
+Source\gui_app\MainTask.c(478): warning:  #223-D: function "OSTimeDlyHMSM" declared implicitly
 Source\gui_app\MainTask.c:              OSTimeDlyHMSM(0,0,0,5); 
 Source\gui_app\MainTask.c:              ^
 Source\gui_app\MainTask.c(68): warning:  #177-D: variable "speed_start" was declared but never referenced
@@ -635,12 +635,15 @@ Source\gui_app\MainTask.c:                           ^
 Source\gui_app\MainTask.c(84): warning:  #177-D: variable "hGraph" was declared but never referenced
 Source\gui_app\MainTask.c:      WM_HWIN  hGraph = 0;
 Source\gui_app\MainTask.c:               ^
-Source\gui_app\MainTask.c: Source\gui_app\MainTask.c: 48 warnings, 0 errors
+Source\gui_app\MainTask.c(86): warning:  #177-D: variable "y" was declared but never referenced
+Source\gui_app\MainTask.c:      int y;
+Source\gui_app\MainTask.c:          ^
+Source\gui_app\MainTask.c: Source\gui_app\MainTask.c: 49 warnings, 0 errors
 creating preprocessor file for Custormer.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -673,10 +676,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -708,7 +711,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -741,10 +744,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -785,7 +788,7 @@ creating preprocessor file for gui_app.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -818,10 +821,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -850,7 +853,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -883,10 +886,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -957,7 +960,7 @@ creating preprocessor file for TimeSet.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -990,10 +993,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1022,7 +1025,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1055,10 +1058,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1099,7 +1102,7 @@ creating preprocessor file for LimitSpeedH.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1132,10 +1135,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1167,7 +1170,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1200,10 +1203,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1286,7 +1289,7 @@ creating preprocessor file for Draw.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1319,10 +1322,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1351,7 +1354,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1384,10 +1387,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1470,7 +1473,7 @@ creating preprocessor file for XYZ.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1503,10 +1506,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1530,7 +1533,7 @@ Source\gui_app\BalancePars.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
@@ -1544,7 +1547,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1577,10 +1580,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1604,102 +1607,108 @@ Source\gui_app\BalancePars.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.c(219): warning:  #177-D: variable "hWin" was declared but never referenced
+Source\gui_app\XYZ.c(220): warning:  #177-D: variable "hWin" was declared but never referenced
 Source\gui_app\XYZ.c:       WM_HWIN hWin = pMsg->hWin;
 Source\gui_app\XYZ.c:               ^
-Source\gui_app\XYZ.c(486): warning:  #223-D: function "xyz_acc_parameter" declared implicitly
+Source\gui_app\XYZ.c(489): warning:  #223-D: function "xyz_acc_parameter" declared implicitly
 Source\gui_app\XYZ.c:           xyz_acc_parameter(pMsg);
 Source\gui_app\XYZ.c:           ^
-Source\gui_app\XYZ.c(530): warning:  #177-D: variable "i" was declared but never referenced
+Source\gui_app\XYZ.c(537): warning:  #177-D: variable "i" was declared but never referenced
 Source\gui_app\XYZ.c:           int i,fftLen,ifftFlag,bitReverseFlag;
 Source\gui_app\XYZ.c:               ^
-Source\gui_app\XYZ.c(610): warning:  #223-D: function "GUI_SetVLine" declared implicitly
+Source\gui_app\XYZ.c(617): warning:  #223-D: function "GUI_SetVLine" declared implicitly
 Source\gui_app\XYZ.c:                           GUI_SetVLine(time_base.A_pos, 0,470,&time_base.A_color_value[0]);
 Source\gui_app\XYZ.c:                           ^
-Source\gui_app\XYZ.c(612): warning:  #223-D: function "GUI_GetVLine" declared implicitly
+Source\gui_app\XYZ.c(619): warning:  #223-D: function "GUI_GetVLine" declared implicitly
 Source\gui_app\XYZ.c:                           GUI_GetVLine(time_base.A_pos, 0,470,&time_base.A_color_value[0]);
 Source\gui_app\XYZ.c:                           ^
-Source\gui_app\XYZ.c(621): warning:  #223-D: function "GUI_SetVLine" declared implicitly
+Source\gui_app\XYZ.c(628): warning:  #223-D: function "GUI_SetVLine" declared implicitly
 Source\gui_app\XYZ.c:                           GUI_SetVLine(time_base.B_pos, 0,470,&time_base.B_color_value[0]);
 Source\gui_app\XYZ.c:                           ^
-Source\gui_app\XYZ.c(623): warning:  #223-D: function "GUI_GetVLine" declared implicitly
+Source\gui_app\XYZ.c(630): warning:  #223-D: function "GUI_GetVLine" declared implicitly
 Source\gui_app\XYZ.c:                           GUI_GetVLine(time_base.B_pos, 0,470,&time_base.B_color_value[0]);
 Source\gui_app\XYZ.c:                           ^
-Source\gui_app\XYZ.c(638): warning:  #223-D: function "GUI_SetVLine" declared implicitly
+Source\gui_app\XYZ.c(645): warning:  #223-D: function "GUI_SetVLine" declared implicitly
 Source\gui_app\XYZ.c:                           GUI_SetVLine(time_base.A_pos, 0,470,&time_base.A_color_value[0]);
 Source\gui_app\XYZ.c:                           ^
-Source\gui_app\XYZ.c(640): warning:  #223-D: function "GUI_GetVLine" declared implicitly
+Source\gui_app\XYZ.c(647): warning:  #223-D: function "GUI_GetVLine" declared implicitly
 Source\gui_app\XYZ.c:                           GUI_GetVLine(time_base.A_pos, 0,470,&time_base.A_color_value[0]);
 Source\gui_app\XYZ.c:                           ^
-Source\gui_app\XYZ.c(649): warning:  #223-D: function "GUI_SetVLine" declared implicitly
+Source\gui_app\XYZ.c(656): warning:  #223-D: function "GUI_SetVLine" declared implicitly
 Source\gui_app\XYZ.c:                           GUI_SetVLine(time_base.B_pos, 0,470,&time_base.B_color_value[0]);
 Source\gui_app\XYZ.c:                           ^
-Source\gui_app\XYZ.c(651): warning:  #223-D: function "GUI_GetVLine" declared implicitly
+Source\gui_app\XYZ.c(658): warning:  #223-D: function "GUI_GetVLine" declared implicitly
 Source\gui_app\XYZ.c:                           GUI_GetVLine(time_base.B_pos, 0,470,&time_base.B_color_value[0]);
 Source\gui_app\XYZ.c:                           ^
-Source\gui_app\XYZ.c(726): warning:  #223-D: function "GUI_GetVLine" declared implicitly
+Source\gui_app\XYZ.c(733): warning:  #223-D: function "GUI_GetVLine" declared implicitly
 Source\gui_app\XYZ.c:           GUI_GetVLine(0, time_base.A_pos,XYZ_SCALE_Y_END,&time_base.A_color_value[0]);
 Source\gui_app\XYZ.c:           ^
-Source\gui_app\XYZ.c(734): warning:  #177-D: variable "k" was declared but never referenced
+Source\gui_app\XYZ.c(741): warning:  #177-D: variable "k" was declared but never referenced
 Source\gui_app\XYZ.c:           unsigned int i,j,k,flag,flag_in;
 Source\gui_app\XYZ.c:                            ^
-Source\gui_app\XYZ.c(734): warning:  #177-D: variable "flag_in" was declared but never referenced
+Source\gui_app\XYZ.c(741): warning:  #177-D: variable "flag_in" was declared but never referenced
 Source\gui_app\XYZ.c:           unsigned int i,j,k,flag,flag_in;
 Source\gui_app\XYZ.c:                                   ^
-Source\gui_app\XYZ.c(802): warning:  #177-D: variable "nums" was declared but never referenced
+Source\gui_app\XYZ.c(809): warning:  #177-D: variable "nums" was declared but never referenced
 Source\gui_app\XYZ.c:           short nums;
 Source\gui_app\XYZ.c:                 ^
-Source\gui_app\XYZ.c(852): warning:  #177-D: variable "nums" was declared but never referenced
+Source\gui_app\XYZ.c(859): warning:  #177-D: variable "nums" was declared but never referenced
 Source\gui_app\XYZ.c:           short nums;
 Source\gui_app\XYZ.c:                 ^
-Source\gui_app\XYZ.c(954): warning:  #223-D: function "scale_set" declared implicitly
+Source\gui_app\XYZ.c(958): warning:  #223-D: function "scale_set" declared implicitly
 Source\gui_app\XYZ.c:           scale_set(&tscale);
 Source\gui_app\XYZ.c:           ^
-Source\gui_app\XYZ.c(977): warning:  #177-D: variable "sepoint" was declared but never referenced
+Source\gui_app\XYZ.c(981): warning:  #177-D: variable "sepoint" was declared but never referenced
 Source\gui_app\XYZ.c:           TSEPoint sepoint;
 Source\gui_app\XYZ.c:                    ^
-Source\gui_app\XYZ.c(1125): warning:  #177-D: variable "i" was declared but never referenced
+Source\gui_app\XYZ.c(1131): warning:  #177-D: variable "i" was declared but never referenced
 Source\gui_app\XYZ.c:               unsigned int i, bw;
 Source\gui_app\XYZ.c:                            ^
-Source\gui_app\XYZ.c(1128): warning:  #177-D: variable "men" was declared but never referenced
+Source\gui_app\XYZ.c(1134): warning:  #177-D: variable "men" was declared but never referenced
 Source\gui_app\XYZ.c:                   char men;
 Source\gui_app\XYZ.c:                        ^
-Source\gui_app\XYZ.c(1157): warning:  #177-D: variable "i" was declared but never referenced
+Source\gui_app\XYZ.c(1163): warning:  #177-D: variable "i" was declared but never referenced
 Source\gui_app\XYZ.c:               unsigned int i, bw;
 Source\gui_app\XYZ.c:                            ^
-Source\gui_app\XYZ.c(1159): warning:  #177-D: variable "men" was declared but never referenced
+Source\gui_app\XYZ.c(1165): warning:  #177-D: variable "men" was declared but never referenced
 Source\gui_app\XYZ.c:                   char men;
 Source\gui_app\XYZ.c:                        ^
-Source\gui_app\XYZ.c(1205): warning:  #177-D: variable "test" was declared but never referenced
+Source\gui_app\XYZ.c(1211): warning:  #177-D: variable "test" was declared but never referenced
 Source\gui_app\XYZ.c:           static int test = 0;
 Source\gui_app\XYZ.c:                      ^
-Source\gui_app\XYZ.c(1208): warning:  #177-D: variable "bw" was declared but never referenced
+Source\gui_app\XYZ.c(1214): warning:  #177-D: variable "bw" was declared but never referenced
 Source\gui_app\XYZ.c:           unsigned int  bw;
 Source\gui_app\XYZ.c:                         ^
-Source\gui_app\XYZ.c(1222): warning:  #550-D: variable "y" was set but never used
+Source\gui_app\XYZ.c(1228): warning:  #550-D: variable "y" was set but never used
 Source\gui_app\XYZ.c:           int x,y,det;
 Source\gui_app\XYZ.c:                 ^
-Source\gui_app\XYZ.c(1223): warning:  #177-D: variable "div" was declared but never referenced
+Source\gui_app\XYZ.c(1229): warning:  #177-D: variable "div" was declared but never referenced
 Source\gui_app\XYZ.c:           float div;
 Source\gui_app\XYZ.c:                 ^
-Source\gui_app\XYZ.c(1350): warning:  #940-D: missing return statement at end of non-void function "save_xyz"
+Source\gui_app\XYZ.c(1356): warning:  #940-D: missing return statement at end of non-void function "save_xyz"
 Source\gui_app\XYZ.c:   }
 Source\gui_app\XYZ.c:   ^
-Source\gui_app\XYZ.c(1279): warning:  #177-D: variable "k" was declared but never referenced
+Source\gui_app\XYZ.c(1285): warning:  #177-D: variable "k" was declared but never referenced
 Source\gui_app\XYZ.c:           int i,j,k;
 Source\gui_app\XYZ.c:                   ^
-Source\gui_app\XYZ.c: Source\gui_app\XYZ.c: 52 warnings, 0 errors
+Source\gui_app\XYZ.c(1364): warning:  #68-D: integer conversion resulted in a change of sign
+Source\gui_app\XYZ.c:           get_loc(&zy2,SCALE_Z_ACC_MIDDLE,z_judge_cm_s2,-1);
+Source\gui_app\XYZ.c:                                                         ^
+Source\gui_app\XYZ.c(1367): warning:  #68-D: integer conversion resulted in a change of sign
+Source\gui_app\XYZ.c:           get_loc(&xy_y2,SCALE_X_ACC_MIDDLE,xy_judge_cm_s2,-1);
+Source\gui_app\XYZ.c:                                                            ^
+Source\gui_app\XYZ.c: Source\gui_app\XYZ.c: 54 warnings, 0 errors
 creating preprocessor file for xyz_acc_para.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1732,10 +1741,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1762,7 +1771,7 @@ Source\gui_app\xyz_acc_para.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\XYZ.h: Source\gui_app\xyz_acc_para.c: 23 warnings, 0 errors
@@ -1773,7 +1782,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1806,10 +1815,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1836,7 +1845,7 @@ Source\gui_app\xyz_acc_para.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\xyz_acc_para.c(41): warning:  #188-D: enumerated type mixed with another type
@@ -1883,7 +1892,7 @@ creating preprocessor file for num_dialog.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1916,10 +1925,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -1951,7 +1960,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -1984,10 +1993,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2019,7 +2028,7 @@ creating preprocessor file for TParameter.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2052,10 +2061,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2084,7 +2093,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2117,10 +2126,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2158,7 +2167,7 @@ creating preprocessor file for Parameter.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2191,10 +2200,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2226,7 +2235,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2259,10 +2268,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2303,7 +2312,7 @@ creating preprocessor file for LimitSpeedT.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2336,10 +2345,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2371,7 +2380,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2404,10 +2413,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2455,10 +2464,10 @@ Source\gui_app\LimitSpeedT.c:               ^
 Source\gui_app\LimitSpeedT.c(428): warning:  #223-D: function "OnButtonSaveClicked" declared implicitly
 Source\gui_app\LimitSpeedT.c:                               OnButtonSaveClicked(pMsg,RemberToSd);
 Source\gui_app\LimitSpeedT.c:                               ^
-Source\gui_app\LimitSpeedT.c(501): warning:  #513-D: a value of type "int *" cannot be assigned to an entity of type "unsigned int *"
+Source\gui_app\LimitSpeedT.c(500): warning:  #513-D: a value of type "int *" cannot be assigned to an entity of type "unsigned int *"
 Source\gui_app\LimitSpeedT.c:           tdraw.buf = draw_buf_lim_t;
 Source\gui_app\LimitSpeedT.c:                     ^
-Source\gui_app\LimitSpeedT.c(540): warning:  #223-D: function "scale_set" declared implicitly
+Source\gui_app\LimitSpeedT.c(539): warning:  #223-D: function "scale_set" declared implicitly
 Source\gui_app\LimitSpeedT.c:           scale_set(&tscale);
 Source\gui_app\LimitSpeedT.c:           ^
 Source\gui_app\LimitSpeedT.c: Source\gui_app\LimitSpeedT.c: 32 warnings, 0 errors
@@ -2466,7 +2475,7 @@ creating preprocessor file for BalancePars.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2499,10 +2508,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2531,7 +2540,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2564,10 +2573,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2617,7 +2626,7 @@ creating preprocessor file for Balance.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2650,10 +2659,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2685,7 +2694,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2718,10 +2727,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2801,7 +2810,7 @@ creating preprocessor file for bsp.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2834,10 +2843,10 @@ creating preprocessor file for bsp.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2866,7 +2875,7 @@ compiling bsp.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2899,10 +2908,10 @@ compiling bsp.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -2943,7 +2952,7 @@ creating preprocessor file for rtc.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -2976,10 +2985,10 @@ creating preprocessor file for rtc.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3008,7 +3017,7 @@ compiling rtc.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3041,10 +3050,10 @@ compiling rtc.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3070,7 +3079,7 @@ creating preprocessor file for mot.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3103,10 +3112,10 @@ creating preprocessor file for mot.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3138,7 +3147,7 @@ compiling mot.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3171,10 +3180,10 @@ compiling mot.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3242,7 +3251,7 @@ creating preprocessor file for MMA8452Q.c...
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3275,10 +3284,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3299,7 +3308,7 @@ Source\gui_app\BalancePars.h:         ^
 .\Source\BSP\rdprint.h(148): warning:  #1-D: last line of file ends without a newline
 .\Source\BSP\rdprint.h:   #endif
 .\Source\BSP\rdprint.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
@@ -3313,7 +3322,7 @@ Source\gui_app\home.h:        ^
 Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\TParameter.h:   #endif
 Source\gui_app\TParameter.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3346,10 +3355,10 @@ Source\gui_app\xyz_acc_para.h:           ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 Source\gui_app\XYZ.h:           ^
-Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\XYZ.h:   #endif
 Source\gui_app\XYZ.h:         ^
 Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3370,36 +3379,45 @@ Source\gui_app\BalancePars.h:         ^
 .\Source\BSP\rdprint.h(148): warning:  #1-D: last line of file ends without a newline
 .\Source\BSP\rdprint.h:   #endif
 .\Source\BSP\rdprint.h:         ^
-Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\MMA8452Q.h:   #endif
 Source\gui_app\MMA8452Q.h:         ^
 Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 Source\gui_app\xyz_acc_para.h:   #endif
 Source\gui_app\xyz_acc_para.h:         ^
-Source\gui_app\MMA8452Q.c(12): warning:  #940-D: missing return statement at end of non-void function "get_from_fifo"
+Source\gui_app\MMA8452Q.c(13): warning:  #940-D: missing return statement at end of non-void function "get_from_fifo"
 Source\gui_app\MMA8452Q.c:   }
 Source\gui_app\MMA8452Q.c:   ^
-Source\gui_app\MMA8452Q.c(30): warning:  #940-D: missing return statement at end of non-void function "put_head"
+Source\gui_app\MMA8452Q.c(31): warning:  #940-D: missing return statement at end of non-void function "put_head"
 Source\gui_app\MMA8452Q.c:   }
 Source\gui_app\MMA8452Q.c:   ^
-Source\gui_app\MMA8452Q.c(133): warning:  #260-D: explicit type is missing ("int" assumed)
+Source\gui_app\MMA8452Q.c(134): warning:  #260-D: explicit type is missing ("int" assumed)
 Source\gui_app\MMA8452Q.c:      static start_stop;
 Source\gui_app\MMA8452Q.c:             ^
-Source\gui_app\MMA8452Q.c(134): warning:  #177-D: variable "i" was declared but never referenced
+Source\gui_app\MMA8452Q.c(135): warning:  #177-D: variable "i" was declared but never referenced
 Source\gui_app\MMA8452Q.c:      int i;
 Source\gui_app\MMA8452Q.c:          ^
-Source\gui_app\MMA8452Q.c(139): warning:  #177-D: variable "z_data_cnt" was declared but never referenced
+Source\gui_app\MMA8452Q.c(140): warning:  #177-D: variable "z_data_cnt" was declared but never referenced
 Source\gui_app\MMA8452Q.c:      static int z_data_cnt =0;
 Source\gui_app\MMA8452Q.c:                 ^
-Source\gui_app\MMA8452Q.c(703): warning:  #177-D: variable "z_data_cnt" was declared but never referenced
+Source\gui_app\MMA8452Q.c(711): warning:  #223-D: function "OnButtonStopClicked" declared implicitly
+Source\gui_app\MMA8452Q.c:                                              OnButtonStopClicked(pMsg);
+Source\gui_app\MMA8452Q.c:                                              ^
+Source\gui_app\MMA8452Q.c(660): warning:  #177-D: variable "in" was declared but never referenced
+Source\gui_app\MMA8452Q.c:      unsigned short in;
+Source\gui_app\MMA8452Q.c:                     ^
+Source\gui_app\MMA8452Q.c(743): warning:  #177-D: variable "z_data_cnt" was declared but never referenced
 Source\gui_app\MMA8452Q.c:      static int z_data_cnt =0;
 Source\gui_app\MMA8452Q.c:                 ^
-Source\gui_app\MMA8452Q.c: Source\gui_app\MMA8452Q.c: 29 warnings, 0 errors
+Source\gui_app\MMA8452Q.c(662): warning: C3017W: pMsg may be used before being set
+Source\gui_app\MMA8452Q.c:      WM_MESSAGE * pMsg;
+Source\gui_app\MMA8452Q.c:               ^
+Source\gui_app\MMA8452Q.c: Source\gui_app\MMA8452Q.c: 32 warnings, 0 errors
 creating preprocessor file for AD54XX.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3432,10 +3450,10 @@ creating preprocessor file for AD54XX.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3467,7 +3485,7 @@ compiling AD54XX.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3500,10 +3518,10 @@ compiling AD54XX.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3547,7 +3565,7 @@ creating preprocessor file for rdprint.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3580,10 +3598,10 @@ creating preprocessor file for rdprint.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3615,7 +3633,7 @@ compiling rdprint.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3648,10 +3666,10 @@ compiling rdprint.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3683,7 +3701,7 @@ creating preprocessor file for CTPM.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3716,10 +3734,10 @@ creating preprocessor file for CTPM.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3748,7 +3766,7 @@ compiling CTPM.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3781,10 +3799,10 @@ compiling CTPM.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3825,7 +3843,7 @@ creating preprocessor file for os_cpu_c.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3858,10 +3876,10 @@ creating preprocessor file for os_cpu_c.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3890,7 +3908,7 @@ compiling os_cpu_c.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3923,10 +3941,10 @@ compiling os_cpu_c.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -3952,7 +3970,7 @@ creating preprocessor file for GUI_X_uCOS.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -3985,10 +4003,10 @@ creating preprocessor file for GUI_X_uCOS.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -4017,7 +4035,7 @@ compiling GUI_X_uCOS.c...
 .\Source\gui_app\TParameter.h(46): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\TParameter.h:   #endif
 .\Source\gui_app\TParameter.h:         ^
-.\Source\gui_app\MMA8452Q.h(657): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\MMA8452Q.h(659): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\MMA8452Q.h:   #endif
 .\Source\gui_app\MMA8452Q.h:         ^
 .\Source\gui_app\xyz_acc_para.h(24): warning:  #47-D: incompatible redefinition of macro "GUI_ID_TEXT1" (declared at line 172 of ".\Source\uCGUI\Core\GUI.h")
@@ -4050,10 +4068,10 @@ compiling GUI_X_uCOS.c...
 .\Source\gui_app\xyz_acc_para.h(86): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\xyz_acc_para.h:   #endif
 .\Source\gui_app\xyz_acc_para.h:         ^
-.\Source\gui_app\XYZ.h(64): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 60)
-.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //  时基移动一次，移动的像素数
+.\Source\gui_app\XYZ.h(68): warning:  #47-D: incompatible redefinition of macro "TIME_BASE_STEP" (declared at line 64)
+.\Source\gui_app\XYZ.h:   #define TIME_BASE_STEP   5 //   时基移动一次，移动的像素数
 .\Source\gui_app\XYZ.h:           ^
-.\Source\gui_app\XYZ.h(192): warning:  #1-D: last line of file ends without a newline
+.\Source\gui_app\XYZ.h(216): warning:  #1-D: last line of file ends without a newline
 .\Source\gui_app\XYZ.h:   #endif
 .\Source\gui_app\XYZ.h:         ^
 .\Source\gui_app\LimitSpeedT.h(51): warning:  #1-D: last line of file ends without a newline
@@ -4075,7 +4093,176 @@ compiling GUI_X_uCOS.c...
 .\Source\BSP\rdprint.h:   #endif
 .\Source\BSP\rdprint.h:         ^
 .\Source\BSP\rdprint.h: Source\uCGUI\GUI_X_uCOS.c: 21 warnings, 0 errors
+creating preprocessor file for SSD1963.c...
+compiling SSD1963.c...
+creating preprocessor file for ssd1963_ucgui.c...
+compiling ssd1963_ucgui.c...
 linking...
-Program Size: Code=113324 RO-data=365148 RW-data=1172 ZI-data=62180  
+Program Size: Code=113936 RO-data=365144 RW-data=1180 ZI-data=62196  
 FromELF: creating hex file...
-".\ouput\uCOSDemo.axf" - 0 Error(s), 781 Warning(s).
+".\ouput\uCOSDemo.axf" - 0 Error(s), 787 Warning(s).
+Load "E:\\Proj\\STM32\\uCOS+uCGUI0920\\uCOS+uCGUI\\ouput\\uCOSDemo.AXF" 
+Set JLink Project File to "E:\Proj\STM32\uCOS+uCGUI0920\uCOS+uCGUI\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.15n, compiled Jun 18 2010 19:55:09
+Firmware: J-Link ARM V8 compiled May 20 2010 17:07:46
+Hardware: V8.00
+S/N : 20090626 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103VG
+VTarget = 3.248V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+No Algorithm found for: 08000000H - 0800FFFFH
+No Algorithm found for: 08010000H - 0801FFFFH
+No Algorithm found for: 08020000H - 0802FFFFH
+No Algorithm found for: 08030000H - 0803FFFFH
+No Algorithm found for: 08040000H - 0804FFFFH
+No Algorithm found for: 08050000H - 0805FFFFH
+No Algorithm found for: 08060000H - 0806FFFFH
+No Algorithm found for: 08070000H - 0807512FH
+Erase skipped!
+Load "E:\\Proj\\STM32\\uCOS+uCGUI0920\\uCOS+uCGUI\\ouput\\uCOSDemo.AXF" 
+Set JLink Project File to "E:\Proj\STM32\uCOS+uCGUI0920\uCOS+uCGUI\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.15n, compiled Jun 18 2010 19:55:09
+Firmware: J-Link ARM V8 compiled May 20 2010 17:07:46
+Hardware: V8.00
+S/N : 20090626 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103VG
+VTarget = 3.248V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Full Chip Erase Done.
+No Algorithm found for: 08000000H - 0800FFFFH
+No Algorithm found for: 08010000H - 0801FFFFH
+No Algorithm found for: 08020000H - 0802FFFFH
+No Algorithm found for: 08030000H - 0803FFFFH
+No Algorithm found for: 08040000H - 0804FFFFH
+No Algorithm found for: 08050000H - 0805FFFFH
+No Algorithm found for: 08060000H - 0806FFFFH
+No Algorithm found for: 08070000H - 0807512FH
+Programming skipped!
+Build target '7tftlcd'
+linking...
+Program Size: Code=113936 RO-data=365144 RW-data=1180 ZI-data=62196  
+FromELF: creating hex file...
+".\ouput\uCOSDemo.axf" - 0 Error(s), 0 Warning(s).
+Load "E:\\Proj\\STM32\\uCOS+uCGUI0920\\uCOS+uCGUI\\ouput\\uCOSDemo.AXF" 
+Set JLink Project File to "E:\Proj\STM32\uCOS+uCGUI0920\uCOS+uCGUI\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.15n, compiled Jun 18 2010 19:55:09
+Firmware: J-Link ARM V8 compiled May 20 2010 17:07:46
+Hardware: V8.00
+S/N : 20090626 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103VG
+VTarget = 3.248V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Full Chip Erase Done.
+No Algorithm found for: 08000000H - 0800FFFFH
+No Algorithm found for: 08010000H - 0801FFFFH
+No Algorithm found for: 08020000H - 0802FFFFH
+No Algorithm found for: 08030000H - 0803FFFFH
+No Algorithm found for: 08040000H - 0804FFFFH
+No Algorithm found for: 08050000H - 0805FFFFH
+No Algorithm found for: 08060000H - 0806FFFFH
+No Algorithm found for: 08070000H - 0807512FH
+Programming skipped!
+Load "E:\\Proj\\STM32\\uCOS+uCGUI0920\\uCOS+uCGUI\\ouput\\uCOSDemo.AXF" 
+Set JLink Project File to "E:\Proj\STM32\uCOS+uCGUI0920\uCOS+uCGUI\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.15n, compiled Jun 18 2010 19:55:09
+Firmware: J-Link ARM V8 compiled May 20 2010 17:07:46
+Hardware: V8.00
+S/N : 20090626 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103VG
+VTarget = 3.248V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.

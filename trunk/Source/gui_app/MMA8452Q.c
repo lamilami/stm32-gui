@@ -6,6 +6,7 @@
 short base_buf[BASE_SIZE];
 
 
+
 char get_from_fifo(	short* fifo_buf,short* out_buf,int lenth)
 {
 // get_za_data(out_buf, lenth);
@@ -149,24 +150,23 @@ void MMA845x_interrupt(void)
 
 	if(xyz_pars.auto_sel == 1)
 	{
-	if(!start_stop)
-	{
+	 if(!start_stop)
+	 {
 	 if(((z_temp&0x8000)|((z_temp&0x7fff)>>2))< xyz_pars.auto_start_za*0.9);
 	 start_stop = 1;
 	 return;
-	}else{
-	if(((z_temp&0x8000)|((z_temp&0x7fff)>>2))< xyz_pars.auto_stop_za*0.9);
+	 }else{
+	 if(((z_temp&0x8000)|((z_temp&0x7fff)>>2))< xyz_pars.auto_stop_za*0.9);
 	 return;
-	}
-		
+	 }	
 	}
 
 	if(Z_acc.got_acc_num-Z_acc.used_acc_num >= MMA845X_Z_ACC_BUF)
 	{
 		return;
 	}else{
-	Z_acc.acc_buf[Z_acc.got_acc_num & (MMA845X_Z_ACC_BUF-1)] = z_temp;
-	Z_acc.got_acc_num++;
+		Z_acc.acc_buf[Z_acc.got_acc_num & (MMA845X_Z_ACC_BUF-1)] = z_temp;
+		Z_acc.got_acc_num++;
 	}
 	resutl_caculate(z_temp,3);
 
@@ -185,11 +185,11 @@ void MMA845x_interrupt(void)
 	{
 		return;
 	}else{
-	Y_acc.acc_buf[Y_acc.got_acc_num & (MMA845X_Y_ACC_BUF-1)] = y_temp;
-	Y_acc.got_acc_num++;
+		Y_acc.acc_buf[Y_acc.got_acc_num & (MMA845X_Y_ACC_BUF-1)] = y_temp;
+		Y_acc.got_acc_num++;
 	}
 	resutl_caculate(y_temp,2);
-
+	
 }
 
 /*****************************************************************************
@@ -647,10 +647,21 @@ bool IIC_RegReadXYZ_and(uint8_t *buf)
 	}
 }
 
+
+#endif
+
 // x - 1 y - 2 z - 3
 void resutl_caculate(signed short data,int xyz)
 {
 	unsigned short abs_data;
+	float get_acc;
+	float v_z;
+
+	unsigned short in;
+
+	WM_MESSAGE * pMsg;
+
+	static long current_count;
 
 	abs_data = abs(data);
 
@@ -674,24 +685,53 @@ void resutl_caculate(signed short data,int xyz)
 	   }
 	   if(abs_data > Z_acc.acc_dec_abs_max)
 	   {
-	   Z_acc.acc_dec_abs_max = abs_data;
+			Z_acc.acc_dec_abs_max = abs_data;
 	   }
+
+	if(xyz_pars.auto_sel)
+	{
+	   get_acc = GET_ACC(Z_acc.acc_ave_add + Z_acc.dec_ave_add);
+
+	   v_z = get_acc*(Z_acc.acc_time + Z_acc.dec_time -1);// >>2 
+
+	   if(v_z > Z_acc.v_max)
+	   {
+		   Z_acc.v_max = v_z;
+	   }else{
+		   if(v_z <= (Z_acc.v_max/2)&&(( Z_acc.dec_time + Z_acc.acc_time)> 50))
+		   {
+				if(v_z <= STOP_START_SPEED_END)
+				{
+					if(current_count == 0)
+					{
+						current_count = Z_acc.acc_time + Z_acc.dec_time - 1;
+					}
+					if((Z_acc.acc_time + Z_acc.dec_time - 1 - current_count)>= STOP_GET_TIMES)
+					{
+						OnButtonStopClicked(pMsg);
+					}
+				}
+		   }
+	   }
+	}
+
 	}else if(xyz == 2){
 	   if(abs_data > Y_acc.acc_dec_abs_max)
 	   {
-	   Y_acc.acc_dec_abs_max = abs_data;
+			Y_acc.acc_dec_abs_max = abs_data;
 	   }
 	}else if(xyz == 1){
 	   if(abs_data > X_acc.acc_dec_abs_max)
 	   {
-	   X_acc.acc_dec_abs_max = abs_data;
+			X_acc.acc_dec_abs_max = abs_data;
 	   }
 	}
+
+
 }
 
 
 
-#endif
 
 void Data_Sim(unsigned lenth)
  {
@@ -708,7 +748,9 @@ void Data_Sim(unsigned lenth)
 		z_buf[1] = rand();
 		z_buf[1] = z_buf[1]&0x0fc;
 
-		temp  = ((z_buf[0]<<8) | z_buf[1]) ; 
+		temp  = ((z_buf[0]<<8) | z_buf[1]) ;
+
+		resutl_caculate(temp,3);
 
 		if(Z_acc.got_acc_num-Z_acc.used_acc_num >= MMA845X_Z_ACC_BUF)
 		{
@@ -728,7 +770,7 @@ void Data_Sim(unsigned lenth)
 
 	temp  = ((x_buf[0]<<8) | x_buf[1]) ;
 
-	
+	resutl_caculate(temp,1);
 
 	if(X_acc.got_acc_num-X_acc.used_acc_num >= MMA845X_X_ACC_BUF)
 	{
@@ -748,6 +790,8 @@ void Data_Sim(unsigned lenth)
 
 	temp  = ((y_buf[0]<<8) | y_buf[1]); 
 
+	resutl_caculate(temp,2);
+
 	if(Y_acc.got_acc_num-Y_acc.used_acc_num >= MMA845X_Y_ACC_BUF)
 	{
 		break;
@@ -759,6 +803,18 @@ void Data_Sim(unsigned lenth)
 
 }
 
+
+void test_resutl_caculate()
+{
+	static signed short i;
+
+	i++;
+	if(i == 5000)
+	i = 0;
+
+	resutl_caculate(i,3);
+
+}
 
 
 

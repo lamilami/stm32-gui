@@ -389,7 +389,6 @@ void GPIO_Config(void)
 
 	//RTC
 	//PWM
-
 	
 	//GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 |GPIO_Pin_7;
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 |GPIO_Pin_9;
