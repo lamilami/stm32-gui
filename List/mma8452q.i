@@ -22544,6 +22544,9 @@ extern __declspec(__nothrow) void _membitmovewb(void *  , const void *  , int  ,
 
 
 
+
+
+
 typedef struct{
 int x;
 int y;
@@ -22624,6 +22627,12 @@ void draw_exp(TDraw* draw);
 void draw_clear(TDraw* draw);
 
 unsigned int data_zip(int* data,unsigned int in_size,int out_size,EZip ezip);
+
+void draw_line_at(TPoint ps,TPoint pe,unsigned char line_style);
+
+void get_loc(int *y,int scale_mid,float CM_S,char zero_up_down);
+
+
 #line 64 "Source\\gui_app\\gui_app.h"
 #line 1 "Source\\gui_app\\XYZ.h"
 #line 1 "Source\\gui_app\\MMA8452Q.h"
@@ -30550,6 +30559,21 @@ void xyz_pars_save(void);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 typedef enum{
 ONE_AXLE,
 TOW_AXLE
@@ -30607,7 +30631,6 @@ X = 0,
 Y = 1,
 Z = 2
 
-
 }EXYZ;
 
 
@@ -30627,6 +30650,12 @@ Z = 2
    signed short res1;	
    signed short res2;
    signed short res3;
+
+   signed short za_ave_base;
+   signed short xa_ave_base;
+   signed short ya_ave_base;
+   unsigned int ave_times_ms;
+
  }TXYZ_Result;
 
 
@@ -30638,6 +30667,10 @@ typedef struct
 	tim            xyz_tim; 
 	unsigned int   fragment_start;
 }T_XYZ_FILE_struct;
+
+
+
+
 
 extern 	 T_XYZ_FILE_struct xyz_file;
 
@@ -30671,7 +30704,7 @@ int save_xyz(void);
 
 void xyz_file_save_end(void);
 
-void draw_dot_line(void);
+void draw_cm_s2(int z_judge_cm_s2,int xy_judge_cm_s2);
 
 extern XYZ_ACC_SAMPLE_STATUS    sample_status;
 extern Dispaly_Acc_struct   tdisp_acc_struct;
@@ -31985,6 +32018,8 @@ typedef  struct
 
 	unsigned int acc_x_pose;
 	unsigned int acc_y_pose;
+	
+	float v_max;
 
 }MMA845X_struct;
 
@@ -31994,7 +32029,7 @@ extern MMA845X_struct Z_acc;
 extern MMA845X_struct X_acc;
 extern MMA845X_struct Y_acc;
 
-extern 
+
 
 
 
@@ -32096,94 +32131,12 @@ enum
  
 
 
-#line 208 "Source\\gui_app\\MMA8452Q.h"
+#line 210 "Source\\gui_app\\MMA8452Q.h"
 
 
 
  
-#line 218 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
- 
-
-
-
-
-
-
-
- 
-
-
-#line 242 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 258 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
- 
-
-
-#line 286 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 300 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-#line 338 "Source\\gui_app\\MMA8452Q.h"
+#line 220 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -32199,19 +32152,101 @@ enum
  
 
 
-
-
- 
-
-
-#line 365 "Source\\gui_app\\MMA8452Q.h"
+#line 244 "Source\\gui_app\\MMA8452Q.h"
 
 
 
  
 
 
-#line 381 "Source\\gui_app\\MMA8452Q.h"
+#line 260 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 288 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 302 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 340 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+#line 367 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 383 "Source\\gui_app\\MMA8452Q.h"
 
   
 
@@ -32233,7 +32268,7 @@ enum
 
 
 
-#line 409 "Source\\gui_app\\MMA8452Q.h"
+#line 411 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -32244,7 +32279,7 @@ enum
 
 
 
-#line 428 "Source\\gui_app\\MMA8452Q.h"
+#line 430 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -32257,45 +32292,6 @@ enum
  
 
 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-#line 460 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-
- 
-
-
-
-#line 480 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-#line 495 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
 
 
 
@@ -32309,7 +32305,36 @@ enum
 
 
 
+#line 462 "Source\\gui_app\\MMA8452Q.h"
+
+
+
  
+
+
+
+
+ 
+
+
+
+#line 482 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+#line 497 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
 
 
 
@@ -32327,43 +32352,6 @@ enum
  
 
 
-#line 540 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
-
-
-#line 554 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 569 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 583 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 597 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 611 "Source\\gui_app\\MMA8452Q.h"
-
 
 
  
@@ -32371,8 +32359,55 @@ enum
 
 
 
+ 
 
-#line 632 "Source\\gui_app\\MMA8452Q.h"
+
+#line 542 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+
+
+#line 556 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 571 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 585 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 599 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 613 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
+
+#line 634 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -32405,6 +32440,7 @@ void Data_Sim(unsigned lenth);
 #line 5 "Source\\gui_app\\MMA8452Q.c"
 
 short base_buf[63];
+
 
 
 char get_from_fifo(	short* fifo_buf,short* out_buf,int lenth)
@@ -32476,9 +32512,9 @@ MMA845X_struct Y_acc;
 
 
  
-#line 79 "Source\\gui_app\\MMA8452Q.c"
 #line 80 "Source\\gui_app\\MMA8452Q.c"
 #line 81 "Source\\gui_app\\MMA8452Q.c"
+#line 82 "Source\\gui_app\\MMA8452Q.c"
 
 
 
@@ -32550,24 +32586,23 @@ void MMA845x_interrupt(void)
 
 	if(xyz_pars.auto_sel == 1)
 	{
-	if(!start_stop)
-	{
+	 if(!start_stop)
+	 {
 	 if(((z_temp&0x8000)|((z_temp&0x7fff)>>2))< xyz_pars.auto_start_za*0.9);
 	 start_stop = 1;
 	 return;
-	}else{
-	if(((z_temp&0x8000)|((z_temp&0x7fff)>>2))< xyz_pars.auto_stop_za*0.9);
+	 }else{
+	 if(((z_temp&0x8000)|((z_temp&0x7fff)>>2))< xyz_pars.auto_stop_za*0.9);
 	 return;
-	}
-		
+	 }	
 	}
 
 	if(Z_acc.got_acc_num-Z_acc.used_acc_num >= 1024)
 	{
 		return;
 	}else{
-	Z_acc.acc_buf[Z_acc.got_acc_num & (1024-1)] = z_temp;
-	Z_acc.got_acc_num++;
+		Z_acc.acc_buf[Z_acc.got_acc_num & (1024-1)] = z_temp;
+		Z_acc.got_acc_num++;
 	}
 	resutl_caculate(z_temp,3);
 
@@ -32586,11 +32621,11 @@ void MMA845x_interrupt(void)
 	{
 		return;
 	}else{
-	Y_acc.acc_buf[Y_acc.got_acc_num & (1024-1)] = y_temp;
-	Y_acc.got_acc_num++;
+		Y_acc.acc_buf[Y_acc.got_acc_num & (1024-1)] = y_temp;
+		Y_acc.got_acc_num++;
 	}
 	resutl_caculate(y_temp,2);
-
+	
 }
 
 
@@ -33049,9 +33084,20 @@ bool IIC_RegReadXYZ_and(uint8_t *buf)
 }
 
 
+
+
+
 void resutl_caculate(signed short data,int xyz)
 {
 	unsigned short abs_data;
+	float get_acc;
+	float v_z;
+
+	unsigned short in;
+
+	WM_MESSAGE * pMsg;
+
+	static long current_count;
 
 	abs_data = abs(data);
 
@@ -33075,21 +33121,50 @@ void resutl_caculate(signed short data,int xyz)
 	   }
 	   if(abs_data > Z_acc.acc_dec_abs_max)
 	   {
-	   Z_acc.acc_dec_abs_max = abs_data;
+			Z_acc.acc_dec_abs_max = abs_data;
 	   }
+
+	if(xyz_pars.auto_sel)
+	{
+	   get_acc = (0.239258*Z_acc . acc_ave_add + Z_acc . dec_ave_add);
+
+	   v_z = get_acc*(Z_acc.acc_time + Z_acc.dec_time -1);
+
+	   if(v_z > Z_acc.v_max)
+	   {
+		   Z_acc.v_max = v_z;
+	   }else{
+		   if(v_z <= (Z_acc.v_max/2)&&(( Z_acc.dec_time + Z_acc.acc_time)> 50))
+		   {
+				if(v_z <= 150*800)
+				{
+					if(current_count == 0)
+					{
+						current_count = Z_acc.acc_time + Z_acc.dec_time - 1;
+					}
+					if((Z_acc.acc_time + Z_acc.dec_time - 1 - current_count)>= 2*800)
+					{
+						OnButtonStopClicked(pMsg);
+					}
+				}
+		   }
+	   }
+	}
+
 	}else if(xyz == 2){
 	   if(abs_data > Y_acc.acc_dec_abs_max)
 	   {
-	   Y_acc.acc_dec_abs_max = abs_data;
+			Y_acc.acc_dec_abs_max = abs_data;
 	   }
 	}else if(xyz == 1){
 	   if(abs_data > X_acc.acc_dec_abs_max)
 	   {
-	   X_acc.acc_dec_abs_max = abs_data;
+			X_acc.acc_dec_abs_max = abs_data;
 	   }
 	}
-}
 
+
+}
 
 
 
@@ -33109,7 +33184,9 @@ void Data_Sim(unsigned lenth)
 		z_buf[1] = rand();
 		z_buf[1] = z_buf[1]&0x0fc;
 
-		temp  = ((z_buf[0]<<8) | z_buf[1]) ; 
+		temp  = ((z_buf[0]<<8) | z_buf[1]) ;
+
+		resutl_caculate(temp,3);
 
 		if(Z_acc.got_acc_num-Z_acc.used_acc_num >= 1024)
 		{
@@ -33129,7 +33206,7 @@ void Data_Sim(unsigned lenth)
 
 	temp  = ((x_buf[0]<<8) | x_buf[1]) ;
 
-	
+	resutl_caculate(temp,1);
 
 	if(X_acc.got_acc_num-X_acc.used_acc_num >= 1024)
 	{
@@ -33149,6 +33226,8 @@ void Data_Sim(unsigned lenth)
 
 	temp  = ((y_buf[0]<<8) | y_buf[1]); 
 
+	resutl_caculate(temp,2);
+
 	if(Y_acc.got_acc_num-Y_acc.used_acc_num >= 1024)
 	{
 		break;
@@ -33160,6 +33239,18 @@ void Data_Sim(unsigned lenth)
 
 }
 
+
+void test_resutl_caculate()
+{
+	static signed short i;
+
+	i++;
+	if(i == 5000)
+	i = 0;
+
+	resutl_caculate(i,3);
+
+}
 
 
 

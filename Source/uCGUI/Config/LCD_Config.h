@@ -79,7 +79,6 @@ void GUI_Circle(u16 cx,u16 cy,u16 r,u16 color,u8 fill);  // 画园
 void GUI_Rectangle(u16 x0, u16 y0, u16 x1, u16 y1,u16 color,u8 fill); // 画矩形
 void GUI_Square(u16 x0, u16 y0, u16 with, u16 color,u8 fill);  // 画正方形
 
-
 void Touch_Initializtion(void);
 u16  Touch_GetPhyX(void);
 u16  Touch_GetPhyY(void);

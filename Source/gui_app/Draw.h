@@ -11,7 +11,6 @@
 #define SCALE_X_SIZE     600
 #define SCALE_X_END      (SCALE_X_START+SCALE_X_SIZE)
 
-
 #define SCALE_Z_ACC_MIDDLE    (SCALE_Y_START+SCALE_Z_ACC_SIZE/2)
 
 #define SCALE_X_ACC_MIDDLE	  (SCALE_Y_START+SCALE_Z_SPEED_SIZE+SCALE_Z_ACC_SIZE/2)
@@ -48,6 +47,10 @@
 #define PIX_PER_DIV		5
 
 #define XYC_OFF_SET     70
+
+
+
+
 
 typedef struct{
 int x;
@@ -129,4 +132,10 @@ void draw_exp(TDraw* draw);
 void draw_clear(TDraw* draw);
 
 unsigned int data_zip(int* data,unsigned int in_size,int out_size,EZip ezip);
+
+void draw_line_at(TPoint ps,TPoint pe,unsigned char line_style);
+
+void get_loc(int *y,int scale_mid,float CM_S,char zero_up_down);
+
+
 #endif

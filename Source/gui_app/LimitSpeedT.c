@@ -482,7 +482,6 @@ void LimitSpeedT(WM_MESSAGE * pMsg)
 
    current_handle = GUI_CreateDialogBox(_aDialogCreate_LimT, GUI_COUNTOF(_aDialogCreate_LimT), &_cbCallback_LimT, 0, 0, 0);
 
-   
 }
 
 
@@ -539,6 +538,7 @@ void draw_xy_t()
 
 	scale_set(&tscale);
 	draw_init_t();
+	
 }
 
 

@@ -22527,6 +22527,9 @@ extern __declspec(__nothrow) void _membitmovewb(void *  , const void *  , int  ,
 
 
 
+
+
+
 typedef struct{
 int x;
 int y;
@@ -22607,6 +22610,12 @@ void draw_exp(TDraw* draw);
 void draw_clear(TDraw* draw);
 
 unsigned int data_zip(int* data,unsigned int in_size,int out_size,EZip ezip);
+
+void draw_line_at(TPoint ps,TPoint pe,unsigned char line_style);
+
+void get_loc(int *y,int scale_mid,float CM_S,char zero_up_down);
+
+
 #line 64 "Source\\gui_app\\gui_app.h"
 #line 1 "Source\\gui_app\\XYZ.h"
 #line 1 "Source\\gui_app\\MMA8452Q.h"
@@ -22762,6 +22771,8 @@ typedef  struct
 
 	unsigned int acc_x_pose;
 	unsigned int acc_y_pose;
+	
+	float v_max;
 
 }MMA845X_struct;
 
@@ -22771,7 +22782,7 @@ extern MMA845X_struct Z_acc;
 extern MMA845X_struct X_acc;
 extern MMA845X_struct Y_acc;
 
-extern 
+
 
 
 
@@ -22873,94 +22884,12 @@ enum
  
 
 
-#line 208 "Source\\gui_app\\MMA8452Q.h"
+#line 210 "Source\\gui_app\\MMA8452Q.h"
 
 
 
  
-#line 218 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
- 
-
-
-
-
-
-
-
- 
-
-
-#line 242 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 258 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
- 
-
-
-#line 286 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 300 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-#line 338 "Source\\gui_app\\MMA8452Q.h"
+#line 220 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -22976,19 +22905,101 @@ enum
  
 
 
-
-
- 
-
-
-#line 365 "Source\\gui_app\\MMA8452Q.h"
+#line 244 "Source\\gui_app\\MMA8452Q.h"
 
 
 
  
 
 
-#line 381 "Source\\gui_app\\MMA8452Q.h"
+#line 260 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 288 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 302 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#line 340 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+#line 367 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 383 "Source\\gui_app\\MMA8452Q.h"
 
   
 
@@ -23010,7 +23021,7 @@ enum
 
 
 
-#line 409 "Source\\gui_app\\MMA8452Q.h"
+#line 411 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -23021,7 +23032,7 @@ enum
 
 
 
-#line 428 "Source\\gui_app\\MMA8452Q.h"
+#line 430 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -23034,45 +23045,6 @@ enum
  
 
 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-#line 460 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-
- 
-
-
-
-#line 480 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-
-#line 495 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
 
 
 
@@ -23086,7 +23058,36 @@ enum
 
 
 
+#line 462 "Source\\gui_app\\MMA8452Q.h"
+
+
+
  
+
+
+
+
+ 
+
+
+
+#line 482 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+#line 497 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
 
 
 
@@ -23104,43 +23105,6 @@ enum
  
 
 
-#line 540 "Source\\gui_app\\MMA8452Q.h"
-
-
-
-
-
-
-#line 554 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 569 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 583 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 597 "Source\\gui_app\\MMA8452Q.h"
-
-
-
- 
-
-
-#line 611 "Source\\gui_app\\MMA8452Q.h"
-
 
 
  
@@ -23148,8 +23112,55 @@ enum
 
 
 
+ 
 
-#line 632 "Source\\gui_app\\MMA8452Q.h"
+
+#line 542 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+
+
+
+#line 556 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 571 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 585 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 599 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+#line 613 "Source\\gui_app\\MMA8452Q.h"
+
+
+
+ 
+
+
+
+
+
+#line 634 "Source\\gui_app\\MMA8452Q.h"
 
 
 
@@ -31079,6 +31090,21 @@ void xyz_pars_save(void);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 typedef enum{
 ONE_AXLE,
 TOW_AXLE
@@ -31136,7 +31162,6 @@ X = 0,
 Y = 1,
 Z = 2
 
-
 }EXYZ;
 
 
@@ -31156,6 +31181,12 @@ Z = 2
    signed short res1;	
    signed short res2;
    signed short res3;
+
+   signed short za_ave_base;
+   signed short xa_ave_base;
+   signed short ya_ave_base;
+   unsigned int ave_times_ms;
+
  }TXYZ_Result;
 
 
@@ -31167,6 +31198,10 @@ typedef struct
 	tim            xyz_tim; 
 	unsigned int   fragment_start;
 }T_XYZ_FILE_struct;
+
+
+
+
 
 extern 	 T_XYZ_FILE_struct xyz_file;
 
@@ -31200,7 +31235,7 @@ int save_xyz(void);
 
 void xyz_file_save_end(void);
 
-void draw_dot_line(void);
+void draw_cm_s2(int z_judge_cm_s2,int xy_judge_cm_s2);
 
 extern XYZ_ACC_SAMPLE_STATUS    sample_status;
 extern Dispaly_Acc_struct   tdisp_acc_struct;
@@ -33477,12 +33512,16 @@ void MainTask(void)
 	float last_frequence,get_the_frequence;
     EMotWorkState mot_state;
 	GUI_HWIN  hGraph = 0;
+
+	int y;
+
 	div = 0;
 
 	disp_mult = 0;
 	i = 0;
 
 	mot_t_cal.cal_flag  = 0;
+
 
 
     sd_init();
@@ -33495,23 +33534,22 @@ void MainTask(void)
 	h_home= 0;
 	h_pars = 0;
 	h_cus =0;
-
 	flag_paint =0;
 
-#line 116 "Source\\gui_app\\MainTask.c"
+#line 118 "Source\\gui_app\\MainTask.c"
 
 
 
 	
-#line 133 "Source\\gui_app\\MainTask.c"
+#line 134 "Source\\gui_app\\MainTask.c"
 
 
-#line 148 "Source\\gui_app\\MainTask.c"
+#line 149 "Source\\gui_app\\MainTask.c"
 
 
-#line 162 "Source\\gui_app\\MainTask.c"
+#line 163 "Source\\gui_app\\MainTask.c"
 
-#line 173 "Source\\gui_app\\MainTask.c"
+#line 174 "Source\\gui_app\\MainTask.c"
 	
    
 	
@@ -33533,15 +33571,15 @@ void MainTask(void)
 
 
 
-#line 226 "Source\\gui_app\\MainTask.c"
+#line 227 "Source\\gui_app\\MainTask.c"
 
 
 
-#line 253 "Source\\gui_app\\MainTask.c"
+#line 254 "Source\\gui_app\\MainTask.c"
 
-#line 290 "Source\\gui_app\\MainTask.c"
+#line 291 "Source\\gui_app\\MainTask.c"
 
-#line 302 "Source\\gui_app\\MainTask.c"
+#line 303 "Source\\gui_app\\MainTask.c"
 
 
 
@@ -33635,6 +33673,7 @@ home(0);
 			xyz_paint_flag =1;
 			disp_titles();
 			disp_mode();
+			draw_cm_s2(4900,900);
 			}
 		  if(sample_status == START)
 		  {
@@ -33655,7 +33694,6 @@ home(0);
 			xyz_value_dir_to_graph(&X_acc,0xFF0000,X);
 			xyz_value_dir_to_graph(&Y_acc,0x0000FF,Y);
 			disp_caculate();
-
 		  }
 		}
 		
@@ -33684,7 +33722,7 @@ home(0);
 
 
  
-#line 451 "Source\\gui_app\\MainTask.c"
+#line 452 "Source\\gui_app\\MainTask.c"
 
 			buf_data_disp(1);
 			sprintf(buf_c,"%.3f",get_data.speed);
@@ -33706,6 +33744,7 @@ home(0);
 			draw_xy_t();
 			flag_paint =1;
 			}
+
 		    
 		}
 
