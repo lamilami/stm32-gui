@@ -186,7 +186,8 @@ ARM Macro Assembler    Page 3
   123 00000016                 END
 Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\ouput\
 cpu_a.d -o.\ouput\cpu_a.o -ID:\Keil_ARM\ARM\INC -ID:\Keil_ARM\ARM\INC\ST\STM32F
-10x --list=.\List\cpu_a.lst Source\uCOS-II\uC-CPU\cpu_a.asm
+10x --predefine="__MICROLIB SETA 1" --list=.\List\cpu_a.lst Source\uCOS-II\uC-C
+PU\cpu_a.asm
 
 
 
@@ -234,4 +235,4 @@ Symbol: CPU_SR_Save
       At line 37 in file Source\uCOS-II\uC-CPU\cpu_a.asm
 Comment: CPU_SR_Save used once
 5 symbols
-329 symbols in table
+330 symbols in table

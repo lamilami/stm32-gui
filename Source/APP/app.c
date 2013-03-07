@@ -211,15 +211,42 @@ static  void  AppTaskUserIF (void *p_arg)
 *********************************************************************************************************
 */
 
+
 static  void  AppTaskKbd (void *p_arg)
 {
+   int x,y;
    u8 tick=0;
-  (void)p_arg;
+   GUI_PID_STATE pid_state;
+   (void)p_arg;
+  
    while(DEF_TRUE) 
      {
 	 	tick++;
-        OSTimeDlyHMSM(0,0,0,6); 
-	    GUI_TOUCH_Exec(); 
+        OSTimeDlyHMSM(0,0,0,5);
+	#ifdef 	R_TOUCH
+	    GUI_TOUCH_Exec();
+	#endif 
+
+	#ifdef C_TOUCH
+		if(TOUCH_PRESSING == 0)
+		{
+		FT5x06_GetData(&x,&y);
+		pid_state.Pressed = 1;
+		pid_state.x = x;
+		pid_state.y = y;
+		GUI_PID_StoreState(&pid_state);
+		OSTimeDlyHMSM(0,0,0,20);
+		#if 1
+		}
+		else
+		{
+		pid_state.Pressed = 0;
+		pid_state.x = 0;
+		pid_state.y = 0;
+		GUI_PID_StoreState(&pid_state);
+		#endif
+		}
+	#endif
 
 		if(tick&0x10)
 		{

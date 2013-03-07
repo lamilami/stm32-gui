@@ -10,6 +10,7 @@
 
 #include "gui_app.h"
 #include "KeyBoard_Win.h"
+#include "mot.h"
 
 
 TTPars ttpars;
@@ -209,6 +210,7 @@ void OnButtonClicked_TPars(WM_MESSAGE * pMsg)
 	ttpars.HZ = EDIT_GetFloatValue(WM_GetDialogItem(pMsg->hWin, GUI_ID_EDIT_TT));
 	ttpars.Vp = EDIT_GetFloatValue(WM_GetDialogItem(pMsg->hWin, GUI_ID_EDIT_TVP));
 
+//	mot_t_get_speed_line(mot_t_cal);
 	LimitSpeedT(pMsg);
 }
 
@@ -432,8 +434,11 @@ void save_tparameters(void)
 
 
 
-void read_tparameters(void){
+void read_tparameters(void)
+{
 
 
 
 }
+
+

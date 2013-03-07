@@ -106,7 +106,14 @@ void start_test_init()
 	if(current_interface == PORTABLE_LIMIT_SPEED_T)
 	{
 
-	set_speed(ttpars.start_speed);	
+	set_speed(ttpars.start_speed);
+	if(etest_mode == TEST_MODE_SIN)
+	{
+#ifndef WIN_SIM
+	  TIM_Cmd(TIM5, ENABLE);
+#endif
+
+	}	
 	
 	}else{
 
@@ -335,8 +342,10 @@ void motor_int(void)
 	//TIMx ARR Register = 10000 => TIMx Frequency = TIMxcounter clock/(9999 + 1)= 500K/10000 = 50HZ 
 	//2k hz 1M - 1us 1k - 1ms 2k - 0.5ms
 
-/*
-								  // 与 DIV_TIM
+
+	// 与 DIV_TIM  DIV_TIMS_MS
+	// 1k -- 1ms   2k -- 0.5ms
+	// 
     TIM_TimeBaseStructure.TIM_Period = 199;// 2K
     TIM_TimeBaseStructure.TIM_Prescaler = 359; //TIMxCLK / (Prescaler +1)  72/360 = 0.2M = 200K
     TIM_TimeBaseStructure.TIM_ClockDivision = 0;
@@ -344,9 +353,8 @@ void motor_int(void)
     TIM_TimeBaseInit(TIM5, &TIM_TimeBaseStructure);
 	TIM_ITConfig(TIM5, TIM_IT_Update, ENABLE);
 	TIM_Cmd(TIM5, DISABLE);
-*/
-#endif
-		
+
+#endif		
 }
 
 
@@ -527,7 +535,6 @@ void set_speed(float speed)
 #ifndef WIN_SIM
    set_data(set_current);
 #endif
-
   }else{
 
    motor_speed(speed);
@@ -604,11 +611,12 @@ void adjust_pwm_speed()
 			motor_speed(speed);
 			}
 		}else{
-		
 			motor_speed(ttpars.start_speed);
 		}
+	 }else if(etest_mode == TEST_MODE_SIN){
+	 			
+			
 	 }
-
  }else{
 		u0 = get_data.speed;
 		if(record.test_times == 0)
@@ -649,6 +657,7 @@ void test_stop()
 
    TIM_Cmd(TIM2, DISABLE);
    TIM_Cmd(TIM4, DISABLE);
+   TIM_Cmd(TIM5, DISABLE);
    TIM_Cmd(TIM7, DISABLE);
 
    set_speed(0);
@@ -759,6 +768,7 @@ char intit_sw_state()
 			}
 		}
 #endif
+
 }
 
 
@@ -849,12 +859,12 @@ void err_back(EWorkState work_state)
 }
 
 
-// 求取k值
+// 求取k值	k值对应 电流和速度的关系
+
 void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
 {
 	unsigned int start_ma, first_ma, second_ma,size;
 	float get_speed_x0_ma, get_speed_x1_ma,k;
-
 
 	for(start_ma=1;start_ma<10;start_ma++)
 	{
@@ -875,6 +885,7 @@ void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
 #ifndef WIN_SIM
     OSTimeDlyHMSM(0,0,2,0);
 #endif
+
 	get_speed_x1_ma = get_data.speed;
 
 	mot_t_cal.k = 2000/(get_speed_x1_ma - get_speed_x0_ma);// 2ma 乘以1000 倍  电流/速度
@@ -891,9 +902,12 @@ void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
 	
 	mot_t_cal.encode_mm_per_plus = 2*3.1415926*ttpars.enc_r/ttpars.enc_n;
 
-	size = 	1000/(ttpars.HZ*DIV_TIMS_US);
-
+	//	1000/ttpars.HZ  -- ms				
+	size = 	1000/(ttpars.HZ*DIV_TIMS_MS);								//		
+	
 	mot_t_cal.k_sin = ttpars.Vp;
+	
+	mot_t_cal.div_times = size;
 
 	sin_buf =  sin_1_4(size);
 }
@@ -916,17 +930,16 @@ void TIM5_Interrupt(void)
 {
 	float speed;
 
-	float dt;
-
-	dt = 0.5/1000;//ms
 
 	if(enable_sin)
 	{
-	speed = ttpars.start_speed+sin_buf[mot_t_cal.counter&mot_t_cal.div_times];
+	speed = ttpars.start_speed+sin_buf[mot_t_cal.counter&(mot_t_cal.div_times -1)];
 	set_speed(speed);
 	mot_t_cal.counter++;
 	}
 
+	TIM_ClearITPendingBit(TIM5, TIM_IT_Update);
+	
 #if 0
 	 if(etest_mode == TEST_MODE_COM){
 

@@ -103,6 +103,7 @@
 
 
 
+								   
 
 
 
@@ -2124,7 +2125,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 
 
  
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);     
@@ -2172,7 +2175,7 @@ extern const GUI_BITMAP_METHODS GUI_BitmapMethodsM888;
 
 
 
-#line 1223 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1225 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop;
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA2;
@@ -2185,7 +2188,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1491 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1493 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -2194,7 +2197,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1509 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1511 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -16254,9 +16257,7 @@ int  GUI_TOUCH_X_MeasureX(void)
 		
 		return (g_tTP.usAdcNowX);
 
-
-
-#line 85 "Source\\uCGUI\\GUI_X_Touch.c"
+#line 83 "Source\\uCGUI\\GUI_X_Touch.c"
  
 }
 
@@ -16264,7 +16265,7 @@ int  GUI_TOUCH_X_MeasureY(void) {
 
 	   TOUCH_Scan();
 	   return (g_tTP.usAdcNowY);
-#line 132 "Source\\uCGUI\\GUI_X_Touch.c"
+#line 130 "Source\\uCGUI\\GUI_X_Touch.c"
  
 }
 

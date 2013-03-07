@@ -604,6 +604,7 @@ void OnButtonSaveClicked(WM_MESSAGE * pMsg)
 {
 
  xyz_file_close();
+ 
 }
 
 void OnButtonArrowLeftClicked(WM_MESSAGE * pMsg)

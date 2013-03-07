@@ -207,7 +207,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <RoSelD>3</RoSelD>
@@ -596,14 +596,14 @@
               <FilePath>.\Source\uCGUI\TouchCalibration\TouchCalibration.c</FilePath>
             </File>
             <File>
-              <FileName>CTPM.c</FileName>
+              <FileName>ft5x06_ts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Source\BSP\CTPM.c</FilePath>
+              <FilePath>.\Source\BSP\ft5x06_ts.c</FilePath>
             </File>
             <File>
-              <FileName>CTPM.h</FileName>
+              <FileName>ft5x06_ts.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Source\BSP\CTPM.h</FilePath>
+              <FilePath>.\Source\BSP\ft5x06_ts.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1557,14 +1557,14 @@
               <FilePath>.\Source\uCGUI\TouchCalibration\TouchCalibration.c</FilePath>
             </File>
             <File>
-              <FileName>CTPM.c</FileName>
+              <FileName>ft5x06_ts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Source\BSP\CTPM.c</FilePath>
+              <FilePath>.\Source\BSP\ft5x06_ts.c</FilePath>
             </File>
             <File>
-              <FileName>CTPM.h</FileName>
+              <FileName>ft5x06_ts.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Source\BSP\CTPM.h</FilePath>
+              <FilePath>.\Source\BSP\ft5x06_ts.h</FilePath>
             </File>
           </Files>
         </Group>

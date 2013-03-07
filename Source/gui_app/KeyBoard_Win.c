@@ -753,13 +753,13 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 			 
 				if((Id >= GUI_ID_BUTTON_KEY_A)&&(Id <= GUI_ID_BUTTON_KEY_Z))
 				{
-					if(NCode == WM_NOTIFICATION_RELEASED)
+					if(NCode == WM_NOTIFICATION_CLICKED)
 					{
 					ID_A_Z(pMsg);
 					break;
 					}
 				}else if((Id >= GUI_ID_BUTTON_KEY_0)&&(Id <= GUI_ID_BUTTON_KEY_9)){
-					if(NCode == WM_NOTIFICATION_RELEASED)
+					if(NCode == WM_NOTIFICATION_CLICKED)
 					{
 					ID_1_0(pMsg);
 					break;
@@ -770,11 +770,11 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				switch (Id) 
 				{
                 case GUI_ID_OK:
-                    if(NCode==WM_NOTIFICATION_RELEASED)
+                    if(NCode==WM_NOTIFICATION_CLICKED)
                         GUI_EndDialog(hWin, 0);
                     break;
                 case GUI_ID_CANCEL:
-                    if(NCode==WM_NOTIFICATION_RELEASED)
+                    if(NCode==WM_NOTIFICATION_CLICKED)
                         GUI_EndDialog(hWin, 0);
                     break;
 				case GUI_ID_BUTTON_KEY_CAN:
@@ -790,7 +790,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case GUI_ID_BUTTON_KEY_CN:
 					switch(NCode)
 					{
-						case WM_NOTIFICATION_RELEASED:
+						case WM_NOTIFICATION_CLICKED:
 							ID_Key_CN(pMsg);
 							break;	
 					}
@@ -799,7 +799,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case GUI_ID_BUTTON_KEY_RS:
 					switch(NCode)
 					{
-						case WM_NOTIFICATION_RELEASED:
+						case WM_NOTIFICATION_CLICKED:
 							ID_key_R(pMsg);
 						break;
 					}
@@ -808,7 +808,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case GUI_ID_BUTTON_KEY_LS:
 					switch(NCode)
 					{
-						case WM_NOTIFICATION_RELEASED:
+						case WM_NOTIFICATION_CLICKED:
 						ID_key_L(pMsg);
 						break;
 					}
@@ -817,7 +817,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case GUI_ID_BUTTON_KEY_S4:
 					switch(NCode)
 					{
-						case WM_NOTIFICATION_RELEASED:
+						case WM_NOTIFICATION_CLICKED:
 						ID_key_S4(pMsg);
 						break;
 					
@@ -826,7 +826,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case GUI_ID_BUTTON_KEY_DT:
 					switch(NCode)
 					{
-					case WM_NOTIFICATION_RELEASED:
+					case WM_NOTIFICATION_CLICKED:
 					ID_DT(pMsg);
 					break;
 					}
@@ -835,7 +835,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case GUI_ID_BUTTON_KEY_BU:
 					switch(NCode)
 					{
-						case WM_NOTIFICATION_RELEASED:
+						case WM_NOTIFICATION_CLICKED:
 						ID_KEY_BU(pMsg);
 						break;
 					}
@@ -844,7 +844,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 					case  GUI_ID_BUTTON_KEY_ENT:
 					switch(NCode)
 					{
-						case WM_NOTIFICATION_RELEASED:
+						case WM_NOTIFICATION_CLICKED:
 						ID_KEY_ENTER(pMsg);
 						break;
 					}

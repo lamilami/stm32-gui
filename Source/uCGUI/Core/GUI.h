@@ -1162,7 +1162,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 *
 *          TOUCH screen, analog driver
 */
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);    /* for diagnostics only */

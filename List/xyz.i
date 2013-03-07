@@ -158,6 +158,7 @@ typedef signed int ptrdiff_t;
 
 
 
+								   
 
 
 
@@ -2179,7 +2180,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 
 
  
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);     
@@ -2227,7 +2230,7 @@ extern const GUI_BITMAP_METHODS GUI_BitmapMethodsM888;
 
 
 
-#line 1223 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1225 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop;
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA2;
@@ -2240,7 +2243,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1491 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1493 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -2249,7 +2252,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1509 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1511 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -7233,7 +7236,7 @@ extern void KeyBoard_Win(TKeyBoard_H* keyboard_h) ;
 
 
  
-#line 286 "Source\\gui_app\\gui_app.h"
+#line 284 "Source\\gui_app\\gui_app.h"
 
 
 
@@ -21769,6 +21772,7 @@ void draw_init(void);
 void value_to_graph_lim(float value);
 void list_view_color(unsigned Column, unsigned Row,GUI_COLOR Color);
 void print_head(void);
+void print_result(void);
 
 
 #line 61 "Source\\gui_app\\gui_app.h"
@@ -30962,7 +30966,8 @@ __declspec(__nothrow) long double rintl(long double );
 
 
 
-#line 35 "Source\\gui_app\\xyz_acc_para.h"
+
+#line 36 "Source\\gui_app\\xyz_acc_para.h"
 
 
 
@@ -31605,6 +31610,14 @@ void rdprint(char data);
 
 
 
+
+
+
+
+
+
+
+void print_ch(int loc, char* str_ch);
 
 		
 
@@ -32308,9 +32321,9 @@ static char* state_string[]={
 	"OneStop",
 	"CurL_H",
 	"CurL_L",
-	"SpeedL",
-	"AllOff",
-	"HandOff",
+	"SL", 	 
+	"AF",    
+	"HF",	 
 	"Init",
 	"Swich_err",
 	"T_Mot_Cal"
@@ -32330,8 +32343,6 @@ typedef enum {
 	INIT = 9,
 	SWI_ERR = 10,
 
-	
-	
 }EMotWorkState;
 
 
@@ -32422,8 +32433,8 @@ void save_parameters(void);
 void read_parameters(void);
 void save_get_record(void);
 
-void get_data_form_file( char* file_name, void* pstru ,unsigned int size);
 void save_data_to_file( char* file_name, void* psource, unsigned int size);
+void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsigned int size);
 
 void file_clear(void);
 
@@ -33298,6 +33309,7 @@ extern __declspec(__nothrow) void __use_no_semihosting(void);
 #line 2 "Source\\gui_app\\XYZ.h"
 #line 1 "Source\\gui_app\\xyz_acc_para.h"
 #line 2 "Source\\gui_app\\xyz_acc_para.h"
+
 #line 3 "Source\\gui_app\\XYZ.h"
 #line 1 ".\\Source\\BSP\\rtc.h"
 
@@ -33337,6 +33349,7 @@ extern __declspec(__nothrow) void __use_no_semihosting(void);
 #line 37 "Source\\gui_app\\XYZ.c"
 #line 1 "Source\\gui_app\\xyz_acc_para.h"
 #line 2 "Source\\gui_app\\xyz_acc_para.h"
+
 #line 38 "Source\\gui_app\\XYZ.c"
 #line 39 "Source\\gui_app\\XYZ.c"
 #line 40 "Source\\gui_app\\XYZ.c"
@@ -33896,6 +33909,7 @@ void OnButtonSaveClicked(WM_MESSAGE * pMsg)
 {
 
  xyz_file_close();
+ 
 }
 
 void OnButtonArrowLeftClicked(WM_MESSAGE * pMsg)

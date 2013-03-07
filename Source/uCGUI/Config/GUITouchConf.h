@@ -16,7 +16,7 @@ File        : GUITouchConf.h
 Purpose     : Configures touch screen module
 ----------------------------------------------------------------------
 */
-
+#include "ft5x06_ts.h"
 
 #ifndef __GUITOUCH_CONF_H
 #define __GUITOUCH_CONF_H
@@ -36,9 +36,6 @@ Purpose     : Configures touch screen module
 #define GUI_TOUCH_AD_RIGHT       X_MIN
 #define GUI_TOUCH_AD_TOP       	 Y_MIN 
 #define GUI_TOUCH_AD_BOTTOM      Y_MAX
-
-
-
 
 
 #endif /* GUITOUCH_CONF_H */

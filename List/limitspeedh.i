@@ -159,6 +159,7 @@ typedef signed int ptrdiff_t;
 
 
 
+								   
 
 
 
@@ -2180,7 +2181,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 
 
  
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);     
@@ -2228,7 +2231,7 @@ extern const GUI_BITMAP_METHODS GUI_BitmapMethodsM888;
 
 
 
-#line 1223 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1225 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop;
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA2;
@@ -2241,7 +2244,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1491 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1493 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -2250,7 +2253,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1509 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1511 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -7234,7 +7237,7 @@ extern void KeyBoard_Win(TKeyBoard_H* keyboard_h) ;
 
 
  
-#line 286 "Source\\gui_app\\gui_app.h"
+#line 284 "Source\\gui_app\\gui_app.h"
 
 
 
@@ -21770,6 +21773,7 @@ void draw_init(void);
 void value_to_graph_lim(float value);
 void list_view_color(unsigned Column, unsigned Row,GUI_COLOR Color);
 void print_head(void);
+void print_result(void);
 
 
 #line 61 "Source\\gui_app\\gui_app.h"
@@ -30963,7 +30967,8 @@ __declspec(__nothrow) long double rintl(long double );
 
 
 
-#line 35 "Source\\gui_app\\xyz_acc_para.h"
+
+#line 36 "Source\\gui_app\\xyz_acc_para.h"
 
 
 
@@ -31606,6 +31611,14 @@ void rdprint(char data);
 
 
 
+
+
+
+
+
+
+
+void print_ch(int loc, char* str_ch);
 
 		
 
@@ -32309,9 +32322,9 @@ static char* state_string[]={
 	"OneStop",
 	"CurL_H",
 	"CurL_L",
-	"SpeedL",
-	"AllOff",
-	"HandOff",
+	"SL", 	 
+	"AF",    
+	"HF",	 
 	"Init",
 	"Swich_err",
 	"T_Mot_Cal"
@@ -32331,8 +32344,6 @@ typedef enum {
 	INIT = 9,
 	SWI_ERR = 10,
 
-	
-	
 }EMotWorkState;
 
 
@@ -32423,8 +32434,8 @@ void save_parameters(void);
 void read_parameters(void);
 void save_get_record(void);
 
-void get_data_form_file( char* file_name, void* pstru ,unsigned int size);
 void save_data_to_file( char* file_name, void* psource, unsigned int size);
+void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsigned int size);
 
 void file_clear(void);
 
@@ -33727,7 +33738,7 @@ void OnxxxClicked_SAVE(WM_MESSAGE * pMsg,ESaveState save_state)
 
 void OnxxxClicked_PRINT(WM_MESSAGE * pMsg)
 {
-
+   print_result();
 }
 
 void OnButtonClicked_PARM_SET(WM_MESSAGE * pMsg)
@@ -33770,7 +33781,6 @@ void delect_now_row(void)
 
 
  
-
 
 
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate_Lim[] = {
@@ -34221,48 +34231,57 @@ void print_head(void)
 
 void print_result(void)
 {
-	int i;
-	char ch[]="1234567890123456789";
-	rdprint(0x1B); rdprint(0x36);;
-	for(i=0;i<strlen(ch);i++)
+	int i,j,k;
+	char ch[]="0123456789012345678901";
+	char fc[5];
+	char dirz[]={"正"};
+	char diro[]={"反"};
+	char hlsp[]={"限速器测试报告(手持)"};
+	char pass[]={"正常"};
+	char npass[]={"问题"};
+
+
+	        
+
+    rdprint(0x0A);;
+
+	for(i=record.test_times;i>0; i--)
 	{
-	rdprint(ch[i]);
+	rdprint(0x0A);;
+	sprintf(fc,"%d",i);
+	print_en(0,fc,-1);
+	sprintf(fc,"%f",record.v1[i]);
+	print_en(4,fc,5);
+	sprintf(fc,"%f",record.v2[i]);
+	print_en(2,fc,5);
+	if(record.result[i]== 2)
+	print_ch(1,pass);
+	else 
+	print_ch(1,npass);
+
+	if(record.dir[i] == 1)
+	print_ch(1,dirz);
+	else 
+	print_ch(1,diro);
 	}
-	rdprint(0x1B);rdprint(0x44);;
-	rdprint(1);;
-	rdprint(9);;
-	rdprint(20);;
-	rdprint(30);;
-	rdprint(40);;
-	rdprint(0x00);;
-
-	rdprint(0x09);;
-	rdprint('N');
-	rdprint('o');
-
-	rdprint(0x09);;
-	rdprint('V');
-	rdprint('1');
+	rdprint(0x0A);;
+	rdprint(0x0A);;
+	print_ch(0,"序号");	 
+	print_ch(2,"V1(m/s)");
+	print_ch(1,"V2(m/s)");
+	print_ch(1,"方向");
+	print_ch(2,"结果");
 
 
-	rdprint(0x09);;
-	rdprint('V');
-	rdprint('2');
-
-
-	rdprint(0x09);;
-	rdprint('D');
-	rdprint('i');
-	rdprint('r');
-
-	rdprint(0x09);;
-	rdprint('R');
-	rdprint('e');
-	rdprint('s');
-
-	for(i=1;i<tget_record.act_record_lenth+1;i++);
-	
+	rdprint(0x0A);;
+	rdprint(0x0A);;
+	print_custormer();
+   	rdprint(0x0A);;
+	print_data_time();
+    rdprint(0x0A);;
+	rdprint(0x0A);;
 }
+
 
 
 
