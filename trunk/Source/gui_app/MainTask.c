@@ -17,6 +17,7 @@
 #include "XYZ.h"
 #include "MMA8452Q.h"
 #include "xyz_acc_para.h"
+#include "ft5x06_ts.h"
 
 
 extern      TPars   pars;
@@ -82,8 +83,7 @@ void MainTask(void)
 	float last_frequence,get_the_frequence;
     EMotWorkState mot_state;
 	WM_HWIN  hGraph = 0;
-
-	int y;
+	static int y,x;
 
 	div = 0;
 
@@ -98,19 +98,18 @@ void MainTask(void)
 #endif
 
 	GUI_Init();
-	
-	GUI_CURSOR_Show();
-
+//	GUI_CURSOR_Show();
 	h_home= NULL;
 	h_pars = NULL;
 	h_cus =NULL;
 	flag_paint =0;
 
+// 
 #if 0
   while(1)
   {
 #ifndef WIN_SIM
-	reg_get = IIC_CTPM_RegRead(0x00);
+	FT5x06_GetData(&x,&y);
 	OSTimeDlyHMSM(0,0,0,100);
 #endif
   }
@@ -118,18 +117,15 @@ void MainTask(void)
 
 
 
-	//use dir data test EXP
+//use dir data test EXP
 #if 0
-	while(1)
 	{
-
 #ifndef WIN_SIM
-	COMM_LF;
+	print_data_time();
 	OSTimeDlyHMSM(0,0,2,0);
 #endif
-
 	}
-
+	while(1);
 #endif
 
 
@@ -144,8 +140,8 @@ void MainTask(void)
    if(i >= 21)
    i = 0;
  }
-
 #endif 
+
 
 
 #if 0
@@ -163,27 +159,25 @@ void MainTask(void)
 
 #if 0
 	ratex = LCD_XSIZE/abs(GUI_TOUCH_AD_LEFT - GUI_TOUCH_AD_RIGHT);
-	ratey = LCD_YSIZE/abs(GUI_TOUCH_AD_TOP - GUI_TOUCH_AD_BOTTOM);
-
+	ratey = LCD_YSIZE/abs(GUI_TOUCH_AD_TOP - GUI_TOUCH_AD_BOTTOM)
 	while(1)
 	{
-	GUI_DrawCircle(GUI_TOUCH_X_MeasureX()*ratex,GUI_TOUCH_X_MeasureY()*ratey,10);
-	//GUI_Clear();	
+	GUI_DrawCircle(GUI_TOUCH_X_MeasureX()*ratex,GUI_TOUCH_X_MeasureY()*ratey,10);	
 	}
 #endif	
 	
    // motor_int();
 	
 #ifndef WIN_SIM
-	run_cal();
+//	run_cal();
 //	_ExecCalibration();
 //	GUI_TOUCH_SetDefaultCalibration();
 #endif
 
    	read_custormer();
 	read_parameters();
-
-//	get_data_form_file("tlim.lt", &ttpars, sizeof(TTPars));
+//	get_data_form_file("speedt.lt", (TTPars*)&pars,sizeof(TGetRecord),sizeof(TTPars));
+						   
 
     gui_app_init(); 
 	motor_int();
@@ -207,8 +201,6 @@ void MainTask(void)
 	file_init();
 	
 	save_custormer();
-//	save_parameters();
-//	save_get_record();
 
 	pars.ak1=3.1;
 	pars.ak2=3.2;
@@ -303,7 +295,7 @@ void MainTask(void)
 
 #if 1
 
-home(0);
+	home(0);
 
 	while(1)
 	{

@@ -150,12 +150,12 @@ extern "C"{
 static char* state_string[]={
 	"Start",
 	"GetV1",
-	"OneStop",
+	"OneStop",//
 	"CurL_H",
-	"CurL_L",
-	"SpeedL",
-	"AllOff",
-	"HandOff",
+	"CurL_L",//CL
+	"SL", 	 //SpeedL
+	"AF",    //AllOff
+	"HF",	 //HandOff
 	"Init",
 	"Swich_err",
 	"T_Mot_Cal"
@@ -175,8 +175,6 @@ typedef enum {
 	INIT = 9,
 	SWI_ERR = 10,
 
-	
-	
 }EMotWorkState;
 
 
@@ -267,8 +265,8 @@ void save_parameters(void);
 void read_parameters(void);
 void save_get_record(void);
 
-void get_data_form_file( char* file_name, void* pstru ,unsigned int size);
 void save_data_to_file( char* file_name, void* psource, unsigned int size);
+void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsigned int size);
 
 void file_clear(void);
 

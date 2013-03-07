@@ -192,6 +192,7 @@ typedef signed int ptrdiff_t;
 
 
 
+								   
 
 
 
@@ -2213,7 +2214,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 
 
  
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);     
@@ -2261,7 +2264,7 @@ extern const GUI_BITMAP_METHODS GUI_BitmapMethodsM888;
 
 
 
-#line 1223 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1225 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop;
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA2;
@@ -2274,7 +2277,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1491 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1493 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -2283,7 +2286,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1509 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1511 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -6772,7 +6775,7 @@ extern void KeyBoard_Win(TKeyBoard_H* keyboard_h) ;
 
 
  
-#line 286 ".\\Source\\gui_app\\gui_app.h"
+#line 284 ".\\Source\\gui_app\\gui_app.h"
 
 
 
@@ -21319,6 +21322,7 @@ void draw_init(void);
 void value_to_graph_lim(float value);
 void list_view_color(unsigned Column, unsigned Row,GUI_COLOR Color);
 void print_head(void);
+void print_result(void);
 
 
 #line 61 ".\\Source\\gui_app\\gui_app.h"
@@ -30932,7 +30936,8 @@ __declspec(__nothrow) long double rintl(long double );
 
 
 
-#line 35 ".\\Source\\gui_app\\xyz_acc_para.h"
+
+#line 36 ".\\Source\\gui_app\\xyz_acc_para.h"
 
 
 
@@ -31575,6 +31580,14 @@ void rdprint(char data);
 
 
 
+
+
+
+
+
+
+
+void print_ch(int loc, char* str_ch);
 
 		
 
@@ -32278,9 +32291,9 @@ static char* state_string[]={
 	"OneStop",
 	"CurL_H",
 	"CurL_L",
-	"SpeedL",
-	"AllOff",
-	"HandOff",
+	"SL", 	 
+	"AF",    
+	"HF",	 
 	"Init",
 	"Swich_err",
 	"T_Mot_Cal"
@@ -32300,8 +32313,6 @@ typedef enum {
 	INIT = 9,
 	SWI_ERR = 10,
 
-	
-	
 }EMotWorkState;
 
 
@@ -32392,8 +32403,8 @@ void save_parameters(void);
 void read_parameters(void);
 void save_get_record(void);
 
-void get_data_form_file( char* file_name, void* pstru ,unsigned int size);
 void save_data_to_file( char* file_name, void* psource, unsigned int size);
+void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsigned int size);
 
 void file_clear(void);
 
@@ -32430,3 +32441,83 @@ void rdprint(char data)
 
 
 }
+
+void print_ch(int loc, char* str_ch)
+{
+  int i,j;
+  rdprint(0x1B);rdprint(0x38);rdprint(0);;
+  if(loc > -1)
+  {
+  rdprint(0x1B); rdprint(0x66);rdprint(0);rdprint(loc);;
+  }
+  j = strlen(str_ch);
+  for(i=0;i<j;i++)
+  {
+   rdprint(str_ch[i]);
+  }
+}
+
+void print_en(int loc, char* str_en,int print_lenth)
+{
+   int i,j;
+   rdprint(0x1B);rdprint(0x38);rdprint(7);;
+   if(loc > -1)
+   {
+   rdprint(0x1B); rdprint(0x66);rdprint(0);rdprint(loc);;
+   }
+   if(print_lenth < 0)
+   {
+   j = strlen(str_en);
+   }else{
+   	j = print_lenth;
+   }
+   for(i=0;i<j;i++)
+   {
+    rdprint(str_en[i]);
+   }
+}
+
+void print_data_time(void)
+{
+	char buf[50];
+
+  	RTC_Get_Time(&Tim);
+	RTC_time_to_string(buf ,Tim);
+	print_ch(0,buf);	
+
+
+}
+
+void print_custormer()
+{
+	char cus[]={"客户信息:"};
+	char eser[]={"电梯序列号:"};
+	char epro[]={"电梯制造商:"};
+	char lmpro[]={"限速器制造商:"};
+	char lmser[]={"限速器序列号:"};
+
+ 
+	print_ch(0,cus);
+	print_ch(0,custormer.custorm);
+	rdprint(0x0A);;
+
+	
+	print_ch(0,eser);
+	print_ch(0,custormer.series_no);
+	rdprint(0x0A);;
+
+	
+	print_ch(0,epro);
+	print_ch(0,custormer.elevator_productor);
+	rdprint(0x0A);;
+
+
+	print_ch(0,lmpro);
+	print_ch(0,custormer.limitor_productor);
+	rdprint(0x0A);;
+
+	
+	print_ch(0,lmser);
+	print_ch(0,custormer.limitor_series);
+}
+

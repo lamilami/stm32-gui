@@ -43,9 +43,9 @@
 #define SW3
 #endif
 
-#define HAND_CONTROL SW3
+#define HAND_CONTROL  SW3
 
-#define DIV_TIMS_US    0.5
+#define DIV_TIMS_MS   0.5
 
 #define BUF_SIZE      512
 

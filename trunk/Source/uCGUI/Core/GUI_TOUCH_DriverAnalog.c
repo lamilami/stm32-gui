@@ -239,7 +239,7 @@ void GUI_TOUCH_GetCalData(int Coord, int* pMin,int* pMax) {
 *       GUI_TOUCH_Exec
 */
 void GUI_TOUCH_Exec(void) {
- #ifndef WIN32
+#ifndef WIN32
   static U8 ReadState;
   int x,y;
   /* calculate Min / Max values */
@@ -284,7 +284,7 @@ void GUI_TOUCH_Exec(void) {
 #endif
 	 
 	 myAD2XY( &x ,&y );
-      _StoreUnstable(x, y);
+     _StoreUnstable(x, y);
     }
     /* Reset state machine */
     ReadState = 0;
@@ -292,6 +292,25 @@ void GUI_TOUCH_Exec(void) {
   }
   #endif /* WIN32 */
 }
+
+#if 0
+void GUI_CTOUCH_Exec(void) {
+
+  #ifndef WIN32
+  static u8 ReadState;
+  int x,y;
+
+    FT5x06_GetData(&x, &y);
+
+     _StoreUnstable(x, y);
+   
+    ReadState = 0;
+  
+ }
+  #endif /* WIN32 */
+
+#endif
+
 
 #else
 

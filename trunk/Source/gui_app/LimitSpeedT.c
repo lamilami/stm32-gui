@@ -14,7 +14,7 @@
 
  int draw_buf_lim_t[LIM_SCALE_X_SIZE_T];
 
- GUI_ConstString _ListBox[] = {"1","","","", "C","R",""};
+ GUI_ConstString _ListBox[] = {"1","","","", "","R",""};
 
  ETestMode etest_mode;//
 
@@ -62,7 +62,7 @@ void all_button(char able,int max)
 	 _ListBox[1]="S";
 	 }
 
-	   if(ttpars.dir == 2)
+	  if(ttpars.dir == 2)
 	  {
 	  _ListBox[2] = "D";
 	   }else{
@@ -110,15 +110,12 @@ void all_button(char able,int max)
 
  void OnButtonCommClicked(WM_MESSAGE * pMsg)
  {
-	 
 	  TestCom(pMsg,TEST_MODE_COM);
  }
 
   void OnButtonPlusClicked(WM_MESSAGE * pMsg)
  {
 	 TestCom(pMsg,TEST_MODE_T);
-	  
-
  }
 
  void OnButtonTCycClicked(WM_MESSAGE * pMsg)
@@ -128,7 +125,7 @@ void all_button(char able,int max)
 
  void OnButtonTPrintClicked(WM_MESSAGE * pMsg)
  {
-
+	mot_t_get_speed_line(mot_t_cal);
  }
 
  void OnButtonTSaveClicked(WM_MESSAGE * pMsg,ESaveState save_state)
@@ -164,7 +161,7 @@ void all_button(char able,int max)
 	file_clear();
 
 	save_data_to_file( "speedt.lt", (TCustormer*)&custormer,sizeof(TCustormer));
-    save_data_to_file( "speedt.lt", (TPars*)&pars,sizeof(TPars));
+    save_data_to_file( "speedt.lt", (TTPars*)&ttpars,sizeof(TTPars));
 	save_data_to_file( "speedt.lt", (TGetRecord*)&tget_record,sizeof(TGetRecord));
 	}
  }
@@ -201,14 +198,13 @@ void all_button(char able,int max)
 	
 	record.v1[act_row] = 0;
 	record.v2[act_row] = 0;
-
 	 }
 
  }
 
  void OnButtonRTClicked(WM_MESSAGE * pMsg)
  {
-	 	motor_speed(0);
+	motor_speed(0);
 	if((get_data.e_work_state != START_TEST)&&(get_data.e_work_state != GET_V1))
 	{
 	
@@ -236,7 +232,7 @@ void all_button(char able,int max)
 //EventsFunctionList
 void OnButtonMainClicked(WM_MESSAGE * pMsg)
 {
- home(pMsg);
+ 	home(pMsg);
 }
 
 
@@ -259,7 +255,7 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate_LimT[] = {
     { BUTTON_CreateIndirect,    "删除",                GUI_ID_BUTTON_TDEL,      1,  282,100,40, 0,0},
     { BUTTON_CreateIndirect,    "参数设置",              GUI_ID_BUTTON_TPAR,      1,  236,100,40, 0,0},
     { BUTTON_CreateIndirect,    "保存",                GUI_ID_BUTTON_TSAVE,     1,  328,100,40, 0,0},
-    { BUTTON_CreateIndirect,    "打印",                GUI_ID_BUTTON_TPRINT,    1,  374,100,40, 0,0},
+    { BUTTON_CreateIndirect,    "参数提取",                GUI_ID_BUTTON_TPRINT,    1,  374,100,40, 0,0},
     { BUTTON_CreateIndirect,    "周期测试",              GUI_ID_BUTTON_TCYC,      1,  98, 100,40, 0,0},
     { BUTTON_CreateIndirect,    "主界面",               GUI_ID_BUTTON_TMAIN,     1,  420,100,40, 0,0},
     { LISTVIEW_CreateIndirect,   NULL,               GUI_ID_LISTVIEW_RESULT_T,        107,6,268, 454,0,0},
@@ -425,7 +421,7 @@ static void _cbCallback_LimT(WM_MESSAGE * pMsg)
                     switch(NCode)
                     {
                         case WM_NOTIFICATION_RELEASED:
-                            OnButtonSaveClicked(pMsg,RemberToSd);
+                            OnButtonTSaveClicked(pMsg,RemberToSd);
                             break;
                     }
                     break;
@@ -528,7 +524,6 @@ void draw_xy_t()
 	tsepoint.end_point.x = tsepoint.start_point.x + LIM_SCALE_X_SIZE_T;
 	tsepoint.end_point.y = 435;
 	draw_scale(tsepoint,0xffff,0);		//X
-
 
 	tsepoint.start_point.x = X0_T;
 	tsepoint.start_point.y = 435;

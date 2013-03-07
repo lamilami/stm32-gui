@@ -95,6 +95,7 @@ void draw_init(void);
 void value_to_graph_lim(float value);
 void list_view_color(unsigned Column, unsigned Row,GUI_COLOR Color);
 void print_head(void);
+void print_result(void);
 
 
 #endif

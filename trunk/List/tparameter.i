@@ -202,6 +202,7 @@ typedef signed int ptrdiff_t;
 
 
 
+								   
 
 
 
@@ -2223,7 +2224,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 
 
  
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);     
@@ -2271,7 +2274,7 @@ extern const GUI_BITMAP_METHODS GUI_BitmapMethodsM888;
 
 
 
-#line 1223 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1225 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop;
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA2;
@@ -2284,7 +2287,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1491 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1493 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -2293,7 +2296,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1509 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1511 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -6782,7 +6785,7 @@ extern void KeyBoard_Win(TKeyBoard_H* keyboard_h) ;
 
 
  
-#line 286 "Source\\gui_app\\gui_app.h"
+#line 284 "Source\\gui_app\\gui_app.h"
 
 
 
@@ -21329,6 +21332,7 @@ void draw_init(void);
 void value_to_graph_lim(float value);
 void list_view_color(unsigned Column, unsigned Row,GUI_COLOR Color);
 void print_head(void);
+void print_result(void);
 
 
 #line 61 "Source\\gui_app\\gui_app.h"
@@ -30942,7 +30946,8 @@ __declspec(__nothrow) long double rintl(long double );
 
 
 
-#line 35 "Source\\gui_app\\xyz_acc_para.h"
+
+#line 36 "Source\\gui_app\\xyz_acc_para.h"
 
 
 
@@ -31585,6 +31590,14 @@ void rdprint(char data);
 
 
 
+
+
+
+
+
+
+
+void print_ch(int loc, char* str_ch);
 
 		
 
@@ -32288,9 +32301,9 @@ static char* state_string[]={
 	"OneStop",
 	"CurL_H",
 	"CurL_L",
-	"SpeedL",
-	"AllOff",
-	"HandOff",
+	"SL", 	 
+	"AF",    
+	"HF",	 
 	"Init",
 	"Swich_err",
 	"T_Mot_Cal"
@@ -32310,8 +32323,6 @@ typedef enum {
 	INIT = 9,
 	SWI_ERR = 10,
 
-	
-	
 }EMotWorkState;
 
 
@@ -32402,8 +32413,8 @@ void save_parameters(void);
 void read_parameters(void);
 void save_get_record(void);
 
-void get_data_form_file( char* file_name, void* pstru ,unsigned int size);
 void save_data_to_file( char* file_name, void* psource, unsigned int size);
+void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsigned int size);
 
 void file_clear(void);
 
@@ -32424,6 +32435,134 @@ void file_init(void);
 
 #line 12 "Source\\gui_app\\TParameter.c"
 #line 13 "Source\\gui_app\\TParameter.c"
+#line 1 ".\\Source\\Mot\\mot.h"
+#line 4 ".\\Source\\Mot\\mot.h"
+
+
+
+
+
+
+
+
+
+
+
+#line 24 ".\\Source\\Mot\\mot.h"
+
+
+
+
+
+
+
+
+
+
+
+
+#line 45 ".\\Source\\Mot\\mot.h"
+
+
+
+
+
+
+
+
+typedef struct Mot_t_Cal
+{
+  char cal_flag;
+  float max_speed_m_per_s;
+  float k;
+  float R_r;
+  float k_R_r; 
+  float r_R;
+
+  float encode_mm_per_plus;
+
+  unsigned int div_times;
+  unsigned int counter;
+  float k_sin;
+
+}TMot_t_Cal;
+
+
+typedef struct Get_data
+{
+  EMotWorkState e_work_state;
+  float  current;
+  float  frequence;
+  float acce;
+  float speed;
+  float sw1_speed;
+  float sw2_speed;
+
+  unsigned int times;
+  unsigned long time_us;
+  float bt_time_s;
+
+}S_GetData;
+
+typedef struct{
+  
+	 unsigned int in_loc;
+	 unsigned int out_loc;
+	 unsigned int in_data_size;
+	 float speed_buf[512];
+
+}TSpeed_buf;
+
+
+
+
+extern TMot_t_Cal 	mot_t_cal;
+
+extern TSpeed_buf tspeed_buf;
+
+void motor_int(void);
+
+void motor_dir(int dir);
+
+void motor_speed( int pwm_speed);
+
+void TIM2_Interrupt(void);
+
+void fresh_data(void);
+
+
+void start_test_init(void);
+
+void set_speed(float speed);
+
+
+void judge_result(void);
+
+int one_stop(void);
+
+void adjust_pwm_speed(void);
+
+float quadratic_equation(float a,float b,float c);
+
+char intit_sw_state(void);
+
+void test_stop(void);
+
+void err_back(EWorkState work_state);
+
+void mot_t_get_speed_line(TMot_t_Cal  mot_pars);
+float* sin_1_4(int size);
+
+
+
+
+
+
+
+
+
+
+#line 14 "Source\\gui_app\\TParameter.c"
 
 
 TTPars ttpars;
@@ -32457,7 +32596,7 @@ TTPars ttpars;
 
 
 
-#line 52 "Source\\gui_app\\TParameter.c"
+#line 53 "Source\\gui_app\\TParameter.c"
 
 
 
@@ -32473,9 +32612,9 @@ TTPars ttpars;
 
 
 
-#line 73 "Source\\gui_app\\TParameter.c"
+#line 74 "Source\\gui_app\\TParameter.c"
 
-#line 80 "Source\\gui_app\\TParameter.c"
+#line 81 "Source\\gui_app\\TParameter.c"
 
 
 
@@ -32607,6 +32746,7 @@ void OnButtonClicked_TPars(WM_MESSAGE * pMsg)
 	ttpars.dV = EDIT_GetFloatValue(WM_GetDialogItem(pMsg->hWin, 0x800+19));
 	ttpars.HZ = EDIT_GetFloatValue(WM_GetDialogItem(pMsg->hWin, 0x800+22));
 	ttpars.Vp = EDIT_GetFloatValue(WM_GetDialogItem(pMsg->hWin, 0x800+23));
+
 
 	LimitSpeedT(pMsg);
 }
@@ -32831,8 +32971,11 @@ void save_tparameters(void)
 
 
 
-void read_tparameters(void){
+void read_tparameters(void)
+{
 
 
 
 }
+
+

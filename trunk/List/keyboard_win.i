@@ -159,6 +159,7 @@ typedef signed int ptrdiff_t;
 
 
 
+								   
 
 
 
@@ -2180,7 +2181,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 
 
  
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);     
@@ -2228,7 +2231,7 @@ extern const GUI_BITMAP_METHODS GUI_BitmapMethodsM888;
 
 
 
-#line 1223 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1225 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop;
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA2;
@@ -2241,7 +2244,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1491 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1493 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -2250,7 +2253,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1509 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1511 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -7257,13 +7260,13 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 			 
 				if((Id >= (0x800+16))&&(Id <= (0x800+41)))
 				{
-					if(NCode == 2)
+					if(NCode == 1)
 					{
 					ID_A_Z(pMsg);
 					break;
 					}
 				}else if((Id >= (0x800+4))&&(Id <= (0x800+13))){
-					if(NCode == 2)
+					if(NCode == 1)
 					{
 					ID_1_0(pMsg);
 					break;
@@ -7274,11 +7277,11 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				switch (Id) 
 				{
                 case 1:
-                    if(NCode==2)
+                    if(NCode==1)
                         GUI_EndDialog(hWin, 0);
                     break;
                 case 2:
-                    if(NCode==2)
+                    if(NCode==1)
                         GUI_EndDialog(hWin, 0);
                     break;
 				case (0x800+49):
@@ -7294,7 +7297,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case (0x800+53):
 					switch(NCode)
 					{
-						case 2:
+						case 1:
 							ID_Key_CN(pMsg);
 							break;	
 					}
@@ -7303,7 +7306,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case (0x800+15):
 					switch(NCode)
 					{
-						case 2:
+						case 1:
 							ID_key_R(pMsg);
 						break;
 					}
@@ -7312,7 +7315,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case (0x800+14):
 					switch(NCode)
 					{
-						case 2:
+						case 1:
 						ID_key_L(pMsg);
 						break;
 					}
@@ -7321,7 +7324,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case (0x800+50):
 					switch(NCode)
 					{
-						case 2:
+						case 1:
 						ID_key_S4(pMsg);
 						break;
 					
@@ -7330,7 +7333,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case (0x800+43):
 					switch(NCode)
 					{
-					case 2:
+					case 1:
 					ID_DT(pMsg);
 					break;
 					}
@@ -7339,7 +7342,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 				case (0x800+45):
 					switch(NCode)
 					{
-						case 2:
+						case 1:
 						ID_KEY_BU(pMsg);
 						break;
 					}
@@ -7348,7 +7351,7 @@ static void _cbCallback_Key(WM_MESSAGE * pMsg)
 					case  (0x800+48):
 					switch(NCode)
 					{
-						case 2:
+						case 1:
 						ID_KEY_ENTER(pMsg);
 						break;
 					}

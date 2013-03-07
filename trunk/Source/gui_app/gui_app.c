@@ -256,7 +256,7 @@ void read_custormer(void)
 	unsigned int size;
 
     f_mount(0, &fs);				                  //注册到文件系统0区	
-	res = f_open(&fsrc, "speed.lt",FA_OPEN_ALWAYS|FA_WRITE |FA_READ) ;
+	res = f_open(&fsrc, "speed.lt",FA_OPEN_ALWAYS|FA_WRITE |FA_READ);
 	if(res)
 	{
 		while(1);
@@ -292,6 +292,7 @@ void read_parameters(void)
 	f_mount(0, NULL);
 #endif
 }
+
 
 
 void save_parameters(void)
@@ -345,7 +346,7 @@ void gui_app_init(void)
 }
 
 // -- 最后增加 /0
-void get_data_form_file( char* file_name, void* pstru, unsigned int size)
+void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsigned int size)
 {
 #ifndef WIN_SIM
     FATFS fs;
@@ -359,14 +360,16 @@ void get_data_form_file( char* file_name, void* pstru, unsigned int size)
 	{
 		while(1);
 	}
-
-	res = f_lseek(&fsrc, fsrc.fsize); 
-	res = f_write(&fsrc,pstru,size,&bw);
+	if(fsrc.fsize > 0)
+	{
+	res = f_lseek(&fsrc,fsrc.fsize - off_set);
+	 
+	res = f_read(&fsrc,pstru,size,&bw);
+	}
 	
 	f_close(&fsrc);
 	f_mount(0, NULL);
 #endif
-
 }
 
 void save_data_to_file( char* file_name, void* psource, unsigned int size)

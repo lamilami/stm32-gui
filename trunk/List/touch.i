@@ -16516,11 +16516,11 @@ void TOUCH_Scan(void)
         g_tTP.usAdcNowX = 0;
         g_tTP.usAdcNowY = 0;
     }
-
 	GUI_DispDecAt( g_tTP.usAdcNowX, 400, 400, 5);
 	GUI_DispDecAt( g_tTP.usAdcNowY, 450, 450, 5);
-
 }
+
+
 
 
 

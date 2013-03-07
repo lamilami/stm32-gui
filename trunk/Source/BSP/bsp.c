@@ -72,7 +72,6 @@ static volatile ErrorStatus HSEStartUpStatus = SUCCESS;
 *                                      LOCAL FUNCTION PROTOTYPES
 *********************************************************************************************************
 */
-
 void RCC_Config(void);
 void GPIO_Config(void);
 void FSMC_Config(void);

@@ -202,6 +202,7 @@ typedef signed int ptrdiff_t;
 
 
 
+								   
 
 
 
@@ -2223,7 +2224,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 
 
  
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);     
@@ -2271,7 +2274,7 @@ extern const GUI_BITMAP_METHODS GUI_BitmapMethodsM888;
 
 
 
-#line 1223 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1225 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop;
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA2;
@@ -2284,7 +2287,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1491 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1493 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -2293,7 +2296,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1509 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1511 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -6782,7 +6785,7 @@ extern void KeyBoard_Win(TKeyBoard_H* keyboard_h) ;
 
 
  
-#line 286 "Source\\gui_app\\gui_app.h"
+#line 284 "Source\\gui_app\\gui_app.h"
 
 
 
@@ -21329,6 +21332,7 @@ void draw_init(void);
 void value_to_graph_lim(float value);
 void list_view_color(unsigned Column, unsigned Row,GUI_COLOR Color);
 void print_head(void);
+void print_result(void);
 
 
 #line 61 "Source\\gui_app\\gui_app.h"
@@ -30942,7 +30946,8 @@ __declspec(__nothrow) long double rintl(long double );
 
 
 
-#line 35 "Source\\gui_app\\xyz_acc_para.h"
+
+#line 36 "Source\\gui_app\\xyz_acc_para.h"
 
 
 
@@ -31585,6 +31590,14 @@ void rdprint(char data);
 
 
 
+
+
+
+
+
+
+
+void print_ch(int loc, char* str_ch);
 
 		
 
@@ -32288,9 +32301,9 @@ static char* state_string[]={
 	"OneStop",
 	"CurL_H",
 	"CurL_L",
-	"SpeedL",
-	"AllOff",
-	"HandOff",
+	"SL", 	 
+	"AF",    
+	"HF",	 
 	"Init",
 	"Swich_err",
 	"T_Mot_Cal"
@@ -32310,8 +32323,6 @@ typedef enum {
 	INIT = 9,
 	SWI_ERR = 10,
 
-	
-	
 }EMotWorkState;
 
 
@@ -32402,8 +32413,8 @@ void save_parameters(void);
 void read_parameters(void);
 void save_get_record(void);
 
-void get_data_form_file( char* file_name, void* pstru ,unsigned int size);
 void save_data_to_file( char* file_name, void* psource, unsigned int size);
+void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsigned int size);
 
 void file_clear(void);
 
@@ -33406,6 +33417,7 @@ extern __declspec(__nothrow) void __use_no_semihosting(void);
 #line 2 "Source\\gui_app\\XYZ.h"
 #line 1 "Source\\gui_app\\xyz_acc_para.h"
 #line 2 "Source\\gui_app\\xyz_acc_para.h"
+
 #line 3 "Source\\gui_app\\XYZ.h"
 #line 1 ".\\Source\\BSP\\rtc.h"
 
@@ -33446,7 +33458,78 @@ extern __declspec(__nothrow) void __use_no_semihosting(void);
 #line 19 "Source\\gui_app\\MainTask.c"
 #line 1 "Source\\gui_app\\xyz_acc_para.h"
 #line 2 "Source\\gui_app\\xyz_acc_para.h"
+
 #line 20 "Source\\gui_app\\MainTask.c"
+#line 1 ".\\Source\\BSP\\ft5x06_ts.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+ 
+#line 20 ".\\Source\\BSP\\ft5x06_ts.h"
+
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 84 ".\\Source\\BSP\\ft5x06_ts.h"
+
+
+
+
+
+
+
+ 
+ 
+void FT5x06_GPIO_Config(void);
+void FT5x06_Start (void);
+void FT5x06_Stop(void);
+unsigned char FT5x06_WriteByte (unsigned char txByte);
+unsigned char FT5x06_ReadByte (etI2cAck ack);
+void FT5x06_RegReadN(unsigned char reg1, unsigned char N, unsigned char *array);
+void FT5x06_RegWriteN(unsigned char reg1,unsigned char N,unsigned char *array);
+
+bool FT5x06_identify(void);
+void FT5x06_init(void);
+unsigned char FT_IIC_RegRead(unsigned char reg);
+void FT5x06_GetData(int* x, int* y);
+
+
+
+ 
+
+
+#line 21 "Source\\gui_app\\MainTask.c"
 
 
 extern      TPars   pars;
@@ -33512,8 +33595,7 @@ void MainTask(void)
 	float last_frequence,get_the_frequence;
     EMotWorkState mot_state;
 	GUI_HWIN  hGraph = 0;
-
-	int y;
+	static int y,x;
 
 	div = 0;
 
@@ -33528,40 +33610,41 @@ void MainTask(void)
 
 
 	GUI_Init();
-	
-	GUI_CURSOR_Show();
 
 	h_home= 0;
 	h_pars = 0;
 	h_cus =0;
 	flag_paint =0;
 
-#line 118 "Source\\gui_app\\MainTask.c"
+
+#line 117 "Source\\gui_app\\MainTask.c"
 
 
 
-	
-#line 134 "Source\\gui_app\\MainTask.c"
+
+#line 130 "Source\\gui_app\\MainTask.c"
 
 
-#line 149 "Source\\gui_app\\MainTask.c"
+#line 144 "Source\\gui_app\\MainTask.c"
 
 
-#line 163 "Source\\gui_app\\MainTask.c"
 
-#line 174 "Source\\gui_app\\MainTask.c"
+#line 159 "Source\\gui_app\\MainTask.c"
+
+#line 168 "Source\\gui_app\\MainTask.c"
 	
    
 	
 
-	run_cal();
+
 
 
 
 
    	read_custormer();
 	read_parameters();
-
+	get_data_form_file("speedt.lt", (TTPars*)&pars,sizeof(TGetRecord),sizeof(TTPars));
+						   
 
 
     gui_app_init(); 
@@ -33571,19 +33654,19 @@ void MainTask(void)
 
 
 
-#line 227 "Source\\gui_app\\MainTask.c"
+#line 220 "Source\\gui_app\\MainTask.c"
 
 
 
-#line 254 "Source\\gui_app\\MainTask.c"
+#line 247 "Source\\gui_app\\MainTask.c"
 
-#line 291 "Source\\gui_app\\MainTask.c"
+#line 284 "Source\\gui_app\\MainTask.c"
 
-#line 303 "Source\\gui_app\\MainTask.c"
+#line 296 "Source\\gui_app\\MainTask.c"
 
 
 
-home(0);
+	home(0);
 
 	while(1)
 	{
@@ -33722,7 +33805,7 @@ home(0);
 
 
  
-#line 452 "Source\\gui_app\\MainTask.c"
+#line 445 "Source\\gui_app\\MainTask.c"
 
 			buf_data_disp(1);
 			sprintf(buf_c,"%.3f",get_data.speed);

@@ -41,8 +41,6 @@ int  GUI_TOUCH_X_MeasureX(void)
 		
 		return (g_tTP.usAdcNowX);
 
-
-
 #if 0
 	unsigned char t=0,t1,count=0;
 	unsigned short int databuffer[10]={5,7,9,3,2,6,4,0,3,1};//สýพÝื้

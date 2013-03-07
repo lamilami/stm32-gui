@@ -202,6 +202,7 @@ typedef signed int ptrdiff_t;
 
 
 
+								   
 
 
 
@@ -2223,7 +2224,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 
 
  
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);     
@@ -2271,7 +2274,7 @@ extern const GUI_BITMAP_METHODS GUI_BitmapMethodsM888;
 
 
 
-#line 1223 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1225 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop;
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA2;
@@ -2284,7 +2287,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1491 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1493 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -2293,7 +2296,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1509 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1511 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -6782,7 +6785,7 @@ extern void KeyBoard_Win(TKeyBoard_H* keyboard_h) ;
 
 
  
-#line 286 "Source\\gui_app\\gui_app.h"
+#line 284 "Source\\gui_app\\gui_app.h"
 
 
 
@@ -21329,6 +21332,7 @@ void draw_init(void);
 void value_to_graph_lim(float value);
 void list_view_color(unsigned Column, unsigned Row,GUI_COLOR Color);
 void print_head(void);
+void print_result(void);
 
 
 #line 61 "Source\\gui_app\\gui_app.h"
@@ -30942,7 +30946,8 @@ __declspec(__nothrow) long double rintl(long double );
 
 
 
-#line 35 "Source\\gui_app\\xyz_acc_para.h"
+
+#line 36 "Source\\gui_app\\xyz_acc_para.h"
 
 
 
@@ -31585,6 +31590,14 @@ void rdprint(char data);
 
 
 
+
+
+
+
+
+
+
+void print_ch(int loc, char* str_ch);
 
 		
 
@@ -32288,9 +32301,9 @@ static char* state_string[]={
 	"OneStop",
 	"CurL_H",
 	"CurL_L",
-	"SpeedL",
-	"AllOff",
-	"HandOff",
+	"SL", 	 
+	"AF",    
+	"HF",	 
 	"Init",
 	"Swich_err",
 	"T_Mot_Cal"
@@ -32310,8 +32323,6 @@ typedef enum {
 	INIT = 9,
 	SWI_ERR = 10,
 
-	
-	
 }EMotWorkState;
 
 
@@ -32402,8 +32413,8 @@ void save_parameters(void);
 void read_parameters(void);
 void save_get_record(void);
 
-void get_data_form_file( char* file_name, void* pstru ,unsigned int size);
 void save_data_to_file( char* file_name, void* psource, unsigned int size);
+void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsigned int size);
 
 void file_clear(void);
 
@@ -32606,7 +32617,7 @@ void task_run(void);
 
  int draw_buf_lim_t[(800 - 400)];
 
- GUI_ConstString _ListBox[] = {"1","","","", "C","R",""};
+ GUI_ConstString _ListBox[] = {"1","","","", "","R",""};
 
  ETestMode etest_mode;
 
@@ -32654,7 +32665,7 @@ void all_button(char able,int max)
 	 _ListBox[1]="S";
 	 }
 
-	   if(ttpars.dir == 2)
+	  if(ttpars.dir == 2)
 	  {
 	  _ListBox[2] = "D";
 	   }else{
@@ -32702,15 +32713,12 @@ void all_button(char able,int max)
 
  void OnButtonCommClicked(WM_MESSAGE * pMsg)
  {
-	 
 	  TestCom(pMsg,TEST_MODE_COM);
  }
 
   void OnButtonPlusClicked(WM_MESSAGE * pMsg)
  {
 	 TestCom(pMsg,TEST_MODE_T);
-	  
-
  }
 
  void OnButtonTCycClicked(WM_MESSAGE * pMsg)
@@ -32720,7 +32728,7 @@ void all_button(char able,int max)
 
  void OnButtonTPrintClicked(WM_MESSAGE * pMsg)
  {
-
+	mot_t_get_speed_line(mot_t_cal);
  }
 
  void OnButtonTSaveClicked(WM_MESSAGE * pMsg,ESaveState save_state)
@@ -32756,7 +32764,7 @@ void all_button(char able,int max)
 	file_clear();
 
 	save_data_to_file( "speedt.lt", (TCustormer*)&custormer,sizeof(TCustormer));
-    save_data_to_file( "speedt.lt", (TPars*)&pars,sizeof(TPars));
+    save_data_to_file( "speedt.lt", (TTPars*)&ttpars,sizeof(TTPars));
 	save_data_to_file( "speedt.lt", (TGetRecord*)&tget_record,sizeof(TGetRecord));
 	}
  }
@@ -32793,14 +32801,13 @@ void all_button(char able,int max)
 	
 	record.v1[act_row] = 0;
 	record.v2[act_row] = 0;
-
 	 }
 
  }
 
  void OnButtonRTClicked(WM_MESSAGE * pMsg)
  {
-	 	motor_speed(0);
+	motor_speed(0);
 	if((get_data.e_work_state != START_TEST)&&(get_data.e_work_state != GET_V1))
 	{
 	
@@ -32828,7 +32835,7 @@ void all_button(char able,int max)
 
 void OnButtonMainClicked(WM_MESSAGE * pMsg)
 {
- home(pMsg);
+ 	home(pMsg);
 }
 
 
@@ -32851,7 +32858,7 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate_LimT[] = {
     { BUTTON_CreateIndirect,    "删除",                0x800+5,      1,  282,100,40, 0,0},
     { BUTTON_CreateIndirect,    "参数设置",              0x800+6,      1,  236,100,40, 0,0},
     { BUTTON_CreateIndirect,    "保存",                0x800+7,     1,  328,100,40, 0,0},
-    { BUTTON_CreateIndirect,    "打印",                0x800+8,    1,  374,100,40, 0,0},
+    { BUTTON_CreateIndirect,    "参数提取",                0x800+8,    1,  374,100,40, 0,0},
     { BUTTON_CreateIndirect,    "周期测试",              0x800+9,      1,  98, 100,40, 0,0},
     { BUTTON_CreateIndirect,    "主界面",               0x800+10,     1,  420,100,40, 0,0},
     { LISTVIEW_CreateIndirect,   0,               0x800+11,        107,6,268, 454,0,0},
@@ -33017,7 +33024,7 @@ static void _cbCallback_LimT(WM_MESSAGE * pMsg)
                     switch(NCode)
                     {
                         case 2:
-                            OnButtonSaveClicked(pMsg,RemberToSd);
+                            OnButtonTSaveClicked(pMsg,RemberToSd);
                             break;
                     }
                     break;
@@ -33120,7 +33127,6 @@ void draw_xy_t()
 	tsepoint.end_point.x = tsepoint.start_point.x + (800 - 400);
 	tsepoint.end_point.y = 435;
 	draw_scale(tsepoint,0xffff,0);		
-
 
 	tsepoint.start_point.x = 200+190;
 	tsepoint.start_point.y = 435;

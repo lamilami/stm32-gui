@@ -204,6 +204,7 @@ typedef signed int ptrdiff_t;
 
 
 
+								   
 
 
 
@@ -2225,7 +2226,9 @@ void GUI_MOUSE_DRIVER_PS2_OnRx(unsigned char Data);
 
 
  
+
 void GUI_TOUCH_Exec(void);
+void GUI_CTOUCH_Exec(void);
 int  GUI_TOUCH_Calibrate(int Coord, int Log0, int Log1, int Phys0, int Phys1);
 void GUI_TOUCH_SetDefaultCalibration(void);
 int  GUI_TOUCH_GetxPhys(void);     
@@ -2273,7 +2276,7 @@ extern const GUI_BITMAP_METHODS GUI_BitmapMethodsM888;
 
 
 
-#line 1223 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1225 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop;
 extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA2;
@@ -2286,7 +2289,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1491 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1493 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -2295,7 +2298,7 @@ extern const tGUI_SIF_APIList GUI_SIF_APIList_Prop_AA4;
 
  
 
-#line 1509 ".\\Source\\uCGUI\\Core\\GUI.h"
+#line 1511 ".\\Source\\uCGUI\\Core\\GUI.h"
 
 
 
@@ -6784,7 +6787,7 @@ extern void KeyBoard_Win(TKeyBoard_H* keyboard_h) ;
 
 
  
-#line 286 ".\\Source\\gui_app\\gui_app.h"
+#line 284 ".\\Source\\gui_app\\gui_app.h"
 
 
 
@@ -21331,6 +21334,7 @@ void draw_init(void);
 void value_to_graph_lim(float value);
 void list_view_color(unsigned Column, unsigned Row,GUI_COLOR Color);
 void print_head(void);
+void print_result(void);
 
 
 #line 61 ".\\Source\\gui_app\\gui_app.h"
@@ -30944,7 +30948,8 @@ __declspec(__nothrow) long double rintl(long double );
 
 
 
-#line 35 ".\\Source\\gui_app\\xyz_acc_para.h"
+
+#line 36 ".\\Source\\gui_app\\xyz_acc_para.h"
 
 
 
@@ -31587,6 +31592,14 @@ void rdprint(char data);
 
 
 
+
+
+
+
+
+
+
+void print_ch(int loc, char* str_ch);
 
 		
 
@@ -32290,9 +32303,9 @@ static char* state_string[]={
 	"OneStop",
 	"CurL_H",
 	"CurL_L",
-	"SpeedL",
-	"AllOff",
-	"HandOff",
+	"SL", 	 
+	"AF",    
+	"HF",	 
 	"Init",
 	"Swich_err",
 	"T_Mot_Cal"
@@ -32312,8 +32325,6 @@ typedef enum {
 	INIT = 9,
 	SWI_ERR = 10,
 
-	
-	
 }EMotWorkState;
 
 
@@ -32404,8 +32415,8 @@ void save_parameters(void);
 void read_parameters(void);
 void save_get_record(void);
 
-void get_data_form_file( char* file_name, void* pstru ,unsigned int size);
 void save_data_to_file( char* file_name, void* psource, unsigned int size);
+void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsigned int size);
 
 void file_clear(void);
 
@@ -32707,7 +32718,14 @@ void start_test_init()
 	if(current_interface == 106)
 	{
 
-	set_speed(ttpars.start_speed);	
+	set_speed(ttpars.start_speed);
+	if(etest_mode == TEST_MODE_SIN)
+	{
+
+	  TIM_Cmd(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0C00)), ENABLE);
+
+
+	}	
 	
 	}else{
 
@@ -32844,7 +32862,7 @@ void motor_int(void)
     TIM_ITConfig(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0000)), ((uint16_t)0x0001), ENABLE);
 
 
-#line 295 "Source\\Mot\\mot.c"
+#line 302 "Source\\Mot\\mot.c"
 
 	NVIC_PriorityGroupConfig(((uint32_t)0x400));
    
@@ -32889,17 +32907,18 @@ void motor_int(void)
 	
 
 
+	
+	
+	
+    TIM_TimeBaseStructure.TIM_Period = 199;
+    TIM_TimeBaseStructure.TIM_Prescaler = 359; 
+    TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+    TIM_TimeBaseStructure.TIM_CounterMode = ((uint16_t)0x0000);
+    TIM_TimeBaseInit(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0C00)), &TIM_TimeBaseStructure);
+	TIM_ITConfig(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0C00)), ((uint16_t)0x0001), ENABLE);
+	TIM_Cmd(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0C00)), DISABLE);
 
 
-
-
-
-
-
-
- 
-
-		
 }
 
 
@@ -33055,7 +33074,7 @@ void TIM7_Interrupt(void)
 	
 	}
 	
-#line 514 "Source\\Mot\\mot.c"
+#line 522 "Source\\Mot\\mot.c"
 
 }
 
@@ -33071,7 +33090,6 @@ void set_speed(float speed)
    set_current = speed*mot_t_cal.k_R_r/1000;
 
    set_data(set_current);
-
 
   }else{
 
@@ -33149,11 +33167,12 @@ void adjust_pwm_speed()
 			motor_speed(speed);
 			}
 		}else{
-		
 			motor_speed(ttpars.start_speed);
 		}
+	 }else if(etest_mode == TEST_MODE_SIN){
+	 			
+			
 	 }
-
  }else{
 		u0 = get_data.speed;
 		if(record.test_times == 0)
@@ -33194,6 +33213,7 @@ void test_stop()
 
    TIM_Cmd(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0000)), DISABLE);
    TIM_Cmd(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0800)), DISABLE);
+   TIM_Cmd(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0C00)), DISABLE);
    TIM_Cmd(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x1400)), DISABLE);
 
    set_speed(0);
@@ -33304,6 +33324,7 @@ char intit_sw_state()
 			}
 		}
 
+
 }
 
 
@@ -33368,7 +33389,7 @@ void EXIT9_5()
 
 
 
-#line 844 "Source\\Mot\\mot.c"
+#line 854 "Source\\Mot\\mot.c"
 
 void err_back(EWorkState work_state)
 {
@@ -33378,11 +33399,11 @@ void err_back(EWorkState work_state)
 
 
 
+
 void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
 {
 	unsigned int start_ma, first_ma, second_ma,size;
 	float get_speed_x0_ma, get_speed_x1_ma,k;
-
 
 	for(start_ma=1;start_ma<10;start_ma++)
 	{
@@ -33403,6 +33424,7 @@ void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
 
     OSTimeDlyHMSM(0,0,2,0);
 
+
 	get_speed_x1_ma = get_data.speed;
 
 	mot_t_cal.k = 2000/(get_speed_x1_ma - get_speed_x0_ma);
@@ -33419,9 +33441,12 @@ void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
 	
 	mot_t_cal.encode_mm_per_plus = 2*3.1415926*ttpars.enc_r/ttpars.enc_n;
 
-	size = 	1000/(ttpars.HZ*0.5);
-
+	
+	size = 	1000/(ttpars.HZ*0.5);								
+	
 	mot_t_cal.k_sin = ttpars.Vp;
+	
+	mot_t_cal.div_times = size;
 
 	sin_buf =  sin_1_4(size);
 }
@@ -33444,18 +33469,17 @@ void TIM5_Interrupt(void)
 {
 	float speed;
 
-	float dt;
-
-	dt = 0.5/1000;
 
 	if(enable_sin)
 	{
-	speed = ttpars.start_speed+sin_buf[mot_t_cal.counter&mot_t_cal.div_times];
+	speed = ttpars.start_speed+sin_buf[mot_t_cal.counter&(mot_t_cal.div_times -1)];
 	set_speed(speed);
 	mot_t_cal.counter++;
 	}
 
-#line 953 "Source\\Mot\\mot.c"
+	TIM_ClearITPendingBit(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0C00)), ((uint16_t)0x0001));
+	
+#line 966 "Source\\Mot\\mot.c"
 
 }
 

@@ -29,6 +29,9 @@
 #ifndef  __APP_CFG_H__
 #define  __APP_CFG_H__
 
+
+//#define R_TOUCH
+#define C_TOUCH
 /*
 *********************************************************************************************************
 *                                       ADDITIONAL uC/MODULE ENABLES

@@ -26,6 +26,14 @@ void rdprint(char data);
 #define PRINT_BUSY     0x13
 #define PRINT_FREE	   0x11
 
+//n -- 	0  16*16
+//  --  1  8*16
+//  --  2  16*8
+//	--  3  8*8
+//  --  4  12*12
+//  --  5  6*12
+//  --  6  8*16
+//  --  7  8*12
 #define COMM_CHINESE(n)   rdprint(0x1B);rdprint(0x38);rdprint(n);
 
 //»»ÐÐ
@@ -128,7 +136,7 @@ void rdprint(char data);
 #define COMM_CR 	 rdprint(0x0D);
 
 
-
+void print_ch(int loc, char* str_ch);
 
 		
 

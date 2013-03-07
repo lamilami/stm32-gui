@@ -305,7 +305,7 @@ void OnxxxClicked_SAVE(WM_MESSAGE * pMsg,ESaveState save_state)
 
 void OnxxxClicked_PRINT(WM_MESSAGE * pMsg)
 {
-
+   print_result();
 }
 
 void OnButtonClicked_PARM_SET(WM_MESSAGE * pMsg)
@@ -353,7 +353,6 @@ void Set_Color_cell(unsigned Column, unsigned Row,GUI_COLOR Color)
 * This table conatins the info required to create the dialog.
 * It has been created by ucGUIbuilder.
 */
-
 
 
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate_Lim[] = {
@@ -804,48 +803,57 @@ void print_head(void)
 
 void print_result(void)
 {
-	int i;
-	char ch[]="1234567890123456789";
-	COMM_6;
-	for(i=0;i<strlen(ch);i++)
+	int i,j,k;
+	char ch[]="0123456789012345678901";
+	char fc[5];
+	char dirz[]={"正"};
+	char diro[]={"反"};
+	char hlsp[]={"限速器测试报告(手持)"};
+	char pass[]={"正常"};
+	char npass[]={"问题"};
+
+
+	        // 编号 S1  S2  方向 结果
+
+    COMM_LF;
+
+	for(i=record.test_times;i>0; i--)
 	{
-	rdprint(ch[i]);
+	COMM_LF;
+	sprintf(fc,"%d",i);
+	print_en(0,fc,-1);
+	sprintf(fc,"%f",record.v1[i]);
+	print_en(4,fc,5);
+	sprintf(fc,"%f",record.v2[i]);
+	print_en(2,fc,5);
+	if(record.result[i]== 2)
+	print_ch(1,pass);
+	else 
+	print_ch(1,npass);
+
+	if(record.dir[i] == 1)
+	print_ch(1,dirz);
+	else 
+	print_ch(1,diro);
 	}
-	COMM_Ds;
-	COMM_Dm(1);
-	COMM_Dm(9);
-	COMM_Dm(20);
-	COMM_Dm(30);
-	COMM_Dm(40);
-	COMM_De;
-
-	COMM_HT;
-	rdprint('N');
-	rdprint('o');
-
-	COMM_HT;
-	rdprint('V');
-	rdprint('1');
+	COMM_LF;
+	COMM_LF;
+	print_ch(0,"序号");	 // 同一行打印有累积效应
+	print_ch(2,"V1(m/s)");
+	print_ch(1,"V2(m/s)");
+	print_ch(1,"方向");
+	print_ch(2,"结果");
 
 
-	COMM_HT;
-	rdprint('V');
-	rdprint('2');
-
-
-	COMM_HT;
-	rdprint('D');
-	rdprint('i');
-	rdprint('r');
-
-	COMM_HT;
-	rdprint('R');
-	rdprint('e');
-	rdprint('s');
-
-	for(i=1;i<tget_record.act_record_lenth+1;i++);
-	
+	COMM_LF;
+	COMM_LF;
+	print_custormer();
+   	COMM_LF;
+	print_data_time();
+    COMM_LF;
+	COMM_LF;
 }
+
 
 
 
