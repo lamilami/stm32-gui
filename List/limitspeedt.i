@@ -32557,8 +32557,9 @@ void test_stop(void);
 
 void err_back(EWorkState work_state);
 
-void mot_t_get_speed_line(TMot_t_Cal  mot_pars);
+void mot_t_get_speed_line(TMot_t_Cal*  mot_pars);
 float* sin_1_4(int size);
+void caculate_pars(TMot_t_Cal*  mot_t_cal);
 
 
 
@@ -32728,7 +32729,7 @@ void all_button(char able,int max)
 
  void OnButtonTPrintClicked(WM_MESSAGE * pMsg)
  {
-	mot_t_get_speed_line(mot_t_cal);
+	mot_t_get_speed_line(&mot_t_cal);
  }
 
  void OnButtonTSaveClicked(WM_MESSAGE * pMsg,ESaveState save_state)

@@ -32549,8 +32549,9 @@ void test_stop(void);
 
 void err_back(EWorkState work_state);
 
-void mot_t_get_speed_line(TMot_t_Cal  mot_pars);
+void mot_t_get_speed_line(TMot_t_Cal*  mot_pars);
 float* sin_1_4(int size);
+void caculate_pars(TMot_t_Cal*  mot_t_cal);
 
 
 
@@ -33606,6 +33607,7 @@ void MainTask(void)
 
 
 
+
     sd_init();
 
 
@@ -33617,21 +33619,21 @@ void MainTask(void)
 	flag_paint =0;
 
 
-#line 117 "Source\\gui_app\\MainTask.c"
+#line 118 "Source\\gui_app\\MainTask.c"
 
 
 
 
-#line 130 "Source\\gui_app\\MainTask.c"
+#line 131 "Source\\gui_app\\MainTask.c"
 
 
-#line 144 "Source\\gui_app\\MainTask.c"
+#line 145 "Source\\gui_app\\MainTask.c"
 
 
 
-#line 159 "Source\\gui_app\\MainTask.c"
+#line 160 "Source\\gui_app\\MainTask.c"
 
-#line 168 "Source\\gui_app\\MainTask.c"
+#line 169 "Source\\gui_app\\MainTask.c"
 	
    
 	
@@ -33643,198 +33645,28 @@ void MainTask(void)
 
    	read_custormer();
 	read_parameters();
-	get_data_form_file("speedt.lt", (TTPars*)&pars,sizeof(TGetRecord),sizeof(TTPars));
+	get_data_form_file("speedt.lt", (TTPars*)&ttpars,sizeof(TGetRecord),sizeof(TTPars));
 						   
-
 
     gui_app_init(); 
 	motor_int();
 
-
-
-
-
-#line 220 "Source\\gui_app\\MainTask.c"
-
-
-
-#line 247 "Source\\gui_app\\MainTask.c"
-
-#line 284 "Source\\gui_app\\MainTask.c"
-
-#line 296 "Source\\gui_app\\MainTask.c"
-
-
-
-	home(0);
-
-	while(1)
-	{
-
-
-	    RTC_Get_Time(&Tim);
-		RTC_time_to_string(buf ,Tim);
-
-		GUI_DispStringAt(buf,680,12);
-
-		GUI_Exec();
-
-		get_data.current = 1.23;
-		
-		sprintf(buf_c,"%.2fA",get_data.current);
-		
-		GUI_DispStringAt(buf_c,450,12);
-		
-		
-		mot_state = get_data.e_work_state;
-
-		if(current_interface == 102)
-		{
-			if(flag_paint == 0)
-			{
-			draw_xy();
-			flag_paint =1;
-			}
-
-		switch(mot_state)
-		  {
-		case START_TEST:
-			
-			buf_data_disp(1);
-			sprintf(buf_c,"%.3f",get_data.speed);
-			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,0x800+7),1,0,buf_c);
-			break;
-			
-		case GET_V1:
-			buf_data_disp(1);
-			sprintf(buf_c,"%.3f",get_data.speed);
-			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,0x800+7),2,0,buf_c);
-			break;
-			
-		case ONE_STOP:
-			sprintf(buf_c,"%.3f",get_data.speed);
-			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,0x800+7),2,0,buf_c);
-
-			if(record.result[record.test_times])
-			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,0x800+7),4,0,"P");
-			else
-			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,0x800+7),4,0,"N");		
-			break;
-			
-		case CURRENT_LIMIT_H:
-			break;
-			
-		case CURRENT_LIMIT_L:
-			break;
-
-		case SPEED_LIMIT:
-			break;
-
-		case ALL_TEST_STOP:
-			break;
-			
-		case HAND_OFF:
-			break;
-
-		case SWI_ERR:
-			break;
-
-		default:
-			
-			break;
-		  }
-		LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,0x800+7),3,0,state_string[mot_state -1]);
-		}
-
-		if(current_interface == 104)
-		{
-			if(xyz_paint_flag == 0)
-			{
-			GUI_SetColor(0x00FFFF);
-			draw_scale_y(20,23,(23 +128*2));
-			GUI_SetColor(0xFFFFFF);
-			xyz_paint_flag =1;
-			disp_titles();
-			disp_mode();
-			draw_cm_s2(4900,900);
-			}
-		  if(sample_status == START)
-		  {
-
-
-
-			save_xyz();
-
-			if(xyz_pars.e_filter != FILTER_NO)
-			{
-			xyz_fir();
-			xyz_value_fir_to_graph();
-			}
-			else
-			{
-			xyz_value_dir_to_graph(&Z_acc,0x00FF00,Z);
-			}
-			xyz_value_dir_to_graph(&X_acc,0xFF0000,X);
-			xyz_value_dir_to_graph(&Y_acc,0x0000FF,Y);
-			disp_caculate();
-		  }
-		}
-		
-		
-		if(current_interface == 106)
-		{
-			if(flag_paint == 0)
-			{
-			draw_xy_t();
-	
-			flag_paint =1;
-			}
-			
-			if(etest_mode == TEST_MODE_COM)
-			{
-			
-			switch(mot_state)
-				{
-			case START_TEST:
-			
-			
+	caculate_pars(&mot_t_cal);
 
 
 
 
 
-
- 
-#line 445 "Source\\gui_app\\MainTask.c"
-
-			buf_data_disp(1);
-			sprintf(buf_c,"%.3f",get_data.speed);
-			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,0x800+11),3,0,buf_c);
-			
-			break;
-
-			default:
-			break;
-
-				}
-			}
-		}
-
-		if(current_interface == 108)
-		{
-			if(flag_paint == 0)
-			{
-			draw_xy_t();
-			flag_paint =1;
-			}
-
-		    
-		}
+#line 222 "Source\\gui_app\\MainTask.c"
 
 
-		OSTimeDlyHMSM(0,0,0,5); 
 
-	} 
+#line 249 "Source\\gui_app\\MainTask.c"
 
+#line 286 "Source\\gui_app\\MainTask.c"
+
+#line 298 "Source\\gui_app\\MainTask.c"
+
+#line 477 "Source\\gui_app\\MainTask.c"
 
 }

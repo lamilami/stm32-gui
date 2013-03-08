@@ -472,8 +472,9 @@ void ID_KEY_BU(WM_MESSAGE *pMsg)
 {
 	if(keyboard_win_h->work_state == CHINESE)
 	{
-		
-	 if(keyboard_win_h->res_ch_data != keyboard_win_h->res_ch_data_end)
+
+	 if((keyboard_win_h->res_ch_data - keyboard_win_h->res_ch_data_head)>0)	
+	 //if(keyboard_win_h->res_ch_data != keyboard_win_h->res_ch_data_end)
 	 {
 		keyboard_win_h->res_ch_data--;
 		*(keyboard_win_h->res_ch_data--)='\0';
@@ -481,12 +482,13 @@ void ID_KEY_BU(WM_MESSAGE *pMsg)
 	 }	
 	
 	}else{
-	if(keyboard_win_h->res_ch_data != keyboard_win_h->res_ch_data_end)
+
+	if((keyboard_win_h->res_ch_data - keyboard_win_h->res_ch_data_head)>0)
+	//if(keyboard_win_h->res_ch_data != keyboard_win_h->res_ch_data_end)
 	 {
 		keyboard_win_h->res_ch_data--;
 		*(keyboard_win_h->res_ch_data) ='\0';
 	 }	
-	
 	}
 	EDIT_SetText(WM_GetDialogItem(pMsg->hWin, GUI_ID_EDIT_DATA),keyboard_win_h->res_ch_data_head);
 

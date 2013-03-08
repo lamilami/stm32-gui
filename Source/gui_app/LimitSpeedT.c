@@ -125,7 +125,7 @@ void all_button(char able,int max)
 
  void OnButtonTPrintClicked(WM_MESSAGE * pMsg)
  {
-	mot_t_get_speed_line(mot_t_cal);
+	mot_t_get_speed_line(&mot_t_cal);
  }
 
  void OnButtonTSaveClicked(WM_MESSAGE * pMsg,ESaveState save_state)

@@ -93,6 +93,7 @@ void MainTask(void)
 	mot_t_cal.cal_flag  = 0;
 
 
+
 #ifndef WIN_SIM
     sd_init();
 #endif
@@ -176,11 +177,13 @@ void MainTask(void)
 
    	read_custormer();
 	read_parameters();
-//	get_data_form_file("speedt.lt", (TTPars*)&pars,sizeof(TGetRecord),sizeof(TTPars));
+	get_data_form_file("speedt.lt", (TTPars*)&ttpars,sizeof(TGetRecord),sizeof(TTPars));
 						   
 
     gui_app_init(); 
 	motor_int();
+
+	caculate_pars(&mot_t_cal);
 
 #if 0
   	Draw(&Msg);
@@ -293,7 +296,7 @@ void MainTask(void)
 	}
 #endif
 
-#if 1
+#if 0
 
 	home(0);
 

@@ -32549,8 +32549,9 @@ void test_stop(void);
 
 void err_back(EWorkState work_state);
 
-void mot_t_get_speed_line(TMot_t_Cal  mot_pars);
+void mot_t_get_speed_line(TMot_t_Cal*  mot_pars);
 float* sin_1_4(int size);
+void caculate_pars(TMot_t_Cal*  mot_t_cal);
 
 
 
@@ -33400,10 +33401,12 @@ void err_back(EWorkState work_state)
 
 
 
-void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
+void mot_t_get_speed_line(TMot_t_Cal*  mot_t_cal)
 {
 	unsigned int start_ma, first_ma, second_ma,size;
 	float get_speed_x0_ma, get_speed_x1_ma,k;
+
+start_test_init();
 
 	for(start_ma=1;start_ma<10;start_ma++)
 	{
@@ -33427,26 +33430,34 @@ void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
 
 	get_speed_x1_ma = get_data.speed;
 
-	mot_t_cal.k = 2000/(get_speed_x1_ma - get_speed_x0_ma);
+	mot_t_cal->k = 2000/(get_speed_x1_ma - get_speed_x0_ma);
 
-	mot_t_cal.cal_flag = 1;
+	mot_t_cal->cal_flag = 1;
 
-	mot_t_cal.max_speed_m_per_s = (get_speed_x1_ma - get_speed_x0_ma)*10;
+	mot_t_cal->max_speed_m_per_s = (get_speed_x1_ma - get_speed_x0_ma)*10;
 	
-	mot_t_cal.R_r = ttpars.R_mm/ttpars.r_mm;
-
-	mot_t_cal.k_R_r =  mot_t_cal.k*mot_t_cal.R_r;
-
-	mot_t_cal.r_R = ttpars.r_mm/ttpars.R_mm;
 	
-	mot_t_cal.encode_mm_per_plus = 2*3.1415926*ttpars.enc_r/ttpars.enc_n;
+	mot_t_cal->k_R_r =  mot_t_cal->k*mot_t_cal->R_r;
 
-	
+	test_stop();
+}
+
+void caculate_pars(TMot_t_Cal*  mot_t_cal)
+{
+	unsigned int size;
+
+	mot_t_cal->R_r = ttpars.R_mm/ttpars.r_mm;
+
+	mot_t_cal->r_R  = ttpars.r_mm/ttpars.R_mm;
+
+	mot_t_cal->encode_mm_per_plus = 2*3.1415926*ttpars.enc_r/ttpars.enc_n;
+
+			
 	size = 	1000/(ttpars.HZ*0.5);								
 	
-	mot_t_cal.k_sin = ttpars.Vp;
+	mot_t_cal->k_sin = ttpars.Vp;
 	
-	mot_t_cal.div_times = size;
+	mot_t_cal->div_times = size;
 
 	sin_buf =  sin_1_4(size);
 }
@@ -33468,8 +33479,6 @@ float* sin_1_4(int size)
 void TIM5_Interrupt(void)
 {
 	float speed;
-
-
 	if(enable_sin)
 	{
 	speed = ttpars.start_speed+sin_buf[mot_t_cal.counter&(mot_t_cal.div_times -1)];
@@ -33477,9 +33486,11 @@ void TIM5_Interrupt(void)
 	mot_t_cal.counter++;
 	}
 
+
 	TIM_ClearITPendingBit(((TIM_TypeDef *) (((uint32_t)0x40000000) + 0x0C00)), ((uint16_t)0x0001));
+
 	
-#line 966 "Source\\Mot\\mot.c"
+#line 976 "Source\\Mot\\mot.c"
 
 }
 
