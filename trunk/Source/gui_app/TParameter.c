@@ -211,6 +211,7 @@ void OnButtonClicked_TPars(WM_MESSAGE * pMsg)
 	ttpars.Vp = EDIT_GetFloatValue(WM_GetDialogItem(pMsg->hWin, GUI_ID_EDIT_TVP));
 
 //	mot_t_get_speed_line(mot_t_cal);
+	caculate_pars(&mot_t_cal);
 	LimitSpeedT(pMsg);
 }
 

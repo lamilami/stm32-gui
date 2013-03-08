@@ -861,10 +861,12 @@ void err_back(EWorkState work_state)
 
 // 求取k值	k值对应 电流和速度的关系
 
-void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
+void mot_t_get_speed_line(TMot_t_Cal*  mot_t_cal)
 {
 	unsigned int start_ma, first_ma, second_ma,size;
 	float get_speed_x0_ma, get_speed_x1_ma,k;
+
+start_test_init();
 
 	for(start_ma=1;start_ma<10;start_ma++)
 	{
@@ -888,26 +890,34 @@ void mot_t_get_speed_line(TMot_t_Cal  mot_t_cal)
 
 	get_speed_x1_ma = get_data.speed;
 
-	mot_t_cal.k = 2000/(get_speed_x1_ma - get_speed_x0_ma);// 2ma 乘以1000 倍  电流/速度
+	mot_t_cal->k = 2000/(get_speed_x1_ma - get_speed_x0_ma);// 2ma 乘以1000 倍  电流/速度
 
-	mot_t_cal.cal_flag = 1;
+	mot_t_cal->cal_flag = 1;
 
-	mot_t_cal.max_speed_m_per_s = (get_speed_x1_ma - get_speed_x0_ma)*10;// 20ma 对应的速度
+	mot_t_cal->max_speed_m_per_s = (get_speed_x1_ma - get_speed_x0_ma)*10;// 20ma 对应的速度
 	
-	mot_t_cal.R_r = ttpars.R_mm/ttpars.r_mm;
-
-	mot_t_cal.k_R_r =  mot_t_cal.k*mot_t_cal.R_r;
-
-	mot_t_cal.r_R = ttpars.r_mm/ttpars.R_mm;
 	
-	mot_t_cal.encode_mm_per_plus = 2*3.1415926*ttpars.enc_r/ttpars.enc_n;
+	mot_t_cal->k_R_r =  mot_t_cal->k*mot_t_cal->R_r;
 
-	//	1000/ttpars.HZ  -- ms				
+	test_stop();
+}
+
+void caculate_pars(TMot_t_Cal*  mot_t_cal)
+{
+	unsigned int size;
+
+	mot_t_cal->R_r = ttpars.R_mm/ttpars.r_mm;
+
+	mot_t_cal->r_R  = ttpars.r_mm/ttpars.R_mm;
+
+	mot_t_cal->encode_mm_per_plus = 2*3.1415926*ttpars.enc_r/ttpars.enc_n;
+
+			//	1000/ttpars.HZ  -- ms				
 	size = 	1000/(ttpars.HZ*DIV_TIMS_MS);								//		
 	
-	mot_t_cal.k_sin = ttpars.Vp;
+	mot_t_cal->k_sin = ttpars.Vp;
 	
-	mot_t_cal.div_times = size;
+	mot_t_cal->div_times = size;
 
 	sin_buf =  sin_1_4(size);
 }
@@ -929,8 +939,6 @@ float* sin_1_4(int size)
 void TIM5_Interrupt(void)
 {
 	float speed;
-
-
 	if(enable_sin)
 	{
 	speed = ttpars.start_speed+sin_buf[mot_t_cal.counter&(mot_t_cal.div_times -1)];
@@ -938,7 +946,9 @@ void TIM5_Interrupt(void)
 	mot_t_cal.counter++;
 	}
 
+#ifndef WIN_SIM
 	TIM_ClearITPendingBit(TIM5, TIM_IT_Update);
+#endif
 	
 #if 0
 	 if(etest_mode == TEST_MODE_COM){

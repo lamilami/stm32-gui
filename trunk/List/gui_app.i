@@ -32573,8 +32573,9 @@ void test_stop(void);
 
 void err_back(EWorkState work_state);
 
-void mot_t_get_speed_line(TMot_t_Cal  mot_pars);
+void mot_t_get_speed_line(TMot_t_Cal*  mot_pars);
 float* sin_1_4(int size);
+void caculate_pars(TMot_t_Cal*  mot_t_cal);
 
 
 
@@ -33252,10 +33253,10 @@ void get_data_form_file( char* file_name, void* pstru, unsigned int off_set,unsi
 	{
 		while(1);
 	}
+
 	if(fsrc.fsize > 0)
 	{
-	res = f_lseek(&fsrc,fsrc.fsize - off_set);
-	 
+	res = f_lseek(&fsrc,fsrc.fsize - off_set - size); 
 	res = f_read(&fsrc,pstru,size,&bw);
 	}
 	
