@@ -88,7 +88,7 @@
 ### ADS-LD Output File: '.\ouput\uCOSDemo.axf'
 ### ADS-LD Command File: '.\ouput\uCOSDemo.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\ouput\uCOSDemo.lnp', Handle=0x00001524
+### Creating CmdFile '.\ouput\uCOSDemo.lnp', Handle=0x00000D6C
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\ouput\uCOSDemo.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

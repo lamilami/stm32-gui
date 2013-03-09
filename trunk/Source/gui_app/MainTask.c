@@ -183,7 +183,7 @@ void MainTask(void)
     gui_app_init(); 
 	motor_int();
 
-	caculate_pars(&mot_t_cal);
+//	caculate_pars(&mot_t_cal);
 
 #if 0
   	Draw(&Msg);
@@ -296,7 +296,7 @@ void MainTask(void)
 	}
 #endif
 
-#if 0
+#if 1
 
 	home(0);
 
