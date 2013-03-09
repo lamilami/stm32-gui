@@ -4,12 +4,15 @@
 
                           AREA ||i.MainTask||, CODE, READONLY, ALIGN=2
 
+                          REQUIRE _printf_percent
+                          REQUIRE _printf_widthprec
+                          REQUIRE _printf_f
+                          REQUIRE _printf_fp_dec
                   MainTask PROC
 ;;;66     
 ;;;67     void MainTask(void) 
-000000  b510              PUSH     {r4,lr}
+000000  b09a              SUB      sp,sp,#0x68
 ;;;68     {
-000002  b096              SUB      sp,sp,#0x58
 ;;;69     	unsigned int speed_start;
 ;;;70         float ratex,ratey;
 ;;;71     	WM_MESSAGE * pMsg;
@@ -19,16 +22,16 @@
 ;;;75         unsigned char sec,min,prec,i,k;
 ;;;76         unsigned int div;
 ;;;77     	char buf_exp[30] = {'2','0','1','2','-','1','2','-','1','2','-','1','2','-','3','0',':','2','4'};
-000004  2220              MOVS     r2,#0x20
-000006  4917              LDR      r1,|L1.100|
-000008  a80d              ADD      r0,sp,#0x34
-00000a  f7fffffe          BL       __aeabi_memcpy4
+000002  2220              MOVS     r2,#0x20
+000004  49a5              LDR      r1,|L1.668|
+000006  a80f              ADD      r0,sp,#0x3c
+000008  f7fffffe          BL       __aeabi_memcpy4
 ;;;78     	char buf[50]="12-30";
-00000e  4915              LDR      r1,|L1.100|
-000010  2234              MOVS     r2,#0x34
-000012  3120              ADDS     r1,r1,#0x20
-000014  4668              MOV      r0,sp
-000016  f7fffffe          BL       __aeabi_memcpy4
+00000c  49a3              LDR      r1,|L1.668|
+00000e  2234              MOVS     r2,#0x34
+000010  3120              ADDS     r1,r1,#0x20
+000012  4668              MOV      r0,sp
+000014  f7fffffe          BL       __aeabi_memcpy4
 ;;;79     	char buf_c[7];
 ;;;80     	float j;
 ;;;81     
@@ -41,36 +44,36 @@
 ;;;88     	div = 0;
 ;;;89     
 ;;;90     	disp_mult = 0;
-00001a  4813              LDR      r0,|L1.104|
-00001c  2400              MOVS     r4,#0
-00001e  7004              STRB     r4,[r0,#0]
+000018  48a1              LDR      r0,|L1.672|
+00001a  2400              MOVS     r4,#0
+00001c  7004              STRB     r4,[r0,#0]
 ;;;91     	i = 0;
 ;;;92     
 ;;;93     	mot_t_cal.cal_flag  = 0;
-000020  4812              LDR      r0,|L1.108|
-000022  7004              STRB     r4,[r0,#0]
+00001e  48a1              LDR      r0,|L1.676|
+000020  7004              STRB     r4,[r0,#0]
 ;;;94     
 ;;;95     
 ;;;96     
 ;;;97     #ifndef WIN_SIM
 ;;;98         sd_init();
-000024  f7fffffe          BL       sd_init
+000022  f7fffffe          BL       sd_init
 ;;;99     #endif
 ;;;100    
 ;;;101    	GUI_Init();
-000028  f7fffffe          BL       GUI_Init
+000026  f7fffffe          BL       GUI_Init
 ;;;102    //	GUI_CURSOR_Show();
 ;;;103    	h_home= NULL;
-00002c  4810              LDR      r0,|L1.112|
-00002e  8004              STRH     r4,[r0,#0]
+00002a  489f              LDR      r0,|L1.680|
 ;;;104    	h_pars = NULL;
-000030  4810              LDR      r0,|L1.116|
-000032  8004              STRH     r4,[r0,#0]
 ;;;105    	h_cus =NULL;
-000034  4810              LDR      r0,|L1.120|
-000036  8004              STRH     r4,[r0,#0]
 ;;;106    	flag_paint =0;
-000038  4810              LDR      r0,|L1.124|
+00002c  f8df8284          LDR      r8,|L1.692|
+000030  8004              STRH     r4,[r0,#0]            ;103
+000032  489e              LDR      r0,|L1.684|
+000034  8004              STRH     r4,[r0,#0]            ;104
+000036  489e              LDR      r0,|L1.688|
+000038  8004              STRH     r4,[r0,#0]            ;105
 ;;;107    
 ;;;108    // 
 ;;;109    #if 0
@@ -143,26 +146,24 @@
 ;;;176    #endif
 ;;;177    
 ;;;178       	read_custormer();
-00003a  6004              STR      r4,[r0,#0]  ; flag_paint
-00003c  f7fffffe          BL       read_custormer
+00003a  f8c84000          STR      r4,[r8,#0]  ; flag_paint
+00003e  f7fffffe          BL       read_custormer
 ;;;179    	read_parameters();
-000040  f7fffffe          BL       read_parameters
+000042  f7fffffe          BL       read_parameters
 ;;;180    	get_data_form_file("speedt.lt", (TTPars*)&ttpars,sizeof(TGetRecord),sizeof(TTPars));
-000044  2358              MOVS     r3,#0x58
-000046  f2403226          MOV      r2,#0x326
-00004a  490d              LDR      r1,|L1.128|
-00004c  a00d              ADR      r0,|L1.132|
-00004e  f7fffffe          BL       get_data_form_file
+000046  2358              MOVS     r3,#0x58
+000048  f2403226          MOV      r2,#0x326
+00004c  499a              LDR      r1,|L1.696|
+00004e  a09b              ADR      r0,|L1.700|
+000050  f7fffffe          BL       get_data_form_file
 ;;;181    						   
 ;;;182    
 ;;;183        gui_app_init(); 
-000052  f7fffffe          BL       gui_app_init
+000054  f7fffffe          BL       gui_app_init
 ;;;184    	motor_int();
-000056  f7fffffe          BL       motor_int
+000058  f7fffffe          BL       motor_int
 ;;;185    
-;;;186    	caculate_pars(&mot_t_cal);
-00005a  4804              LDR      r0,|L1.108|
-00005c  f7fffffe          BL       caculate_pars
+;;;186    //	caculate_pars(&mot_t_cal);
 ;;;187    
 ;;;188    #if 0
 ;;;189      	Draw(&Msg);
@@ -275,9 +276,11 @@
 ;;;296    	}
 ;;;297    #endif
 ;;;298    
-;;;299    #if 0
+;;;299    #if 1
 ;;;300    
 ;;;301    	home(0);
+00005c  2000              MOVS     r0,#0
+00005e  f7fffffe          BL       home
 ;;;302    
 ;;;303    	while(1)
 ;;;304    	{
@@ -293,6 +296,9 @@
 ;;;314    		get_data.current = 1.23;
 ;;;315    		
 ;;;316    		sprintf(buf_c,"%.2fA",get_data.current);
+000062  a19c              ADR      r1,|L1.724|
+000064  4d98              LDR      r5,|L1.712|
+000066  f8d1b004          LDR      r11,[r1,#4]
 ;;;317    		//TEXT_SetText(WM_GetDialogItem(current_handle,GUI_ID_TEXT_CURRENT),buf_c);
 ;;;318    		GUI_DispStringAt(buf_c,450,12);
 ;;;319    		
@@ -314,22 +320,131 @@
 ;;;335    			buf_data_disp(1);
 ;;;336    			sprintf(buf_c,"%.3f",get_data.speed);
 ;;;337    			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,GUI_ID_LISTVIEW_RESULT),1,0,buf_c);
+00006a  4e98              LDR      r6,|L1.716|
+00006c  f8dfa260          LDR      r10,|L1.720|
+000070  6809              LDR      r1,[r1,#0]            ;316
+000072  2701              MOVS     r7,#1                 ;328
+000074  9118              STR      r1,[sp,#0x60]         ;316
+                  |L1.118|
+000076  4899              LDR      r0,|L1.732|
+000078  f7fffffe          BL       RTC_Get_Time
+00007c  4897              LDR      r0,|L1.732|
+00007e  6801              LDR      r1,[r0,#0]            ;308  ; Tim
+000080  6842              LDR      r2,[r0,#4]            ;308  ; Tim
+000082  4668              MOV      r0,sp                 ;308
+000084  f7fffffe          BL       RTC_time_to_string
+000088  220c              MOVS     r2,#0xc               ;310
+00008a  f44f712a          MOV      r1,#0x2a8             ;310
+00008e  4668              MOV      r0,sp                 ;310
+000090  f7fffffe          BL       GUI_DispStringAt
+000094  f7fffffe          BL       GUI_Exec
+000098  4891              LDR      r0,|L1.736|
+00009a  6068              STR      r0,[r5,#4]            ;314  ; get_data
+00009c  465b              MOV      r3,r11                ;314
+00009e  a191              ADR      r1,|L1.740|
+0000a0  a80d              ADD      r0,sp,#0x34           ;316
+0000a2  9a18              LDR      r2,[sp,#0x60]         ;316
+0000a4  f7fffffe          BL       __2sprintf
+0000a8  220c              MOVS     r2,#0xc               ;318
+0000aa  f44f71e1          MOV      r1,#0x1c2             ;318
+0000ae  a80d              ADD      r0,sp,#0x34           ;318
+0000b0  f7fffffe          BL       GUI_DispStringAt
+0000b4  f8da0000          LDR      r0,[r10,#0]           ;323  ; current_interface
+0000b8  782c              LDRB     r4,[r5,#0]            ;321  ; get_data
+0000ba  2866              CMP      r0,#0x66              ;323
+0000bc  d171              BNE      |L1.418|
+0000be  f8d80000          LDR      r0,[r8,#0]            ;325  ; flag_paint
+0000c2  b918              CBNZ     r0,|L1.204|
+0000c4  f7fffffe          BL       draw_xy
+0000c8  f8c87000          STR      r7,[r8,#0]            ;328  ; flag_paint
+                  |L1.204|
+0000cc  2c04              CMP      r4,#4                 ;331
+0000ce  d259              BCS      |L1.388|
+0000d0  e8dff004          TBB      [pc,r4]               ;331
+0000d4  5802182e          DCB      0x58,0x02,0x18,0x2e
+0000d8  2001              MOVS     r0,#1                 ;335
+0000da  f7fffffe          BL       buf_data_disp
+0000de  6928              LDR      r0,[r5,#0x10]         ;336  ; get_data
+0000e0  f7fffffe          BL       __aeabi_f2d
+0000e4  4602              MOV      r2,r0                 ;336
+0000e6  460b              MOV      r3,r1                 ;336
+0000e8  a180              ADR      r1,|L1.748|
+0000ea  a80d              ADD      r0,sp,#0x34           ;336
+0000ec  f7fffffe          BL       __2sprintf
+0000f0  f6400107          MOV      r1,#0x807
+0000f4  f9b60000          LDRSH    r0,[r6,#0]  ; current_handle
+0000f8  f7fffffe          BL       WM_GetDialogItem
+0000fc  2200              MOVS     r2,#0
+0000fe  ab0d              ADD      r3,sp,#0x34
+000100  2101              MOVS     r1,#1
 ;;;338    			break;
+000102  e03d              B        |L1.384|
 ;;;339    			
 ;;;340    		case GET_V1:
 ;;;341    			buf_data_disp(1);
+000104  2001              MOVS     r0,#1
+000106  f7fffffe          BL       buf_data_disp
 ;;;342    			sprintf(buf_c,"%.3f",get_data.speed);
+00010a  6928              LDR      r0,[r5,#0x10]  ; get_data
+00010c  f7fffffe          BL       __aeabi_f2d
+000110  4602              MOV      r2,r0
+000112  460b              MOV      r3,r1
+000114  a175              ADR      r1,|L1.748|
+000116  a80d              ADD      r0,sp,#0x34
+000118  f7fffffe          BL       __2sprintf
 ;;;343    			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,GUI_ID_LISTVIEW_RESULT),2,0,buf_c);
+00011c  f6400107          MOV      r1,#0x807
+000120  f9b60000          LDRSH    r0,[r6,#0]  ; current_handle
+000124  f7fffffe          BL       WM_GetDialogItem
+000128  2200              MOVS     r2,#0
+00012a  ab0d              ADD      r3,sp,#0x34
+00012c  2102              MOVS     r1,#2
 ;;;344    			break;
+00012e  e027              B        |L1.384|
 ;;;345    			
 ;;;346    		case ONE_STOP:
 ;;;347    			sprintf(buf_c,"%.3f",get_data.speed);
+000130  6928              LDR      r0,[r5,#0x10]  ; get_data
+000132  f7fffffe          BL       __aeabi_f2d
+000136  4602              MOV      r2,r0
+000138  460b              MOV      r3,r1
+00013a  a16c              ADR      r1,|L1.748|
+00013c  a80d              ADD      r0,sp,#0x34
+00013e  f7fffffe          BL       __2sprintf
 ;;;348    			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,GUI_ID_LISTVIEW_RESULT),2,0,buf_c);
+000142  f6400907          MOV      r9,#0x807
+000146  4649              MOV      r1,r9
+000148  f9b60000          LDRSH    r0,[r6,#0]  ; current_handle
+00014c  f7fffffe          BL       WM_GetDialogItem
+000150  ab0d              ADD      r3,sp,#0x34
+000152  2200              MOVS     r2,#0
+000154  2102              MOVS     r1,#2
+000156  f7fffffe          BL       LISTVIEW_SetItemText
 ;;;349    
 ;;;350    			if(record.result[record.test_times])
+00015a  4866              LDR      r0,|L1.756|
+00015c  7801              LDRB     r1,[r0,#0]  ; record
+00015e  f50070b6          ADD      r0,r0,#0x16c
+000162  5c08              LDRB     r0,[r1,r0]
 ;;;351    			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,GUI_ID_LISTVIEW_RESULT),4,0,"P");
 ;;;352    			else
 ;;;353    			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,GUI_ID_LISTVIEW_RESULT),4,0,"N");		
+000164  4649              MOV      r1,r9
+000166  2800              CMP      r0,#0                 ;350
+000168  f9b60000          LDRSH    r0,[r6,#0]  ; current_handle
+00016c  d003              BEQ      |L1.374|
+00016e  f7fffffe          BL       WM_GetDialogItem
+000172  a361              ADR      r3,|L1.760|
+000174  e002              B        |L1.380|
+                  |L1.374|
+000176  f7fffffe          BL       WM_GetDialogItem
+00017a  a360              ADR      r3,|L1.764|
+                  |L1.380|
+00017c  2200              MOVS     r2,#0                 ;351
+00017e  2104              MOVS     r1,#4                 ;351
+                  |L1.384|
+000180  f7fffffe          BL       LISTVIEW_SetItemText
+                  |L1.388|
 ;;;354    			break;
 ;;;355    			
 ;;;356    		case CURRENT_LIMIT_H:
@@ -355,56 +470,128 @@
 ;;;376    			break;
 ;;;377    		  }
 ;;;378    		LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,GUI_ID_LISTVIEW_RESULT),3,0,state_string[mot_state -1]);
+000184  f6400107          MOV      r1,#0x807
+000188  f9b60000          LDRSH    r0,[r6,#0]  ; current_handle
+00018c  f7fffffe          BL       WM_GetDialogItem
+000190  495b              LDR      r1,|L1.768|
+000192  2200              MOVS     r2,#0
+000194  eb010184          ADD      r1,r1,r4,LSL #2
+000198  f8513c04          LDR      r3,[r1,#-4]
+00019c  2103              MOVS     r1,#3
+00019e  f7fffffe          BL       LISTVIEW_SetItemText
+                  |L1.418|
 ;;;379    		}
 ;;;380    
 ;;;381    		if(current_interface == XYZ_ACC_HOME)
+0001a2  f8da0000          LDR      r0,[r10,#0]  ; current_interface
+0001a6  2868              CMP      r0,#0x68
+0001a8  d13f              BNE      |L1.554|
 ;;;382    		{
 ;;;383    			if(xyz_paint_flag == 0)
+0001aa  f8df9158          LDR      r9,|L1.772|
+0001ae  f8d90000          LDR      r0,[r9,#0]  ; xyz_paint_flag
+0001b2  b9c8              CBNZ     r0,|L1.488|
 ;;;384    			{
 ;;;385    			GUI_SetColor(GUI_YELLOW);
+0001b4  f64f70ff          MOV      r0,#0xffff
+0001b8  f7fffffe          BL       GUI_SetColor
 ;;;386    			draw_scale_y(SCALE_X_START,SCALE_Y_START,SCALE_Y_END);
+0001bc  f2401217          MOV      r2,#0x117
+0001c0  2117              MOVS     r1,#0x17
+0001c2  2014              MOVS     r0,#0x14
+0001c4  f7fffffe          BL       draw_scale_y
 ;;;387    			GUI_SetColor(GUI_WHITE);
+0001c8  f06f407f          MVN      r0,#0xff000000
+0001cc  f7fffffe          BL       GUI_SetColor
 ;;;388    			xyz_paint_flag =1;
 ;;;389    			disp_titles();
+0001d0  f8c97000          STR      r7,[r9,#0]  ; xyz_paint_flag
+0001d4  f7fffffe          BL       disp_titles
 ;;;390    			disp_mode();
+0001d8  f7fffffe          BL       disp_mode
 ;;;391    			draw_cm_s2(4900,900);
+0001dc  f44f7161          MOV      r1,#0x384
+0001e0  f2413024          MOV      r0,#0x1324
+0001e4  f7fffffe          BL       draw_cm_s2
+                  |L1.488|
 ;;;392    			}
 ;;;393    		  if(sample_status == START)
+0001e8  4847              LDR      r0,|L1.776|
+0001ea  7800              LDRB     r0,[r0,#0]  ; sample_status
+0001ec  2801              CMP      r0,#1
+0001ee  d11c              BNE      |L1.554|
 ;;;394    		  {
 ;;;395    #ifdef WIN_SIM			
 ;;;396    			Data_Sim(512);
 ;;;397    #endif
 ;;;398    			save_xyz();
+0001f0  f7fffffe          BL       save_xyz
 ;;;399    
 ;;;400    			if(xyz_pars.e_filter != FILTER_NO)
+0001f4  4845              LDR      r0,|L1.780|
+0001f6  7800              LDRB     r0,[r0,#0]  ; xyz_pars
+0001f8  b120              CBZ      r0,|L1.516|
 ;;;401    			{
 ;;;402    			xyz_fir();
+0001fa  f7fffffe          BL       xyz_fir
 ;;;403    			xyz_value_fir_to_graph();
+0001fe  f7fffffe          BL       xyz_value_fir_to_graph
+000202  e005              B        |L1.528|
+                  |L1.516|
 ;;;404    			}
 ;;;405    			else
 ;;;406    			{
 ;;;407    			xyz_value_dir_to_graph(&Z_acc,GUI_GREEN,Z);
+000204  2202              MOVS     r2,#2
+000206  f44f417f          MOV      r1,#0xff00
+00020a  4841              LDR      r0,|L1.784|
+00020c  f7fffffe          BL       xyz_value_dir_to_graph
+                  |L1.528|
 ;;;408    			}
 ;;;409    			xyz_value_dir_to_graph(&X_acc,GUI_BLUE,X);
+000210  2200              MOVS     r2,#0
+000212  f44f017f          MOV      r1,#0xff0000
+000216  483f              LDR      r0,|L1.788|
+000218  f7fffffe          BL       xyz_value_dir_to_graph
 ;;;410    			xyz_value_dir_to_graph(&Y_acc,GUI_RED,Y);
+00021c  2201              MOVS     r2,#1
+00021e  21ff              MOVS     r1,#0xff
+000220  483d              LDR      r0,|L1.792|
+000222  f7fffffe          BL       xyz_value_dir_to_graph
 ;;;411    			disp_caculate();
+000226  f7fffffe          BL       disp_caculate
+                  |L1.554|
 ;;;412    		  }
 ;;;413    		}
 ;;;414    		
 ;;;415    		
 ;;;416    		if(current_interface == PORTABLE_LIMIT_SPEED_T)
+00022a  f8da0000          LDR      r0,[r10,#0]  ; current_interface
+00022e  286a              CMP      r0,#0x6a
+000230  d122              BNE      |L1.632|
 ;;;417    		{
 ;;;418    			if(flag_paint == 0)
+000232  f8d80000          LDR      r0,[r8,#0]  ; flag_paint
+000236  b918              CBNZ     r0,|L1.576|
 ;;;419    			{
 ;;;420    			draw_xy_t();
+000238  f7fffffe          BL       draw_xy_t
 ;;;421    	
 ;;;422    			flag_paint =1;
+00023c  f8c87000          STR      r7,[r8,#0]  ; flag_paint
+                  |L1.576|
 ;;;423    			}
 ;;;424    			
 ;;;425    			if(etest_mode == TEST_MODE_COM)
+000240  4836              LDR      r0,|L1.796|
+000242  7800              LDRB     r0,[r0,#0]  ; etest_mode
+000244  2801              CMP      r0,#1
+000246  d117              BNE      |L1.632|
 ;;;426    			{
 ;;;427    			
 ;;;428    			switch(mot_state)
+000248  2c01              CMP      r4,#1
+00024a  d115              BNE      |L1.632|
 ;;;429    				{
 ;;;430    			case START_TEST:
 ;;;431    			//get_data.speed = rand()%200;
@@ -425,8 +612,24 @@
 ;;;446    #endif
 ;;;447    
 ;;;448    			buf_data_disp(1);
+00024c  f7fffffe          BL       buf_data_disp
 ;;;449    			sprintf(buf_c,"%.3f",get_data.speed);
+000250  6928              LDR      r0,[r5,#0x10]  ; get_data
+000252  f7fffffe          BL       __aeabi_f2d
+000256  4602              MOV      r2,r0
+000258  460b              MOV      r3,r1
+00025a  a124              ADR      r1,|L1.748|
+00025c  a80d              ADD      r0,sp,#0x34
+00025e  f7fffffe          BL       __2sprintf
 ;;;450    			LISTVIEW_SetItemText(WM_GetDialogItem(current_handle,GUI_ID_LISTVIEW_RESULT_T),3,0,buf_c);
+000262  f640010b          MOV      r1,#0x80b
+000266  f9b60000          LDRSH    r0,[r6,#0]  ; current_handle
+00026a  f7fffffe          BL       WM_GetDialogItem
+00026e  ab0d              ADD      r3,sp,#0x34
+000270  2200              MOVS     r2,#0
+000272  2103              MOVS     r1,#3
+000274  f7fffffe          BL       LISTVIEW_SetItemText
+                  |L1.632|
 ;;;451    			
 ;;;452    			break;
 ;;;453    
@@ -438,11 +641,20 @@
 ;;;459    		}
 ;;;460    
 ;;;461    		if(current_interface == BALANCE)
+000278  f8da0000          LDR      r0,[r10,#0]  ; current_interface
+00027c  286c              CMP      r0,#0x6c
+00027e  d106              BNE      |L1.654|
 ;;;462    		{
 ;;;463    			if(flag_paint == 0)
+000280  f8d80000          LDR      r0,[r8,#0]  ; flag_paint
+000284  4644              MOV      r4,r8
+000286  b910              CBNZ     r0,|L1.654|
 ;;;464    			{
 ;;;465    			draw_xy_t();
+000288  f7fffffe          BL       draw_xy_t
 ;;;466    			flag_paint =1;
+00028c  6027              STR      r7,[r4,#0]  ; flag_paint
+                  |L1.654|
 ;;;467    			}
 ;;;468    
 ;;;469    		    //get_result();
@@ -450,37 +662,91 @@
 ;;;471    
 ;;;472    #ifndef WIN_SIM	
 ;;;473    		OSTimeDlyHMSM(0,0,0,5); 
+00028e  2200              MOVS     r2,#0
+000290  2305              MOVS     r3,#5
+000292  4611              MOV      r1,r2
+000294  4610              MOV      r0,r2
+000296  f7fffffe          BL       OSTimeDlyHMSM
+00029a  e6ec              B        |L1.118|
 ;;;474    #endif	
 ;;;475    	} 
 ;;;476    #endif
 ;;;477    
 ;;;478    }
-000060  b016              ADD      sp,sp,#0x58
-000062  bd10              POP      {r4,pc}
                           ENDP
 
-                  |L1.100|
+                  |L1.668|
                           DCD      ||.constdata||
-                  |L1.104|
+                  |L1.672|
                           DCD      disp_mult
-                  |L1.108|
+                  |L1.676|
                           DCD      mot_t_cal
-                  |L1.112|
+                  |L1.680|
                           DCD      h_home
-                  |L1.116|
+                  |L1.684|
                           DCD      h_pars
-                  |L1.120|
+                  |L1.688|
                           DCD      h_cus
-                  |L1.124|
+                  |L1.692|
                           DCD      flag_paint
-                  |L1.128|
+                  |L1.696|
                           DCD      ttpars
-                  |L1.132|
-000084  73706565          DCB      "speedt.lt",0
-000088  64742e6c
-00008c  7400    
-00008e  00                DCB      0
-00008f  00                DCB      0
+                  |L1.700|
+0002bc  73706565          DCB      "speedt.lt",0
+0002c0  64742e6c
+0002c4  7400    
+0002c6  00                DCB      0
+0002c7  00                DCB      0
+                  |L1.712|
+                          DCD      get_data
+                  |L1.716|
+                          DCD      current_handle
+                  |L1.720|
+                          DCD      current_interface
+                  |L1.724|
+0002d4  80000000          DCFD     0x3ff3ae1480000000 ; 1.2300000190734863
+0002d8  3ff3ae14
+                  |L1.732|
+                          DCD      Tim
+                  |L1.736|
+                          DCD      0x3f9d70a4
+                  |L1.740|
+0002e4  252e3266          DCB      "%.2fA",0
+0002e8  4100    
+0002ea  00                DCB      0
+0002eb  00                DCB      0
+                  |L1.748|
+0002ec  252e3366          DCB      "%.3f",0
+0002f0  00      
+0002f1  00                DCB      0
+0002f2  00                DCB      0
+0002f3  00                DCB      0
+                  |L1.756|
+                          DCD      record
+                  |L1.760|
+0002f8  5000              DCB      "P",0
+0002fa  00                DCB      0
+0002fb  00                DCB      0
+                  |L1.764|
+0002fc  4e00              DCB      "N",0
+0002fe  00                DCB      0
+0002ff  00                DCB      0
+                  |L1.768|
+                          DCD      ||.data||+0x4
+                  |L1.772|
+                          DCD      xyz_paint_flag
+                  |L1.776|
+                          DCD      sample_status
+                  |L1.780|
+                          DCD      xyz_pars
+                  |L1.784|
+                          DCD      Z_acc
+                  |L1.788|
+                          DCD      X_acc
+                  |L1.792|
+                          DCD      Y_acc
+                  |L1.796|
+                          DCD      etest_mode
 
                           AREA ||i.buf_data_disp||, CODE, READONLY, ALIGN=2
 
@@ -597,20 +863,56 @@
                           %        40
 000050  0000              DCB      0x00,0x00
 
+                          AREA ||.conststring||, DATA, READONLY, MERGE=1, STRINGS, ALIGN=0
+
+000000  53746172          DCB      "Start",0
+000004  7400    
+000006  47657456          DCB      "GetV1",0
+00000a  3100    
+00000c  4f6e6553          DCB      "OneStop",0
+000010  746f7000
+000014  4375724c          DCB      "CurL_H",0
+000018  5f4800  
+00001b  4375724c          DCB      "CurL_L",0
+00001f  5f4c00  
+000022  534c00            DCB      "SL",0
+000025  414600            DCB      "AF",0
+000028  484600            DCB      "HF",0
+00002b  496e6974          DCB      "Init",0
+00002f  00      
+000030  53776963          DCB      "Swich_err",0
+000034  685f6572
+000038  7200    
+00003a  545f4d6f          DCB      "T_Mot_Cal",0
+00003e  745f4361
+000042  6c00    
+
                           AREA ||.data||, DATA, ALIGN=2
 
                   mid
                           DCD      0x00000000
+                  state_string
+                          DCD      ||.conststring||
+                          DCD      ||.conststring||+0x6
+                          DCD      ||.conststring||+0xc
+                          DCD      ||.conststring||+0x14
+                          DCD      ||.conststring||+0x1b
+                          DCD      ||.conststring||+0x22
+                          DCD      ||.conststring||+0x25
+                          DCD      ||.conststring||+0x28
+                          DCD      ||.conststring||+0x2b
+                          DCD      ||.conststring||+0x30
+                          DCD      ||.conststring||+0x3a
 
-                          AREA ||area_number.7||, DATA, ALIGN=0
+                          AREA ||area_number.8||, DATA, ALIGN=0
 
-                          EXPORTAS ||area_number.7||, ||.data||
+                          EXPORTAS ||area_number.8||, ||.data||
                   reg_get
 000000  00                DCB      0x00
 
-                          AREA ||area_number.8||, DATA, ALIGN=2
+                          AREA ||area_number.9||, DATA, ALIGN=2
 
-                          EXPORTAS ||area_number.8||, ||.data||
+                          EXPORTAS ||area_number.9||, ||.data||
                   ||dta||
                           DCD      0x00000000
 

@@ -7,3 +7,8 @@ E:\Proj\STM32\uCOS+uCGUI0920\uCOS+uCGUI\uCOS ucgui_lib.uvproj
 Project File Date:  03/07/2013
 
 <h2>Output:</h2>
+Build target '7tftlcd'
+linking...
+Program Size: Code=105464 RO-data=364676 RW-data=1152 ZI-data=67704  
+FromELF: creating hex file...
+".\ouput\uCOSDemo.axf" - 0 Error(s), 0 Warning(s).
